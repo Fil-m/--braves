@@ -102,7 +102,7 @@
             color: var(--navy)
         }
 
-        /* ── VALIDATION BANNER (screen only) ── */
+        /* ── VALIDATION BANNER (always visible) ── */
         .validation-banner {
             background: var(--red);
             color: var(--white);
@@ -111,12 +111,8 @@
             font-size: 8.5pt;
             font-weight: 700;
             flex-shrink: 0;
-            display: none;
+            display: block;
             line-height: 1.4;
-        }
-
-        .validation-banner.visible {
-            display: block
         }
 
         /* ── QUESTIONS TABLE ── */
@@ -699,7 +695,6 @@
             }
 
             .no-print,
-            .validation-banner,
             .results-panel {
                 display: none !important
             }
@@ -784,7 +779,7 @@
             Оберіть варіант для кожного питання / Wählen Sie eine Antwort pro Frage / Select one answer per question
         </div>
 
-        <div class="validation-banner" id="validationBanner">
+        <div class="validation-banner">
             ⚠ Будь ласка, дайте відповідь на ВСІ питання для підрахунку результатів &nbsp;/&nbsp;
             Bitte beantworten Sie ALLE Fragen &nbsp;/&nbsp;
             Please answer ALL questions to see your results
@@ -1281,7 +1276,6 @@
 
         function updateResults() {
             const answered = countAnswered();
-            const banner = document.getElementById('validationBanner');
             const panel = document.getElementById('resultsPanel');
 
             // Highlight answered rows
@@ -1293,13 +1287,11 @@
             }
 
             if (answered < TOTAL_Q) {
-                banner.classList.toggle('visible', answered > 0);
                 panel.classList.remove('visible');
                 return;
             }
 
             // All answered
-            banner.classList.remove('visible');
             panel.classList.add('visible');
 
             const adhdScore = getScore(ADHD_Q);
