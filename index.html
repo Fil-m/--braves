@@ -203,12 +203,12 @@
         }
 
         .q-ex {
-            font-size: 7pt;
+            font-size: 6.5pt;
             font-style: italic;
             color: var(--dgrey);
-            line-height: 1.2;
+            line-height: 1.1;
             display: block;
-            margin-top: 1px
+            margin-top: 0
         }
 
         /* ── RADIO OPTIONS ── */
@@ -222,11 +222,11 @@
         .radio-label {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
             cursor: pointer;
-            font-size: 8pt;
-            line-height: 1.4;
-            padding: 3px 5px;
+            font-size: 7.5pt;
+            line-height: 1.3;
+            padding: 2px 4px;
             border-radius: 4px;
             transition: background .15s
         }
@@ -290,17 +290,35 @@
             line-height: 1.4
         }
 
-        /* ── RESULTS PANEL (screen only, bottom of page 1) ── */
+        /* ── RESULTS PANEL (screen only, page 2) ── */
         .results-panel {
-            display: none;
-            background: linear-gradient(135deg, var(--navy) 0%, #1a3a5c 100%);
-            color: var(--white);
+            display: block;
+            background: #f8f9fa;
+            border: 2px dashed #ccc;
+            border-radius: 6px;
+            min-height: 80px;
             padding: 10px 14px;
             flex-shrink: 0;
+            color: #aaa;
+            font-size: 8pt;
+            text-align: center;
+            line-height: 80px;
+            /* vertically center placeholder text */
+        }
+
+        .results-panel::before {
+            content: '📊 Результати з\'являться після заповнення всіх питань / Ergebnisse erscheinen nach dem Ausfüllen / Results appear after completing all questions';
         }
 
         .results-panel.visible {
-            display: block
+            background: linear-gradient(135deg, var(--navy) 0%, #1a3a5c 100%);
+            color: var(--white);
+            border: none;
+            line-height: 1.4;
+        }
+
+        .results-panel.visible::before {
+            content: none;
         }
 
         .results-title {
