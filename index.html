@@ -1061,40 +1061,8 @@
             </table>
         </div>
 
-        <div class="warning-bar">
-            ⚠ Це НЕ діагноз — лише скринінг / Dies ist KEINE Diagnose / This is NOT a diagnosis — screening only
-        </div>
-
-        <!-- PRIVACY NOTICE (screen only) -->
-        <div class="privacy-notice no-print">
-            <span class="lock-icon">🔒</span>
-            <strong>Конфіденційність / Datenschutz / Privacy:</strong>
-            Всі відповіді залишаються тільки на вашому пристрої. Нічого не передається, не зберігається, не
-            реєструється.
-            &nbsp;/&nbsp; Alle Antworten bleiben nur auf Ihrem Gerät. Nichts wird übertragen, gespeichert oder
-            registriert.
-            &nbsp;/&nbsp; All answers stay only on your device. Nothing is transmitted, stored, or registered.
-        </div>
-
-        <!-- RESULTS (screen only, hidden until all answered) -->
-        <div class="results-panel no-print" id="resultsPanel">
-            <div class="results-title">📊 ВАШІ РЕЗУЛЬТАТИ / Ihre Ergebnisse / Your Results</div>
-            <div class="results-grid">
-                <div class="result-box">
-                    <h4>ADHD / СДУГ (1–5)</h4>
-                    <div class="result-score" id="adhdScore">—</div>
-                    <div class="result-label" id="adhdLabel"></div>
-                </div>
-                <div class="result-box">
-                    <h4>АУТИЗМ / ASD (6–11)</h4>
-                    <div class="result-score" id="asdScore">—</div>
-                    <div class="result-label" id="asdLabel"></div>
-                </div>
-            </div>
-            <div class="result-advice" id="resultAdvice"></div>
-        </div>
-
     </div><!-- /page1 -->
+
 
 
     <!-- PAGE 2 -->
@@ -1135,6 +1103,40 @@
                 </div>
             </div>
 
+            <!-- BLOCK 6: Warning -->
+            <div class="warning-bar" style="grid-column:1/-1">
+                ⚠ Це НЕ діагноз — лише скринінг / Dies ist KEINE Diagnose / This is NOT a diagnosis — screening only
+            </div>
+
+            <!-- BLOCK 7: Privacy notice (screen only) -->
+            <div class="privacy-notice no-print" style="grid-column:1/-1">
+                <span class="lock-icon">🔒</span>
+                <strong>Конфіденційність / Datenschutz / Privacy:</strong>
+                Всі відповіді залишаються тільки на вашому пристрої. Нічого не передається, не зберігається, не
+                реєструється.
+                &nbsp;/&nbsp; Alle Antworten bleiben nur auf Ihrem Gerät. Nichts wird übertragen, gespeichert oder
+                registriert.
+                &nbsp;/&nbsp; All answers stay only on your device. Nothing is transmitted, stored, or registered.
+            </div>
+
+            <!-- BLOCK 8: Results panel (screen only, appears after all answered) -->
+            <div class="results-panel no-print" id="resultsPanel" style="grid-column:1/-1">
+                <div class="results-title">📊 ВАШІ РЕЗУЛЬТАТИ / Ihre Ergebnisse / Your Results</div>
+                <div class="results-grid">
+                    <div class="result-box">
+                        <h4>ADHD / СДУГ (1–5)</h4>
+                        <div class="result-score" id="adhdScore">—</div>
+                        <div class="result-label" id="adhdLabel"></div>
+                    </div>
+                    <div class="result-box">
+                        <h4>АУТИЗМ / ASD (6–11)</h4>
+                        <div class="result-score" id="asdScore">—</div>
+                        <div class="result-label" id="asdLabel"></div>
+                    </div>
+                </div>
+                <div class="result-advice" id="resultAdvice"></div>
+            </div>
+
             <div class="reality-section">
                 <div class="col-header bad-hdr">❌ РЕАЛЬНІСТЬ В НIМЕЧЧИНI / Realität / Reality</div>
                 <div class="info-items">
@@ -1148,7 +1150,7 @@
                     </div>
                     <div class="info-item"><span class="info-icon">🗣️</span>
                         <div class="info-text"><strong>Мовний бар'єр + культурне нерозуміння</strong><em>Sprachbarriere
-                                + kulturelles Missverständnis / Language barrier + cultural gap</em></div>
+                                + культурне Missverständство / Language barrier + cultural gap</em></div>
                     </div>
                     <div class="info-item"><span class="info-icon">😔</span>
                         <div class="info-text"><strong>Ізоляція — відчуття що ти один такий</strong><em>Isolation — das
