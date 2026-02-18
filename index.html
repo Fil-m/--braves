@@ -1100,22 +1100,27 @@
                 <div class="interpret-cols">
                     <div class="interpret-box">
                         <h4>ADHD / СДУГ (питання 1–5 / Fragen 1–5)</h4>
-                        <div class="score-row"><span class="score-badge high">4–5</span><span class="score-text">Висока
+                        <div class="score-row"><span class="score-badge high">3.5 – 5</span><span
+                                class="score-text">Висока
                                 ймовірність → до лікаря<br><em>Hohe Wahrscheinlichkeit → zum Arzt / High probability →
                                     see a doctor</em></span></div>
-                        <div class="score-row"><span class="score-badge mid">2–3</span><span class="score-text">Варто
+                        <div class="score-row"><span class="score-badge mid">2 – 3</span><span class="score-text">Варто
                                 перевірити<br><em>Sollte geprüft werden / Worth checking</em></span></div>
-                        <div class="score-row"><span class="score-badge low">0–1</span><span class="score-text">Низька
+                        <div class="score-row"><span class="score-badge low">0 – 1.5</span><span
+                                class="score-text">Низька
                                 ймовірність<br><em>Geringe Wahrscheinlichkeit / Low probability</em></span></div>
                     </div>
                     <div class="interpret-box">
                         <h4>АУТИЗМ / ASD (питання 6–11 / Fragen 6–11)</h4>
-                        <div class="score-row"><span class="score-badge high">5–6</span><span class="score-text">Висока
+                        <div class="score-row"><span class="score-badge high">4 – 6</span><span
+                                class="score-text">Висока
                                 ймовірність → до лікаря<br><em>Hohe Wahrscheinlichkeit → zum Arzt / High probability →
                                     see a doctor</em></span></div>
-                        <div class="score-row"><span class="score-badge mid">3–4</span><span class="score-text">Варто
+                        <div class="score-row"><span class="score-badge mid">2 – 3.5</span><span
+                                class="score-text">Варто
                                 перевірити<br><em>Sollte geprüft werden / Worth checking</em></span></div>
-                        <div class="score-row"><span class="score-badge low">0–2</span><span class="score-text">Низька
+                        <div class="score-row"><span class="score-badge low">0 – 1.5</span><span
+                                class="score-text">Низька
                                 ймовірність<br><em>Geringe Wahrscheinlichkeit / Low probability</em></span></div>
                     </div>
                 </div>
@@ -1295,22 +1300,22 @@
         }
 
         function getAdhdLevel(score) {
-            if (score >= 4) return { cls: 'high', label: '🔴 Висока ймовірність ADHD\nHohe Wahrscheinlichkeit ADHD\nHigh probability of ADHD' };
+            if (score >= 3.5) return { cls: 'high', label: '🔴 Висока ймовірність ADHD\nHohe Wahrscheinlichkeit ADHD\nHigh probability of ADHD' };
             if (score >= 2) return { cls: 'mid', label: '🟡 Варто перевірити\nSollte geprüft werden\nWorth checking' };
             return { cls: 'low', label: '🟢 Низька ймовірність\nGeringe Wahrscheinlichkeit\nLow probability' };
         }
 
         function getAsdLevel(score) {
-            if (score >= 5) return { cls: 'high', label: '🔴 Висока ймовірність ASD\nHohe Wahrscheinlichkeit ASD\nHigh probability of ASD' };
-            if (score >= 3) return { cls: 'mid', label: '🟡 Варто перевірити\nSollte geprüft werden\nWorth checking' };
+            if (score >= 4) return { cls: 'high', label: '🔴 Висока ймовірність ASD\nHohe Wahrscheinlichkeit ASD\nHigh probability of ASD' };
+            if (score >= 2) return { cls: 'mid', label: '🟡 Варто перевірити\nSollte geprüft werden\nWorth checking' };
             return { cls: 'low', label: '🟢 Низька ймовірність\nGeringe Wahrscheinlichkeit\nLow probability' };
         }
 
         function buildAdvice(adhdScore, asdScore) {
-            const adhdHigh = adhdScore >= 4;
-            const adhdMid = adhdScore >= 2 && adhdScore < 4;
-            const asdHigh = asdScore >= 5;
-            const asdMid = asdScore >= 3 && asdScore < 5;
+            const adhdHigh = adhdScore >= 3.5;
+            const adhdMid = adhdScore >= 2 && adhdScore < 3.5;
+            const asdHigh = asdScore >= 4;
+            const asdMid = asdScore >= 2 && asdScore < 4;
 
             if (adhdHigh && asdHigh) return {
                 title: '⚡ Обидва показники — висока ймовірність / Beide Werte hoch / Both scores high',
