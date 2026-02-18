@@ -1288,7 +1288,8 @@
         }
 
         function formatScore(score) {
-            return score % 1 === 0 ? score : score.toFixed(1);
+            // If score is integer (e.g. 3), return 3. If float (e.g. 3.5), return "3.5"
+            return Number.isInteger(score) ? score : score.toFixed(1);
         }
 
         function countAnswered() {
@@ -1301,7 +1302,7 @@
 
         function getAdhdLevel(score) {
             if (score >= 3.5) return { cls: 'high', label: '🔴 Висока ймовірність ADHD\nHohe Wahrscheinlichkeit ADHD\nHigh probability of ADHD' };
-            if (score >= 2) return { cls: 'mid', label: '🟡 Варто перевірити\nSollte geprüft werden\nWorth checking' };
+            if (score >= 1.5) return { cls: 'mid', label: '🟡 Варто перевірити\nSollte geprüft werden\nWorth checking' };
             return { cls: 'low', label: '🟢 Низька ймовірність\nGeringe Wahrscheinlichkeit\nLow probability' };
         }
 
@@ -1313,7 +1314,7 @@
 
         function buildAdvice(adhdScore, asdScore) {
             const adhdHigh = adhdScore >= 3.5;
-            const adhdMid = adhdScore >= 2 && adhdScore < 3.5;
+            const adhdMid = adhdScore >= 1.5 && adhdScore < 3.5;
             const asdHigh = asdScore >= 4;
             const asdMid = asdScore >= 2 && asdScore < 4;
 
@@ -1340,43 +1341,54 @@
         }
 
         function updateResults() {
-            const answered = countAnswered();
-            const panel = document.getElementById('resultsPanel');
+            try {
+                const answered = countAnswered();
+                const panel = document.getElementById('resultsPanel');
 
-            // Highlight answered rows
-            for (let i = 1; i <= TOTAL_Q; i++) {
-                const row = document.querySelector(`tr[data-q="${i}"]`);
-                if (row) {
-                    row.classList.toggle('answered', !!document.querySelector(`input[name="q${i}"]:checked`));
+                // Highlight answered rows
+                for (let i = 1; i <= TOTAL_Q; i++) {
+                    const row = document.querySelector(`tr[data-q="${i}"]`);
+                    if (row) {
+                        row.classList.toggle('answered', !!document.querySelector(`input[name="q${i}"]:checked`));
+                    }
                 }
+
+                if (answered < TOTAL_Q) {
+                    panel.classList.remove('visible');
+                    return;
+                }
+
+                // All answered
+                panel.classList.add('visible');
+
+                const adhdScore = getScore(ADHD_Q);
+                const asdScore = getScore(ASD_Q);
+                const adhdLvl = getAdhdLevel(adhdScore);
+                const asdLvl = getAsdLevel(asdScore);
+                const advice = buildAdvice(adhdScore, asdScore);
+
+                const adhdEl = document.getElementById('adhdScore');
+                if (adhdEl) {
+                    adhdEl.textContent = `${formatScore(adhdScore)}/5`;
+                    adhdEl.className = `result-score ${adhdLvl.cls}`;
+                }
+                const adhdLabel = document.getElementById('adhdLabel');
+                if (adhdLabel) adhdLabel.innerHTML = adhdLvl.label.replace(/\n/g, '<br>');
+
+                const asdEl = document.getElementById('asdScore');
+                if (asdEl) {
+                    asdEl.textContent = `${formatScore(asdScore)}/6`;
+                    asdEl.className = `result-score ${asdLvl.cls}`;
+                }
+                const asdLabel = document.getElementById('asdLabel');
+                if (asdLabel) asdLabel.innerHTML = asdLvl.label.replace(/\n/g, '<br>');
+
+                const adviceEl = document.getElementById('resultAdvice');
+                if (adviceEl) adviceEl.innerHTML = `<strong>${advice.title}</strong>${advice.text.replace(/\n/g, '<br>')}`;
+
+            } catch (e) {
+                console.error("Error updating results:", e);
             }
-
-            if (answered < TOTAL_Q) {
-                panel.classList.remove('visible');
-                return;
-            }
-
-            // All answered
-            panel.classList.add('visible');
-
-            const adhdScore = getScore(ADHD_Q);
-            const asdScore = getScore(ASD_Q);
-            const adhdLvl = getAdhdLevel(adhdScore);
-            const asdLvl = getAsdLevel(asdScore);
-            const advice = buildAdvice(adhdScore, asdScore);
-
-            const adhdEl = document.getElementById('adhdScore');
-            adhdEl.textContent = `${formatScore(adhdScore)}/5`;
-            adhdEl.className = `result-score ${adhdLvl.cls}`;
-            document.getElementById('adhdLabel').innerHTML = adhdLvl.label.replace(/\n/g, '<br>');
-
-            const asdEl = document.getElementById('asdScore');
-            asdEl.textContent = `${formatScore(asdScore)}/6`;
-            asdEl.className = `result-score ${asdLvl.cls}`;
-            document.getElementById('asdLabel').innerHTML = asdLvl.label.replace(/\n/g, '<br>');
-
-            document.getElementById('resultAdvice').innerHTML =
-                `<strong>${advice.title}</strong>${advice.text.replace(/\n/g, '<br>')}`;
         }
 
         // Listen to all radio changes
