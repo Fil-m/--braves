@@ -636,7 +636,31 @@
             font-size: 10pt;
             font-weight: 700;
             color: var(--accent);
-            letter-spacing: .3px
+            letter-spacing: .3px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .contact-left .tg-url:hover {
+            text-decoration: underline;
+            opacity: 0.85;
+        }
+
+        /* Privacy notice */
+        .privacy-notice {
+            background: #1a2e1a;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 7pt;
+            line-height: 1.5;
+            padding: 5px 14px;
+            text-align: center;
+            flex-shrink: 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .privacy-notice .lock-icon {
+            font-size: 9pt;
+            margin-right: 3px;
         }
 
         .contact-left .langs {
@@ -1041,6 +1065,17 @@
             ⚠ Це НЕ діагноз — лише скринінг / Dies ist KEINE Diagnose / This is NOT a diagnosis — screening only
         </div>
 
+        <!-- PRIVACY NOTICE (screen only) -->
+        <div class="privacy-notice no-print">
+            <span class="lock-icon">🔒</span>
+            <strong>Конфіденційність / Datenschutz / Privacy:</strong>
+            Всі відповіді залишаються тільки на вашому пристрої. Нічого не передається, не зберігається, не
+            реєструється.
+            &nbsp;/&nbsp; Alle Antworten bleiben nur auf Ihrem Gerät. Nichts wird übertragen, gespeichert oder
+            registriert.
+            &nbsp;/&nbsp; All answers stay only on your device. Nothing is transmitted, stored, or registered.
+        </div>
+
         <!-- RESULTS (screen only, hidden until all answered) -->
         <div class="results-panel no-print" id="resultsPanel">
             <div class="results-title">📊 ВАШІ РЕЗУЛЬТАТИ / Ihre Ergebnisse / Your Results</div>
@@ -1189,7 +1224,8 @@
                 <div class="contact-left">
                     <span class="free-badge">✨ ВСЕ БЕЗКОШТОВНО / ALLES KOSTENLOS / ALL FREE</span>
                     <h3>🚀 ПРИЄДНУЙСЯ / Beitreten / Join us</h3>
-                    <div class="tg-url">t.me/+R8UPWvAwrD85ZjYy</div>
+                    <a class="tg-url" href="https://t.me/+R8UPWvAwrD85ZjYy" target="_blank"
+                        rel="noopener">t.me/+R8UPWvAwrD85ZjYy</a>
                     <div class="langs">Telegram-група підтримки · Telegram-Supportgruppe · Telegram support group<br>UA
                         | DE | EN · Онлайн / Online · Безкоштовно / Kostenlos / Free</div>
                 </div>
