@@ -145,25 +145,28 @@
         }
 
         .a-col {
-            width: 130px;
+            width: 250px;
             white-space: nowrap
         }
 
         .radio-group {
             display: flex;
             flex-direction: row;
-            gap: 10px;
-            flex-wrap: wrap;
-            align-items: center
+            justify-content: space-around;
+            align-items: flex-end;
+            gap: 2px
         }
 
         .radio-label {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 4px;
+            text-align: center;
+            gap: 3px;
             cursor: pointer;
-            font-size: 8pt;
-            white-space: nowrap
+            font-size: 7pt;
+            width: 78px;
+            line-height: 1.25
         }
 
         .radio-box {
@@ -1273,6 +1276,14 @@
             const ts = now.toLocaleDateString('de-DE') + ' ' + now.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
             const el = document.getElementById('printTime');
             if (el) el.textContent = '📅 Gedruckt / Printed / Надруковано: ' + ts;
+        });
+
+        // Update all radio labels to trilingual
+        const LABELS = { '0': 'Nein / No / Ні', '0.5': 'Manchmal / Sometimes / Іноді', '1': 'Ja / Yes / Так' };
+        document.querySelectorAll('.radio-label').forEach(label => {
+            const input = label.querySelector('input[type=radio]');
+            const span = label.querySelector('span:not(.radio-box)');
+            if (input && span) span.textContent = LABELS[input.value] || span.textContent;
         });
 
         // DOM reorder: move DE/EN (em) before UA text in each q-text cell
