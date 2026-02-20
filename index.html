@@ -728,7 +728,8 @@
                 height: 297mm;
                 box-shadow: none;
                 page-break-after: always;
-                break-after: page
+                break-after: page;
+                padding: 6mm
             }
 
             .page:last-child {
@@ -739,6 +740,13 @@
             .no-print,
             .results-panel {
                 display: none !important
+            }
+
+            #resultsPanel {
+                display: none !important;
+                visibility: hidden !important;
+                height: 0 !important;
+                overflow: hidden !important
             }
 
             /* Print checkboxes as [ ] */
