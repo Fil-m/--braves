@@ -1429,6 +1429,21 @@
 
         // Listen to all radio changes
         document.querySelectorAll('input[type=radio]').forEach(r => r.addEventListener('change', updateResults));
+
+        // Hide dark results panel before printing, restore after
+        const _hideForPrint = ['resultsPanel', 'privacyNotice'];
+        window.addEventListener('beforeprint', () => {
+            const p = document.getElementById('resultsPanel');
+            if (p) p.style.setProperty('display', 'none', 'important');
+            document.querySelectorAll('.privacy-notice').forEach(el => el.style.setProperty('display', 'none', 'important'));
+            document.querySelectorAll('.print-placeholder').forEach(el => el.style.setProperty('display', 'block', 'important'));
+        });
+        window.addEventListener('afterprint', () => {
+            const p = document.getElementById('resultsPanel');
+            if (p) p.style.removeProperty('display');
+            document.querySelectorAll('.privacy-notice').forEach(el => el.style.removeProperty('display'));
+            document.querySelectorAll('.print-placeholder').forEach(el => el.style.removeProperty('display'));
+        });
     </script>
 </body>
 
