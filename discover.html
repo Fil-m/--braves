@@ -145,28 +145,29 @@
         }
 
         .a-col {
-            width: 250px;
-            white-space: nowrap
+            width: 300px;
+            min-width: 300px;
+            padding-left: 10px !important
         }
 
         .radio-group {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            align-items: flex-end;
-            gap: 2px
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 4px;
+            align-items: end
         }
 
         .radio-label {
             display: flex;
-            flex-direction: column;
+            flex-direction: column-reverse;
             align-items: center;
             text-align: center;
-            gap: 3px;
+            gap: 4px;
             cursor: pointer;
-            font-size: 7pt;
-            width: 78px;
-            line-height: 1.25
+            font-size: 7.5pt;
+            line-height: 1.2;
+            color: var(--navy);
+            font-weight: 600
         }
 
         .radio-box {
@@ -1279,11 +1280,19 @@
         });
 
         // Update all radio labels to trilingual
-        const LABELS = { '0': 'Nein / No / Ні', '0.5': 'Manchmal / Sometimes / Іноді', '1': 'Ja / Yes / Так' };
+        const LABELS = {
+            '0': 'Nein / No / Ні',
+            '0.5': 'Manchmal / Sometimes / Іноді',
+            '1': 'Ja / Yes / Так'
+        };
         document.querySelectorAll('.radio-label').forEach(label => {
             const input = label.querySelector('input[type=radio]');
             const span = label.querySelector('span:not(.radio-box)');
-            if (input && span) span.textContent = LABELS[input.value] || span.textContent;
+            if (input && span) {
+                span.textContent = LABELS[input.value] || span.textContent;
+                span.style.display = 'block';
+                span.style.marginBottom = '2px';
+            }
         });
 
         // DOM reorder: move DE/EN (em) before UA text in each q-text cell
