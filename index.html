@@ -306,6 +306,11 @@
             /* vertically center placeholder text */
         }
 
+        /* Print-only placeholder (white empty box, hidden on screen) */
+        .print-placeholder {
+            display: none;
+        }
+
         .results-panel::before {
             content: '📊 Результати з\'являться після заповнення всіх питань / Ergebnisse erscheinen nach dem Ausfüllen / Results appear after completing all questions';
         }
@@ -758,6 +763,14 @@
                 margin: 0 !important
             }
 
+            .print-placeholder {
+                display: block;
+                height: 90px;
+                background: white;
+                border: 2px dashed #ccc;
+                border-radius: 6px
+            }
+
             /* Print checkboxes as [ ] */
             .radio-label input {
                 display: none
@@ -1179,6 +1192,9 @@
                 </div>
                 <div class="result-advice" id="resultAdvice"></div>
             </div>
+
+            <!-- BLOCK 8b: Print-only empty placeholder (replaces dark results panel) -->
+            <div class="print-placeholder" style="grid-column:1/-1"></div>
 
             <div class="reality-section">
                 <div class="col-header bad-hdr">❌ РЕАЛЬНІСТЬ В НIМЕЧЧИНI / Realität / Reality</div>
