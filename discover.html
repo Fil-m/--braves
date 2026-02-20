@@ -96,7 +96,7 @@
         .q-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 7.5pt;
+            font-size: 9pt;
             margin-bottom: 6px
         }
 
@@ -151,8 +151,10 @@
 
         .radio-group {
             display: flex;
-            flex-direction: column;
-            gap: 2px
+            flex-direction: row;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center
         }
 
         .radio-label {
@@ -160,7 +162,8 @@
             align-items: center;
             gap: 4px;
             cursor: pointer;
-            font-size: 7pt
+            font-size: 8pt;
+            white-space: nowrap
         }
 
         .radio-box {
@@ -1276,6 +1279,61 @@
         document.querySelectorAll('.q-text').forEach(td => {
             const em = td.querySelector('em');
             if (em) td.insertBefore(em, td.firstChild);
+        });
+
+        // Inject trilingual notes into all question rows
+        const NOTES = {
+            q1: 'Projekte, Kurse, Ideen — Begeisterung da, Abschluss selten / projects, courses, ideas — enthusiasm yes, completion rarely / проекти, курси, ідеї — ентузіазм є, фінал рідко',
+            q2: 'Egal wie sehr du es versuchst, du kommst trotzdem zu spät / even with genuine effort you still end up late / навіть коли дуже намагаєшся — все одно запізнюєшся',
+            q3: 'Die Aufgabe ist wichtig, aber der Körper startet einfach nicht / you know it matters but still cannot begin / знаєш що важливо — але тіло просто не рухається',
+            q4: 'In etwas Interessantes vertieft — Stunden vergehen wie Minuten / immersed in something — hours vanish without notice / занурюєшся в цікаве і час зникає',
+            q5: 'Zuerst tun/reden, dann denken — und dann bereuen / act first, think later — and regret it / спочатку робиш або кажеш — потім шкодуєш',
+            q6: 'Man sagt „alles gut“ und meint eigentlich „ich bin sauer“ / they say „fine“ but mean the opposite / кажуть „добре“ — а мають на увазі інше',
+            q7: 'Ein bestimmter Stoff — wie echter Körperschmerz, nicht nur lästig / a fabric or sound — not annoying, genuinely painful / певна тканина або звук — не просто неприємно, а фізично боляче',
+            q8: 'Nach dem Treffen erschöpft, obwohl es schön war / had fun but still feel drained after / все було добре — але після хочеться лягти і нікого не бачити',
+            q9: 'Du kennst ein Thema in und auswendig und redest stundenlang darüber / one topic you know inside out and could talk about endlessly / одна тема — знаєш все і можеш говорити годинами',
+            q10: 'Jemand ändert den Plan kurzfristig — das fühlt sich wirklich schlimm an / sudden plan change — genuinely distressing, not just inconvenient / плани змінились — це не просто незручно, це реально важко',
+            q11: 'Zeilen springen herum, du verlierst den Faden beim Lesen / lines seem to jump — hard to keep track of where you are / рядки ніби стрибують — важко відстежити де читав',
+            q12: 'Wörter da, Bedeutung weg — mehrmals durchlesen bis es klar wird / words are there but meaning won’t form — need to re-read / слова є — але зміст не складається, перечитуєш кілька разів',
+            q13: 'Wenn jemand es erklärt, verstehst du sofort — beim Lesen dauert es länger / hear it once and you get it — read it and it won’t stick / на слух розумієш одразу — письмово набагато важче',
+            q14: 'b und d, p und q — leicht zu verwechseln oder umzudrehen / b and d, p and q — easy to flip or mix up / б і д, п і р — плутаєш або дзеркалиш букви',
+            q15: 'Das Wort ist im Kopf, kommt aber nicht heraus wenn du es brauchst / word is in your head but won’t come out when needed / слово є в голові — але не виходить коли треба',
+            q16: '7 + 8 im Kopf? Fast unmöglich ohne Finger oder Papier / 7 + 8 in your head? Needs fingers or paper / 7 + 8 в голові? Потрібні пальці або папір',
+            q17: 'Links und rechts — immer wieder nachdenken müssen / left and right — always have to think twice / ліво і право — завжди треба думати',
+            q18: 'Aufgabe dauert 10 Min.? Du schätzt 1 Min. oder 2 Stunden / task takes 10 min? You guess 1 min or 2 hours / завдання на 10 хв? Оцінюєш  1 хв або 2 години',
+            q19: 'Kassenbon prüfen, Wechselgeld zählen — ein echter Stressmoment / checking receipt, counting change — stressful moment / перевірити чек, порахувати решту — стресовий момент',
+            q20: 'Telefonnummer, PIN — du lernst sie, aber sie verschwinden / phone number, PIN — memorize it but it disappears / номер телефону, пін — вивчаєш, але він зникає',
+            q21: 'Türrahmen, Tischkante, Stuhl — du sammelst Beulen / doorframes, table corners — you collect bruises / одвірки, кути столів, стільці — збираєш синці',
+            q22: 'Andere lernten es in Stunden — für dich dauerte es Wochen / others learned in hours — it took you weeks / інші навчились за годину — у тебе пішли тижні',
+            q23: 'Du räumst auf, aber nach einer Stunde ist es wieder Chaos / you tidy up but chaos returns quickly / прибираєш — але через годину знову хаос',
+            q24: 'Jemand spricht mit dir während du schreibst — du verlierst beides / someone talks while you write — you lose both / хтось говорить поки пишеш — зтрачаєш і те, і те',
+            q25: 'Selbst wenn alles gut läuft — du wartest auf den Haken / even when things are fine — you wait for the catch / навіть коли все добре — чекаєш на підвох',
+            q26: 'In Stress einfrieren oder explodieren — kein Mittelweg / in stress you freeze or explode — no middle ground / в стресі або завмираєш — або вибухаєш, середнього немає',
+            q27: 'Herz rast, Atem stockt — kein sichtbarer Auslöser / heart races, breathing tightens — no visible trigger / серце пришвидшується, важко дихати — без видимої причини',
+            q28: 'Bestimmte Orte, Menschen oder Themen — du weichst aus / certain places, people or topics — you avoid them / певні місця, люди чи теми — уникаєш їх',
+            q29: 'Du machst dir Sorgen, die du nicht stoppen kannst / worrying about things you can’t stop / хвилюєшся про речі на які не можеш вплинути — і не можеш зупинитись',
+            q30: 'Du bist müde, aber der Kopf hört nicht auf zu denken / tired but your head won’t stop spinning / втомлений — але голова не зупиняється',
+            q31: 'Anspannung — Schultern, Kiefer, Bauch — ohne erkennbaren Grund / tension in body — shoulders, jaw, stomach — for no reason / напруга — плечі, щелепа, живіт — без причини',
+            q32: 'Eine E-Mail schreiben, anrufen — fühlt sich riesig an / writing an email, making a call — feels huge / написати листа, зателефонувати — відчувається як щось велетне',
+            q33: 'Du musst die Tür prüfen, die Hand waschen — oder das Gefühl bleibt / must check, wash, repeat — or the feeling won’t leave / треба перевірити, помити — інакше відчуття не відпускає',
+            q34: 'Derselbe Gedanke dreht sich immer wieder — du kannst ihn nicht stoppen / same thought loops again and again / одна і та ж думка крутиться по колу — не можеш зупинити',
+            q35: 'Du hast es dreimal geprüft — du prüfst es ein viertes Mal / checked 3 times — you check a 4th / перевірив тричі — перевіряєш четвертий',
+            q36: 'Ein schiefer Rahmen, ein falscher Ton — echter körperlicher Stress / a crooked frame, odd sound — physical discomfort / крива лінія, неправильний звук — фізичний дискомфорт',
+            q37: 'Synthetik, Etiketten, grobe Stoffe — unerträglich am Körper / synthetic fabrics, tags — unbearable on skin / синтетика, ярлики, груба тканина — нестерпно на шкірі',
+            q38: 'Volle U-Bahn, lautes Café — du verlässt es ausgelaugt / busy subway, loud café — you leave exhausted / переповнене метро, гучне кафе — виходиш виснаженим',
+            q39: 'Hunger, Kälte, Schmerz — du merkst es erst wenn es extrem wird / hunger, cold, pain — notice only when extreme / голод, холод, біль — помічаєш лише коли вже крайнє',
+            q40: 'Jemand tippt dir auf die Schulter — dein Körper reagiert wie auf Gefahr / someone taps your shoulder — body reacts like it’s danger / хтось торкнувся плеча — тіло реагує як на загрозу'
+        };
+        Object.entries(NOTES).forEach(([name, note]) => {
+            const input = document.querySelector(`input[name="${name}"]`);
+            if (!input) return;
+            const qtext = input.closest('tr')?.querySelector('.q-text');
+            if (qtext) {
+                const s = document.createElement('span');
+                s.className = 'q-note';
+                s.textContent = note;
+                qtext.appendChild(s);
+            }
         });
     </script>
 </body>
