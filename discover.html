@@ -7,23 +7,25 @@
     <title>Discover · Infinity Braves — Широкий скринінг нейровідмінності</title>
     <style>
         :root {
-            --cyan: #00BFFF;
-            --indigo: #2E008B;
-            --orange: #FF4500;
-            --gradient: linear-gradient(135deg, #00BFFF, #2E008B, #FF4500);
-            --navy: var(--indigo);
-            --teal: var(--cyan);
-            --bg: #f5f8fa;
-            --dgrey: #4a4a4a;
-            --c-adhd: #00BFFF;
-            --c-asd: #6A5ACD;
-            --c-dys: #9370DB;
-            --c-disc: #FF4500;
-            --c-dcd: #FF8C00;
-            --c-ptsd: #FF1493;
-            --c-anx: #20B2AA;
-            --c-ocd: #4682B4;
-            --c-sen: #DC143C
+            --cyan: #a2d2ff;
+            --indigo: #6d597a;
+            --orange: #ffb563;
+            --gradient: linear-gradient(135deg, #a2d2ff, #6d597a, #ffb563);
+            --navy: #355070;
+            --teal: #b5e48c;
+            --bg: #fdfdfd;
+            --dgrey: #555555;
+            --white: #ffffff;
+            --lgrey: #f8f9fa;
+            --c-adhd: #a2d2ff;
+            --c-asd: #bde0fe;
+            --c-dys: #ffafcc;
+            --c-disc: #ffc8dd;
+            --c-dcd: #cdb4db;
+            --c-ptsd: #e5989b;
+            --c-anx: #a8dadc;
+            --c-ocd: #457b9d;
+            --c-sen: #f1faee
         }
 
         * {
@@ -54,11 +56,15 @@
         /* Header */
         .p-header {
             background: var(--navy);
-            color: var(--white);
+            color: #ffffff;
             text-align: center;
-            padding: 10px 14px;
+            padding: 12px 14px;
             border-radius: 4px 4px 0 0;
-            margin: -10mm -12mm 8px
+            margin: -10mm -12mm 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px
         }
 
         .p-header h1 {
@@ -84,13 +90,14 @@
             display: flex;
             align-items: center;
             background: var(--gradient);
-            color: #fff;
-            padding: 6px 12px;
-            font-size: 10pt;
+            color: #ffffff;
+            padding: 8px 14px;
+            font-size: 10.5pt;
             font-weight: 800;
-            margin-top: 10px;
+            margin-top: 12px;
             border-radius: 4px;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2)
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            border-left: 5px solid rgba(0, 0, 0, 0.1)
         }
 
         /* Question table */
@@ -374,11 +381,13 @@
             }
 
             .section-hdr {
-                font-size: 8pt;
-                padding: 3px 8px;
-                margin-top: 5px;
+                font-size: 8.5pt;
+                padding: 4px 10px;
+                margin-top: 6px;
                 -webkit-print-color-adjust: exact;
-                background: var(--gradient) !important
+                print-color-adjust: exact;
+                background: var(--gradient) !important;
+                color: #ffffff !important
             }
 
             .q-table {
@@ -575,7 +584,7 @@
         </table>
 
         <!-- ASD -->
-        <div class="section-hdr" style="background:var(--c-asd)">🔷 ASD / Аутизм — питання 6–10</div>
+        <div class="section-hdr" style="background:var(--c-asd)">🧩 ASD / Аутизм / Autism — 6–10</div>
         <table class="q-table">
             <tr data-q="6">
                 <td class="q-num">6</td>
@@ -645,8 +654,8 @@
                 </td>
             </tr>
         </table>
-        <!-- ASD -->
-        <div class="section-hdr" style="background:var(--c-asd)">🧩 ASD / Аутизм — питання 6–10</div>
+        <!-- DYSLEXIA -->
+        <div class="section-hdr" style="background:var(--c-dys)">📖 Dyslexie / Dyslexia / Дислексія — 11–15</div>
         <table class="q-table">
             <tr data-q="11">
                 <td class="q-num">11</td>
@@ -720,7 +729,8 @@
     <!-- PAGE 2: QUESTIONS 16-28 -->
     <div class="page" id="page1b">
         <div class="p-header">
-            <div style="font-size:12pt; font-weight:800; color:var(--indigo); margin-bottom:2px">INFINITY BRAVES</div>
+            <img src="branding/logo.png" alt="Logo" style="height:24px; margin-bottom:4px">
+            <div style="font-size:12pt; font-weight:800; color:#fff; margin-bottom:2px">INFINITY BRAVES</div>
             <div class="sub">Скринінг (продовження) · Screening (Fortsetzung) · Screening (continued)</div>
         </div>
         <!-- DYSCALCULIA -->
@@ -796,7 +806,7 @@
         </table>
 
         <!-- DYSPRAXIA -->
-        <div class="section-hdr" style="background:var(--c-dcd)">🤸 Диспраксія / Dyspraxie — питання 21–24</div>
+        <div class="section-hdr" style="background:var(--c-dcd)">🤸 Dyspraxie / Dyspraxia / Диспраксія — 21–24</div>
         <table class="q-table">
             <tr data-q="21">
                 <td class="q-num">21</td>
@@ -852,73 +862,80 @@
                 </td>
             </tr>
         </table>
-    </div>
 
-    <!-- CPTSD -->
-    <div class="section-hdr" style="background:var(--c-ptsd)">🌊 C-PTSD / Травма — питання 25–28</div>
-    <table class="q-table">
-        <tr data-q="25">
-            <td class="q-num">25</td>
-            <td class="q-text">Постійно "чекаєш підвоху" навіть коли все добре?<em>Ständig auf das Schlimmste
-                    warten? / Always waiting for things to go wrong?</em></td>
-            <td class="a-col">
-                <div class="radio-group"><label class="radio-label"><input type="radio" name="q25" value="0"><span
-                            class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
-                            type="radio" name="q25" value="0.5"><span
-                            class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
-                            type="radio" name="q25" value="1"><span class="radio-box"></span><span>Так</span></label>
-                </div>
-            </td>
-        </tr>
-        <tr data-q="26">
-            <td class="q-num">26</td>
-            <td class="q-text">В стресових ситуаціях "вимикаєшся" або реагуєш набагато сильніше ніж
-                ситуація?<em>Abschalten oder Überreaktion in Stress? / Shut down or overreact in stressful
-                    situations?</em></td>
-            <td class="a-col">
-                <div class="radio-group"><label class="radio-label"><input type="radio" name="q26" value="0"><span
-                            class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
-                            type="radio" name="q26" value="0.5"><span
-                            class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
-                            type="radio" name="q26" value="1"><span class="radio-box"></span><span>Так</span></label>
-                </div>
-            </td>
-        </tr>
-        <tr data-q="27">
-            <td class="q-num">27</td>
-            <td class="q-text">Тіло реагує фізично на стрес — серце, задуха, заніміння — без явної
-                причини?<em>Körperliche Reaktionen auf Stress ohne Ursache? / Physical stress reactions without
-                    obvious cause?</em></td>
-            <td class="a-col">
-                <div class="radio-group"><label class="radio-label"><input type="radio" name="q27" value="0"><span
-                            class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
-                            type="radio" name="q27" value="0.5"><span
-                            class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
-                            type="radio" name="q27" value="1"><span class="radio-box"></span><span>Так</span></label>
-                </div>
-            </td>
-        </tr>
-        <tr data-q="28">
-            <td class="q-num">28</td>
-            <td class="q-text">Є теми або спогади яких уникаєш — занадто важко навіть думати про них?<em>Bestimmte
-                    Themen/Erinnerungen meiden? / Avoid certain topics or memories?</em></td>
-            <td class="a-col">
-                <div class="radio-group"><label class="radio-label"><input type="radio" name="q28" value="0"><span
-                            class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
-                            type="radio" name="q28" value="0.5"><span
-                            class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
-                            type="radio" name="q28" value="1"><span class="radio-box"></span><span>Так</span></label>
-                </div>
-            </td>
-        </tr>
-    </table>
+
+        <!-- CPTSD -->
+        <div class="section-hdr" style="background:var(--c-ptsd)">🌊 C-PTSD / Травма / Trauma — 25–28</div>
+        <table class="q-table">
+            <tr data-q="25">
+                <td class="q-num">25</td>
+                <td class="q-text">Постійно "чекаєш підвоху" навіть коли все добре?<em>Ständig auf das Schlimmste
+                        warten? / Always waiting for things to go wrong?</em></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q25" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q25" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q25" value="1"><span
+                                class="radio-box"></span><span>Так</span></label>
+                    </div>
+                </td>
+            </tr>
+            <tr data-q="26">
+                <td class="q-num">26</td>
+                <td class="q-text">В стресових ситуаціях "вимикаєшся" або реагуєш набагато сильніше ніж
+                    ситуація?<em>Abschalten oder Überreaktion in Stress? / Shut down or overreact in stressful
+                        situations?</em></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q26" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q26" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q26" value="1"><span
+                                class="radio-box"></span><span>Так</span></label>
+                    </div>
+                </td>
+            </tr>
+            <tr data-q="27">
+                <td class="q-num">27</td>
+                <td class="q-text">Тіло реагує фізично на стрес — серце, задуха, заніміння — без явної
+                    причини?<em>Körperliche Reaktionen auf Stress ohne Ursache? / Physical stress reactions without
+                        obvious cause?</em></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q27" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q27" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q27" value="1"><span
+                                class="radio-box"></span><span>Так</span></label>
+                    </div>
+                </td>
+            </tr>
+            <tr data-q="28">
+                <td class="q-num">28</td>
+                <td class="q-text">Є теми або спогади яких уникаєш — занадто важко навіть думати про них?<em>Bestimmte
+                        Themen/Erinnerungen meiden? / Avoid certain topics or memories?</em></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q28" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q28" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q28" value="1"><span
+                                class="radio-box"></span><span>Так</span></label>
+                    </div>
+                </td>
+            </tr>
+        </table>
     </div>
 
     <!-- PAGE 3: QUESTIONS 29-40 -->
     <div class="page" id="page1c">
         <div class="p-header">
-            <div style="font-size:12pt; font-weight:800; color:var(--indigo); margin-bottom:2px">INFINITY BRAVES</div>
-            <div class="sub">Скринінг (завершення) · Screening (Abschluss) · Screening (completion)</div>
+            <img src="branding/logo.png" alt="Infinity Braves Logo" style="height:32px; margin-bottom:6px">
+            <h1>INFINITY BRAVES</h1>
+            <div class="sub">Широкий скринінг нейровідмінності · Breites Neurodivergenz-Screening · Broad ND Screening
+            </div>
+            <div class="langs">UA | DE | EN</div>
         </div>
         <!-- ANXIETY -->
         <div class="section-hdr" style="background:var(--c-anx)">😰 Angststörung / Anxiety / Тривожність — 29–32</div>
@@ -981,7 +998,7 @@
         </table>
 
         <!-- OCD -->
-        <div class="section-hdr" style="background:var(--c-ocd)">🔁 ОКР / OKS — питання 33–36</div>
+        <div class="section-hdr" style="background:var(--c-ocd)">🔁 Zwangsstörung / OCD / ОКР — 33–36</div>
         <table class="q-table">
             <tr data-q="33">
                 <td class="q-num">33</td>
@@ -1041,7 +1058,7 @@
         </table>
 
         <!-- SENSORY -->
-        <div class="section-hdr" style="background:var(--c-sen)">👂 Сенсорна обробка / Sensorik — питання 37–40</div>
+        <div class="section-hdr" style="background:var(--c-sen)">👂 Sensorik / Sensory / Сенсорна обробка — 37–40</div>
         <table class="q-table">
             <tr data-q="37">
                 <td class="q-num">37</td>
@@ -1105,6 +1122,7 @@
     <!-- PAGE 4: RESULTS + RIGHTS -->
     <div class="page" id="page2">
         <div class="p-header">
+            <img src="branding/logo.png" alt="Logo" style="height:24px; margin-bottom:4px">
             <h1>INFINITY BRAVES</h1>
             <div class="sub">Твій профіль · Dein Profil · Your Profile</div>
         </div>
@@ -1112,7 +1130,9 @@
         <!-- Results panel (moved from page 1) -->
         <div id="resultsPanel">
             <div id="resultsContent" style="display:none">
-                <div style="font-size:8pt;font-weight:800;color:var(--navy);margin-bottom:4px;text-align:center">📊 Dein
+                <div
+                    style="font-size:8pt;font-weight:800;color:#fff;background:var(--navy);padding:4px;border-radius:3px;margin-bottom:4px;text-align:center">
+                    📊 Dein
                     Profil / Your Profile / Твій профіль</div>
                 <div id="printTime" class="print-only"
                     style="font-size:6.5pt;color:#888;text-align:center;margin-bottom:5px"></div>
