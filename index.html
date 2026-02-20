@@ -747,14 +747,22 @@
                 display: none !important
             }
 
+            /* Move dark elements off-screen so they cannot appear in print area */
             #resultsPanel,
             .results-panel,
-            .results-panel.visible {
-                background: #f8f9fa !important;
-                background-image: none !important;
-                color: #aaa !important;
-                border: 2px dashed #ccc !important;
-                line-height: 80px !important
+            .results-panel.visible,
+            .privacy-notice {
+                position: fixed !important;
+                left: -9999px !important;
+                top: -9999px !important;
+                width: 0 !important;
+                height: 0 !important;
+                overflow: hidden !important;
+                visibility: hidden !important;
+                opacity: 0 !important;
+                pointer-events: none !important;
+                -webkit-print-color-adjust: economy !important;
+                print-color-adjust: economy !important
             }
 
             /* Print checkboxes as [ ] */
