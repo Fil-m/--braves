@@ -125,11 +125,15 @@
         }
 
         .q-text em {
-            font-size: 6.5pt;
+            font-size: 7.5pt;
             color: var(--dgrey);
             font-style: normal;
             display: block;
-            margin-top: 1px
+            margin-top: 0
+        }
+
+        .print-only {
+            display: none
         }
 
         .q-note {
@@ -331,6 +335,11 @@
         }
 
         /* Print */
+        @page {
+            size: A4;
+            margin: 8mm 10mm
+        }
+
         @media print {
             body {
                 background: none;
@@ -340,20 +349,31 @@
             .page {
                 box-shadow: none;
                 width: 210mm;
-                padding: 8mm 10mm
+                padding: 7mm 10mm;
+                page-break-after: always;
+                break-after: page
+            }
+
+            .page:last-of-type {
+                page-break-after: avoid;
+                break-after: avoid
             }
 
             .no-print {
                 display: none !important
             }
 
-            #resultsPanel,
-            #resultsPanel.visible {
-                position: fixed;
-                left: -9999px;
-                top: -9999px;
-                height: 0;
-                overflow: hidden
+            .print-only {
+                display: block !important
+            }
+
+            .validation-banner {
+                display: none !important
+            }
+
+            /* Show results only when filled; hide placeholder state */
+            #resultsPanel:not(.visible) {
+                display: none
             }
 
             * {
@@ -626,9 +646,19 @@
                 </td>
             </tr>
         </table>
+    </div>
+
+    <!-- PAGE 2: Questions 16–28 -->
+    <div class="page" id="page2q">
+        <div class="p-header">
+            <h1>INFINITY BRAVES</h1>
+            <div class="sub">Dyskalkulie · Dyspraxie · C-PTSD — Fragen 16–28 / Questions 16–28 / Питання 16–28</div>
+            <div class="langs">DE | EN | UA</div>
+        </div>
 
         <!-- DYSCALCULIA -->
-        <div class="section-hdr" style="background:var(--c-disc)">🔢 Дискалькулія / Dyskalkulie — питання 16–20</div>
+        <div class="section-hdr" style="background:var(--c-disc)">🔢 Dyskalkulie / Dyscalculia / Дискалькулія — 16–20
+        </div>
         <table class="q-table">
             <tr data-q="16">
                 <td class="q-num">16</td>
@@ -814,9 +844,18 @@
                 </td>
             </tr>
         </table>
+    </div>
+
+    <!-- PAGE 3: Questions 29–40 -->
+    <div class="page" id="page3q">
+        <div class="p-header">
+            <h1>INFINITY BRAVES</h1>
+            <div class="sub">Angst · OCD · Sensorik — Fragen 29–40 / Questions 29–40 / Питання 29–40</div>
+            <div class="langs">DE | EN | UA</div>
+        </div>
 
         <!-- ANXIETY -->
-        <div class="section-hdr" style="background:var(--c-anx)">😰 Тривожність / Angst — питання 29–32</div>
+        <div class="section-hdr" style="background:var(--c-anx)">😰 Angststörung / Anxiety / Тривожність — 29–32</div>
         <table class="q-table">
             <tr data-q="29">
                 <td class="q-num">29</td>
@@ -1016,8 +1055,10 @@
         </div>
         <div id="resultsPanel">
             <div id="resultsContent" style="display:none">
-                <div style="font-size:8pt;font-weight:800;color:var(--navy);margin-bottom:6px;text-align:center">📊 ТВІЙ
-                    ПРОФІЛЬ / Dein Profil / Your Profile</div>
+                <div style="font-size:8pt;font-weight:800;color:var(--navy);margin-bottom:4px;text-align:center">📊 Dein
+                    Profil / Your Profile / Твій профіль</div>
+                <div id="printTime" class="print-only"
+                    style="font-size:6.5pt;color:#888;text-align:center;margin-bottom:5px"></div>
                 <div class="bars" id="barsGrid"></div>
                 <div style="font-size:6.5pt;color:var(--dgrey);margin-top:6px;text-align:center">
                     🔴 &gt;70% = варто обговорити з лікарем / zum Arzt gehen / worth discussing with a doctor
@@ -1224,16 +1265,17 @@
 
         document.querySelectorAll('input[type=radio]').forEach(r => r.addEventListener('change', updateResults));
 
-        let _wasVisible = false;
         window.addEventListener('beforeprint', () => {
-            const p = document.getElementById('resultsPanel');
-            if (p) { _wasVisible = p.classList.contains('visible'); p.classList.remove('visible'); }
-            document.querySelectorAll('.privacy-notice').forEach(el => el.style.setProperty('display', 'none', 'important'));
+            const now = new Date();
+            const ts = now.toLocaleDateString('de-DE') + ' ' + now.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
+            const el = document.getElementById('printTime');
+            if (el) el.textContent = '📅 Gedruckt / Printed / Надруковано: ' + ts;
         });
-        window.addEventListener('afterprint', () => {
-            const p = document.getElementById('resultsPanel');
-            if (p && _wasVisible) p.classList.add('visible');
-            document.querySelectorAll('.privacy-notice').forEach(el => el.style.removeProperty('display'));
+
+        // DOM reorder: move DE/EN (em) before UA text in each q-text cell
+        document.querySelectorAll('.q-text').forEach(td => {
+            const em = td.querySelector('em');
+            if (em) td.insertBefore(em, td.firstChild);
         });
     </script>
 </body>
