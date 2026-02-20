@@ -1282,15 +1282,15 @@
 
         // Update all radio labels to trilingual
         const LABELS = {
-            '0': 'Nein / No / Ні',
-            '0.5': 'Manchmal / Sometimes / Іноді',
-            '1': 'Ja / Yes / Так'
+            '0': 'Nein / No<br>Ні',
+            '0.5': 'Manchmal / Sometimes<br>Іноді',
+            '1': 'Ja / Yes<br>Так'
         };
         document.querySelectorAll('.radio-label').forEach(label => {
             const input = label.querySelector('input[type=radio]');
             const span = label.querySelector('span:not(.radio-box)');
             if (input && span) {
-                span.textContent = LABELS[input.value] || span.textContent;
+                span.innerHTML = LABELS[input.value] || span.innerHTML;
                 span.style.display = 'block';
                 span.style.marginBottom = '2px';
             }
