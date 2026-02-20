@@ -342,24 +342,62 @@
             margin-top: 2px
         }
 
-        /* Print */
         @page {
             size: A4;
-            margin: 8mm 10mm
+            margin: 6mm 5mm
         }
 
         @media print {
             body {
                 background: none;
-                padding: 0
+                padding: 0;
+                font-size: 7.5pt
             }
 
             .page {
                 box-shadow: none;
-                width: 210mm;
-                padding: 7mm 10mm;
+                width: 100%;
+                padding: 3mm 5mm;
                 page-break-after: always;
-                break-after: page
+                break-after: page;
+                margin: 0
+            }
+
+            .p-header h1 {
+                font-size: 13pt;
+                margin-bottom: 2px
+            }
+
+            .p-header .sub {
+                font-size: 7pt;
+                margin-bottom: 2px
+            }
+
+            .section-hdr {
+                font-size: 7.5pt;
+                padding: 2px 6px;
+                margin: 3px 0
+            }
+
+            .q-table {
+                font-size: 7.5pt;
+                margin-bottom: 3px
+            }
+
+            .q-table tr {
+                padding: 1px 0
+            }
+
+            .q-text em {
+                font-size: 6pt
+            }
+
+            .q-note {
+                font-size: 5.5pt
+            }
+
+            .radio-label {
+                font-size: 5.5pt
             }
 
             .page:last-of-type {
@@ -379,9 +417,16 @@
                 display: none !important
             }
 
-            /* Show results only when filled; hide placeholder state */
-            #resultsPanel:not(.visible) {
-                display: none
+            /* Force results display in print if filled */
+            #resultsPanel.visible {
+                display: block !important;
+                position: static !important;
+                left: auto !important;
+                width: 100% !important
+            }
+
+            #resultsContent {
+                display: block !important
             }
 
             * {
@@ -389,6 +434,7 @@
                 print-color-adjust: exact !important
             }
         }
+
 
         .print-btn {
             position: fixed;
@@ -440,14 +486,24 @@
             ⚠ Будь ласка, дайте відповідь на всі питання / Bitte alle Fragen beantworten / Please answer all questions
         </div>
 
+        <!-- 70% Note (moved from results page) -->
+        <div id="introNote"
+            style="display:none;font-size:7.5pt;text-align:center;color:var(--dgrey);padding:5px 0 6px;line-height:1.6;border-bottom:1px solid #e8e8e8;margin-bottom:6px">
+            ~70% людей з нейровідмінністю <strong>не знають</strong> про свій стан. Цей тест — перший крок до розуміння
+            себе.<br>
+            <em>~70% der Menschen mit Neurodivergenz kennen ihren Zustand nicht. Dieser Test ist der erste Schritt zur
+                Selbstkenntnis.</em><br>
+            <em>~70% of neurodivergent people don't know about their condition. This test is the first step to
+                understanding yourself.</em>
+        </div>
+
         <!-- ADHD -->
         <div class="section-hdr" style="background:var(--c-adhd)">⚡ ADHD / СДУГ — питання 1–5</div>
         <table class="q-table">
             <tr data-q="1">
                 <td class="q-num">1</td>
                 <td class="q-text">Починаєш багато справ, але рідко доводиш до кінця?<em>Viele Projekte gestartet,
-                        selten fertiggestellt? / Start many things, rarely finish?</em><span class="q-note">проекти,
-                        курси, ідеї — ентузіазм є, фінал рідко</span></td>
+                        selten fertiggestellt? / Start many things, rarely finish?</em></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q1" value="0"><span
                                 class="radio-box"></span><span>Ні / No</span></label><label class="radio-label"><input
@@ -1052,15 +1108,6 @@
         </div>
 
         <!-- Results panel (moved from page 1) -->
-        <div
-            style="font-size:7.5pt;text-align:center;color:var(--dgrey);padding:5px 0 6px;line-height:1.6;border-bottom:1px solid #e8e8e8;margin-bottom:6px">
-            ~70% людей з нейровідмінністю <strong>не знають</strong> про свій стан. Цей тест — перший крок до розуміння
-            себе.<br>
-            <em>~70% der Menschen mit Neurodivergenz kennen ihren Zustand nicht. Dieser Test ist der erste Schritt zur
-                Selbstkenntnis.</em><br>
-            <em>~70% of neurodivergent people don't know about their condition. This test is the first step to
-                understanding yourself.</em>
-        </div>
         <div id="resultsPanel">
             <div id="resultsContent" style="display:none">
                 <div style="font-size:8pt;font-weight:800;color:var(--navy);margin-bottom:4px;text-align:center">📊 Dein
@@ -1238,12 +1285,15 @@
             const answered = countAnswered();
             const panel = document.getElementById('resultsPanel');
             const banner = document.getElementById('valBanner');
+            const intro = document.getElementById('introNote');
 
             // Row highlight
             for (let i = 1; i <= TOTAL; i++) {
                 const row = document.querySelector(`tr[data-q="${i}"]`);
                 if (row) row.style.background = document.querySelector(`input[name="q${i}"]:checked`) ? '#f0f8f0' : '';
             }
+
+            if (answered > 0 && intro) intro.style.display = 'block';
 
             if (answered < TOTAL) {
                 panel.classList.remove('visible');
@@ -1264,10 +1314,10 @@
                 const cls = levelClass(pct);
                 const pctLabel = Math.round(pct * 100) + '%';
                 grid.innerHTML += `
-      <div class="bar-row">
-        <div class="bar-label"><span>${p.label}</span><span>${pctLabel}</span></div>
-        <div class="bar-track"><div class="bar-fill ${cls}" style="width:${pctLabel};background:${p.color}"></div></div>
-      </div>`;
+                    <div class="bar-row">
+                        <div class="bar-label"><span>${p.label}</span><span>${pctLabel}</span></div>
+                        <div class="bar-track"><div class="bar-fill ${cls}" style="width:${pctLabel};background:${p.color}"></div></div>
+                    </div>`;
             });
         }
 
