@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Вхід до себе · Infinity Braves</title>
+    <style>
+        :root {
+            --navy: #1a2e4a;
+            --teal: #1a6b6b;
+            --white: #fff;
+            --lgrey: #f4f5f7;
+            --dgrey: #555;
+            --accent: #e8a020;
+            --red: #8b1a1a;
+            --c-adhd: #1d6fa4;
+            --c-asd: #1a8080;
+            --c-dys: #c05c10;
+            --c-disc: #b07000;
+            --c-dcd: #167a3a;
+            --c-ptsd: #9b1a4a;
+            --c-anx: #3a3aaa;
+            --c-ocd: #445566;
+            --c-sen: #0a7a9a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Arial, sans-serif
+        }
+
+        body {
+            background: #e8edf2;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px
+        }
+
+        .page {
+            background: var(--white);
+            width: 210mm;
+            min-height: 297mm;
+            padding: 10mm 12mm;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, .15);
+            position: relative
+        }
+
+        /* Header */
+        .p-header {
+            background: var(--navy);
+            color: var(--white);
+            text-align: center;
+            padding: 10px 14px;
+            border-radius: 4px 4px 0 0;
+            margin: -10mm -12mm 8px
+        }
+
+        .p-header h1 {
+            font-size: 18pt;
+            font-weight: 900;
+            letter-spacing: 1px
+        }
+
+        .p-header .sub {
+            font-size: 8pt;
+            opacity: .8;
+            margin-top: 3px
+        }
+
+        .p-header .langs {
+            font-size: 7.5pt;
+            opacity: .7;
+            margin-top: 2px
+        }
+
+        /* Section headers */
+        .section-hdr {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 8px;
+            border-radius: 3px;
+            color: #fff;
+            font-size: 8pt;
+            font-weight: 700;
+            margin: 8px 0 4px;
+            letter-spacing: .3px
+        }
+
+        /* Question table */
+        .q-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 7.5pt;
+            margin-bottom: 6px
+        }
+
+        .q-table tr {
+            border-bottom: 1px solid #e8e8e8
+        }
+
+        .q-table tr:last-child {
+            border-bottom: none
+        }
+
+        .q-table td {
+            padding: 4px 6px;
+            vertical-align: top
+        }
+
+        .q-num {
+            width: 20px;
+            color: var(--dgrey);
+            font-weight: 700;
+            white-space: nowrap
+        }
+
+        .q-text {
+            line-height: 1.4
+        }
+
+        .q-text em {
+            font-size: 6.5pt;
+            color: var(--dgrey);
+            font-style: normal;
+            display: block;
+            margin-top: 1px
+        }
+
+        .q-note {
+            font-size: 6pt;
+            color: #888;
+            font-style: italic;
+            display: block;
+            margin-top: 1px
+        }
+
+        .a-col {
+            width: 130px;
+            white-space: nowrap
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 2px
+        }
+
+        .radio-label {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            font-size: 7pt
+        }
+
+        .radio-box {
+            width: 10px;
+            height: 10px;
+            border: 1.5px solid #aaa;
+            border-radius: 2px;
+            display: inline-block;
+            flex-shrink: 0;
+            background: #fff;
+            position: relative
+        }
+
+        .radio-label input {
+            display: none
+        }
+
+        .radio-label input:checked~.radio-box {
+            background: var(--navy);
+            border-color: var(--navy)
+        }
+
+        .radio-label input:checked~.radio-box::after {
+            content: '✓';
+            position: absolute;
+            top: -1px;
+            left: 1px;
+            font-size: 8px;
+            color: #fff
+        }
+
+        /* Results */
+        #resultsPanel {
+            background: var(--lgrey);
+            border: 2px dashed #ccc;
+            border-radius: 6px;
+            padding: 10px;
+            margin: 8px 0;
+            min-height: 60px
+        }
+
+        #resultsPanel::before {
+            content: '📊 Результати з\'являться після заповнення всіх питань / Results appear after completing all questions';
+            display: block;
+            text-align: center;
+            color: #aaa;
+            font-size: 7.5pt;
+            padding: 10px 0
+        }
+
+        #resultsPanel.visible::before {
+            display: none
+        }
+
+        .bars {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px 12px
+        }
+
+        .bar-row {
+            font-size: 7pt
+        }
+
+        .bar-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2px;
+            font-weight: 700
+        }
+
+        .bar-track {
+            background: #e0e0e0;
+            border-radius: 3px;
+            height: 8px;
+            overflow: hidden
+        }
+
+        .bar-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width .4s
+        }
+
+        .bar-fill.high {
+            background: var(--red)
+        }
+
+        .bar-fill.mid {
+            background: var(--accent)
+        }
+
+        .bar-fill.low {
+            background: #4caf50
+        }
+
+        /* Warning */
+        .warn {
+            background: #fff;
+            color: var(--red);
+            border: 1px solid var(--red);
+            text-align: center;
+            padding: 4px 8px;
+            font-size: 7.5pt;
+            font-weight: 800;
+            margin: 6px 0
+        }
+
+        /* Rights */
+        .rights-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin: 8px 0
+        }
+
+        .rights-card {
+            background: var(--lgrey);
+            border-radius: 4px;
+            padding: 8px 10px;
+            border-left: 3px solid var(--teal)
+        }
+
+        .rights-card h4 {
+            font-size: 8pt;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 4px
+        }
+
+        .rights-card ul {
+            list-style: none;
+            padding: 0
+        }
+
+        .rights-card li {
+            font-size: 7pt;
+            color: var(--dgrey);
+            padding: 1px 0;
+            line-height: 1.4
+        }
+
+        .rights-card li::before {
+            content: '→ ';
+            color: var(--teal);
+            font-weight: 700
+        }
+
+        /* Contact */
+        .contact {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--navy);
+            color: #fff;
+            border-radius: 4px;
+            padding: 8px 12px;
+            margin-top: 8px
+        }
+
+        .contact a {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 9pt;
+            text-decoration: none
+        }
+
+        .contact .langs-sm {
+            font-size: 6.5pt;
+            opacity: .7;
+            margin-top: 2px
+        }
+
+        /* Print */
+        @media print {
+            body {
+                background: none;
+                padding: 0
+            }
+
+            .page {
+                box-shadow: none;
+                width: 210mm;
+                padding: 8mm 10mm
+            }
+
+            .no-print {
+                display: none !important
+            }
+
+            #resultsPanel,
+            #resultsPanel.visible {
+                position: fixed;
+                left: -9999px;
+                top: -9999px;
+                height: 0;
+                overflow: hidden
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important
+            }
+        }
+
+        .print-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--teal);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 10pt;
+            font-weight: 700;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .3);
+            z-index: 100
+        }
+
+        .validation-banner {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            color: #856404;
+            text-align: center;
+            padding: 4px 8px;
+            font-size: 7pt;
+            font-weight: 600;
+            border-radius: 3px;
+            margin: 4px 0;
+            display: none
+        }
+
+        .validation-banner.show {
+            display: block
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- PAGE 1: QUESTIONS -->
+    <div class="page" id="page1">
+        <div class="p-header">
+            <h1>INFINITY BRAVES</h1>
+            <div class="sub">Широкий скринінг нейровідмінності · Breites Neurodivergenz-Screening · Broad
+                Neurodivergence Screening</div>
+            <div class="langs">Безкоштовно / Kostenlos / Free · UA | DE | EN</div>
+        </div>
+
+        <div class="validation-banner" id="valBanner">
+            ⚠ Будь ласка, дайте відповідь на всі питання / Bitte alle Fragen beantworten / Please answer all questions
+        </div>
+
+        <!-- ADHD -->
+        <div class="section-hdr" style="background:var(--c-adhd)">⚡ ADHD / СДУГ — питання 1–5</div>
+        <table class="q-table">
+            <tr data-q="1">
+                <td class="q-num">1</td>
+                <td class="q-text">Починаєш багато справ, але рідко доводиш до кінця?<em>Viele Projekte gestartet,
+                        selten fertiggestellt? / Start many things, rarely finish?</em><span class="q-note">проекти,
+                        курси, ідеї — ентузіазм є, фінал рідко</span></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q1" value="0"><span
+                                class="radio-box"></span><span>Ні / No</span></label><label class="radio-label"><input
+                                type="radio" name="q1" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q1" value="1"><span class="radio-box"></span><span>Часто /
+                                Ja</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="2">
+                <td class="q-num">2</td>
+                <td class="q-text">Запізнюєшся навіть коли дуже намагаєшся не запізнитись?<em>Zu spät, obwohl man es
+                        wirklich versucht? / Late even when really trying?</em></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q2" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q2" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q2" value="1"><span
+                                class="radio-box"></span><span>Часто</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="3">
+                <td class="q-num">3</td>
+                <td class="q-text">Не можеш почати нудне завдання навіть якщо воно важливе?<em>Unfähig anzufangen,
+                        obwohl es wichtig ist? / Can't start boring tasks even when important?</em></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q3" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q3" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q3" value="1"><span
+                                class="radio-box"></span><span>Часто</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="4">
+                <td class="q-num">4</td>
+                <td class="q-text">Можеш годинами не відриватись від цікавого — і забути їсти/спати?<em>Stundenlang
+                        vertieft, Essen/Schlafen vergessen? / Hyperfocus — lost in interesting things for hours?</em>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q4" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q4" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q4" value="1"><span class="radio-box"></span><span>Так</span></label>
+                    </div>
+                </td>
+            </tr>
+            <tr data-q="5">
+                <td class="q-num">5</td>
+                <td class="q-text">Дієш або говориш раніше ніж встигаєш подумати — і потім шкодуєш?<em>Handeln/reden
+                        bevor man denkt? / Act or speak before thinking, then regret?</em></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q5" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q5" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q5" value="1"><span
+                                class="radio-box"></span><span>Часто</span></label></div>
+                </td>
+            </tr>
+        </table>
+
+        <!-- ASD -->
+        <div class="section-hdr" style="background:var(--c-asd)">🔷 ASD / Аутизм — питання 6–10</div>
+        <table class="q-table">
+            <tr data-q="6">
+                <td class="q-num">6</td>
+                <td class="q-text">Важко "читати між рядків" — коли кажуть одне, мають на увазі інше?<em>Zwischen den
+                        Zeilen lesen ist schwierig? / Hard to read between the lines?</em></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q6" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q6" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q6" value="1"><span
+                                class="radio-box"></span><span>Часто</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="7">
+                <td class="q-num">7</td>
+                <td class="q-text">Певні звуки, запахи або тканини — не "трохи неприємно", а справжній
+                    дискомфорт?<em>Bestimmte Geräusche/Gerüche als echte Qual? / Sensory input genuinely painful, not
+                        just unpleasant?</em></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q7" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q7" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q7" value="1"><span class="radio-box"></span><span>Так</span></label>
+                    </div>
+                </td>
+            </tr>
+            <tr data-q="8">
+                <td class="q-num">8</td>
+                <td class="q-text">Вичерпуєшся після спілкування — навіть якщо все пройшло добре?<em>Erschöpft nach
+                        sozialen Kontakten? / Drained after socializing even if it went well?</em></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q8" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q8" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q8" value="1"><span class="radio-box"></span><span>Так</span></label>
+                    </div>
+                </td>
+            </tr>
+            <tr data-q="9">
+                <td class="q-num">9</td>
+                <td class="q-text">Є тема в якій ти знаєш надзвичайно багато і важко зупинитись говорити про
+                    неї?<em>Spezielles Interessengebiet mit tiefem Wissen? / Deep special interest, hard to stop talking
+                        about it?</em></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q9" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q9" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q9" value="1"><span class="radio-box"></span><span>Так</span></label>
+                    </div>
+                </td>
+            </tr>
+            <tr data-q="10">
+                <td class="q-num">10</td>
+                <td class="q-text">Непередбачені зміни планів — це стрес, а не просто незручність?<em>Unvorhergesehene
+                        Planänderungen = echter Stress? / Unexpected changes cause real distress?</em></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q10" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q10" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q10" value="1"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+        </table>
+
+        <!-- DYSLEXIA -->
+        <div class="section-hdr" style="background:var(--c-dys)">📖 Дислексія / Dyslexie — питання 11–15</div>
+        <table class="q-table">
+            <tr data-q="11">
+                <td class="q-num">11</td>
+                <td class="q-text">Під час читання рядки або слова "зливаються", губиш місце?<em>Zeilen verschwimmen,
+                        Stelle verlieren? / Lines blur or lose your place while reading?</em></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q11" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q11" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q11" value="1"><span
+                                class="radio-box"></span><span>Часто</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="12">
+                <td class="q-num">12</td>
+                <td class="q-text">Треба перечитати кілька разів щоб зрозуміли — слова є, зміст не
+                    складається?<em>Mehrmals lesen bis Sinn klar? / Need to re-read multiple times for meaning?</em>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q12" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q12" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q12" value="1"><span
+                                class="radio-box"></span><span>Часто</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="13">
+                <td class="q-num">13</td>
+                <td class="q-text">Набагато краще сприймаєш інформацію на слух ніж письмово?<em>Mündlich besser als
+                        schriftlich verstehen? / Process spoken info much better than written?</em></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q13" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q13" value="0.5"><span
+                                class="radio-box"></span><span>Частково</span></label><label class="radio-label"><input
+                                type="radio" name="q13" value="1"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="14">
+                <td class="q-num">14</td>
+                <td class="q-text">Плутаєш схожі букви або переставляєш їх місцями при написанні?<em>Buchstaben
+                        verwechseln/umkehren? / Confuse similar letters or reverse them?</em></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q14" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q14" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q14" value="1"><span
+                                class="radio-box"></span><span>Часто</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="15">
+                <td class="q-num">15</td>
+                <td class="q-text">Труднощі знайти потрібне слово коли говориш, хоч воно є в
+                    голові?<em>Wortfindungsschwierigkeiten? / Word-finding difficulties when speaking?</em></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q15" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q15" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q15" value="1"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+        </table>
+
+        <!-- DYSCALCULIA -->
+        <div class="section-hdr" style="background:var(--c-disc)">🔢 Дискалькулія / Dyskalkulie — питання 16–20</div>
+        <table class="q-table">
+            <tr data-q="16">
+                <td class="q-num">16</td>
+                <td class="q-text">Важко порахувати у голові навіть прості суми?<em>Einfaches Kopfrechnen schwierig? /
+                        Hard to calculate even simple sums mentally?</em></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q16" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q16" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q16" value="1"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="17">
+                <td class="q-num">17</td>
+                <td class="q-text">Часто плутаєш ліво і право або губишся у просторі?<em>Links/Rechts verwechseln? /
+                        Confuse left and right or get disoriented?</em></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q17" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q17" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q17" value="1"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="18">
+                <td class="q-num">18</td>
+                <td class="q-text">Оцінити скільки часу займе справа — для тебе майже нереально?<em>Zeitschätzung sehr
+                        schwierig? / Estimating how long tasks take feels impossible?</em></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q18" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q18" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q18" value="1"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="19">
+                <td class="q-num">19</td>
+                <td class="q-text">Рахунки, бюджет, решта в магазині — постійне джерело
+                    стресу?<em>Rechnungen/Budget/Wechselgeld = Stress? / Bills, budgets, change = constant stress?</em>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q19" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q19" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q19" value="1"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="20">
+                <td class="q-num">20</td>
+                <td class="q-text">Телефонні номери, дати, PIN-коди важко запам'ятати навіть після
+                    повторень?<em>Zahlen/Daten nicht merken? / Phone numbers, dates hard to memorize?</em></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q20" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q20" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q20" value="1"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+        </table>
+
+        <!-- DYSPRAXIA -->
+        <div class="section-hdr" style="background:var(--c-dcd)">🤸 Диспраксія / Dyspraxie — питання 21–24</div>
+        <table class="q-table">
+            <tr data-q="21">
+                <td class="q-num">21</td>
+                <td class="q-text">Часто вдаряєшся об меблі, роняєш речі або "не вписуєшся"?<em>Häufig anstoßen/fallen
+                        lassen? / Bump into furniture, drop things often?</em></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q21" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q21" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q21" value="1"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="22">
+                <td class="q-num">22</td>
+                <td class="q-text">Велосипед, шнурки, водіння давались набагато важче ніж
+                    іншим?<em>Fahrrad/Schuhe/Fahren war viel schwieriger? / Bike, laces, driving much harder than for
+                        others?</em></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q22" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q22" value="0.5"><span
+                                class="radio-box"></span><span>Частково</span></label><label class="radio-label"><input
+                                type="radio" name="q22" value="1"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="23">
+                <td class="q-num">23</td>
+                <td class="q-text">Кімната, сумка, стіл — завжди хаос, хоч ти і намагаєшся?<em>Raum/Tasche trotz Bemühen
+                        immer chaotisch? / Room, bag, desk always chaotic despite trying?</em></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q23" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q23" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q23" value="1"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="24">
+                <td class="q-num">24</td>
+                <td class="q-text">Говорити і писати одночасно — реально складно?<em>Gleichzeitig reden und schreiben
+                        schwierig? / Truly hard to talk and write at the same time?</em></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q24" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q24" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q24" value="1"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+        </table>
+
+        <!-- CPTSD -->
+        <div class="section-hdr" style="background:var(--c-ptsd)">🌊 C-PTSD / Травма — питання 25–28</div>
+        <table class="q-table">
+            <tr data-q="25">
+                <td class="q-num">25</td>
+                <td class="q-text">Постійно "чекаєш підвоху" навіть коли все добре?<em>Ständig auf das Schlimmste
+                        warten? / Always waiting for things to go wrong?</em></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q25" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q25" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q25" value="1"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="26">
+                <td class="q-num">26</td>
+                <td class="q-text">В стресових ситуаціях "вимикаєшся" або реагуєш набагато сильніше ніж
+                    ситуація?<em>Abschalten oder Überreaktion in Stress? / Shut down or overreact in stressful
+                        situations?</em></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q26" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q26" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q26" value="1"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="27">
+                <td class="q-num">27</td>
+                <td class="q-text">Тіло реагує фізично на стрес — серце, задуха, заніміння — без явної
+                    причини?<em>Körperliche Reaktionen auf Stress ohne Ursache? / Physical stress reactions without
+                        obvious cause?</em></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q27" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q27" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q27" value="1"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="28">
+                <td class="q-num">28</td>
+                <td class="q-text">Є теми або спогади яких уникаєш — занадто важко навіть думати про них?<em>Bestimmte
+                        Themen/Erinnerungen meiden? / Avoid certain topics or memories?</em></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q28" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q28" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q28" value="1"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+        </table>
+
+        <!-- ANXIETY -->
+        <div class="section-hdr" style="background:var(--c-anx)">😰 Тривожність / Angst — питання 29–32</div>
+        <table class="q-table">
+            <tr data-q="29">
+                <td class="q-num">29</td>
+                <td class="q-text">Хвилюєшся про речі на які не можеш вплинути — і не можеш просто
+                    "перестати"?<em>Sorgen die man nicht stoppen kann? / Worry about uncontrollable things and can't
+                        stop?</em></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q29" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q29" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q29" value="1"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="30">
+                <td class="q-num">30</td>
+                <td class="q-text">Перед важливим днем прокручуєш у голові всі можливі сценарії — особливо вночі?<em>Vor
+                        wichtigen Tagen alle Szenarien grübeln? / Run through all possible scenarios before events?</em>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q30" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q30" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q30" value="1"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="31">
+                <td class="q-num">31</td>
+                <td class="q-text">Важко розслабитись і "просто бути" — відчуваєш що постійно треба щось
+                    робити?<em>Nicht abschalten können, immer was tun müssen? / Hard to relax, always feel you must be
+                        doing something?</em></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q31" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q31" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q31" value="1"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="32">
+                <td class="q-num">32</td>
+                <td class="q-text">Уникаєш певних ситуацій або людей бо передбачаєш що буде погано?<em>Situationen
+                        meiden wegen Erwartungsangst? / Avoid situations/people anticipating bad outcomes?</em></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q32" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q32" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q32" value="1"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+        </table>
+
+        <!-- OCD -->
+        <div class="section-hdr" style="background:var(--c-ocd)">🔁 ОКР / OKS — питання 33–36</div>
+        <table class="q-table">
+            <tr data-q="33">
+                <td class="q-num">33</td>
+                <td class="q-text">Думки яких не хочеш — повертаються знову і знову, не можеш позбутись?<em>Unerwünschte
+                        Gedanken die immer wiederkehren? / Unwanted thoughts that keep returning?</em></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q33" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q33" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q33" value="1"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="34">
+                <td class="q-num">34</td>
+                <td class="q-text">Перевіряєш кілька разів: двері, плита, пристрій — і все одно не
+                    впевнений?<em>Mehrfach prüfen und trotzdem unsicher? / Check things multiple times but still
+                        uncertain?</em></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q34" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q34" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q34" value="1"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="35">
+                <td class="q-num">35</td>
+                <td class="q-text">Внутрішній тиск робити речі певним чином — інакше відчуття що "щось не
+                    так"?<em>Innerer Zwang Dinge auf bestimmte Weise zu tun? / Internal pressure to do things a certain
+                        way?</em></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q35" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q35" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q35" value="1"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="36">
+                <td class="q-num">36</td>
+                <td class="q-text">Відчуваєш відповідальність за те щоб нічого поганого не трапилось — навіть
+                    нелогічно?<em>Übermäßige Verantwortung für schädliche Dinge? / Feel responsible for preventing bad
+                        things, even illogically?</em></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q36" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q36" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q36" value="1"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+        </table>
+
+        <!-- SENSORY -->
+        <div class="section-hdr" style="background:var(--c-sen)">👂 Сенсорна обробка / Sensorik — питання 37–40</div>
+        <table class="q-table">
+            <tr data-q="37">
+                <td class="q-num">37</td>
+                <td class="q-text">Місця з людьми, звуками або яскравим світлом виснажують
+                    фізично?<em>Menschenmassen/Lärm/Licht körperlich erschöpfend? / Crowds, noise or bright lights
+                        physically exhausting?</em></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q37" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q37" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q37" value="1"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="38">
+                <td class="q-num">38</td>
+                <td class="q-text">Певний одяг, швів або тканина — це тортура а не просто дискомфорт?<em>Kleidung/Nähte
+                        = echte Qual, kein Unbehagen? / Certain clothing or seams = genuine torture?</em></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q38" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q38" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q38" value="1"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="39">
+                <td class="q-num">39</td>
+                <td class="q-text">Не помічаєш що голодний, холодний або хворий — поки це не стає
+                    гостро?<em>Hunger/Kälte/Schmerz erst spät merken? / Not notice hunger, cold or pain until it's
+                        severe?</em></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q39" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q39" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q39" value="1"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="40">
+                <td class="q-num">40</td>
+                <td class="q-text">Несподіваний дотик або гучний звук викликають сильну фізичну реакцію — страх,
+                    серцебиття?<em>Unerwartete Berührung/Lärm = Schreckreaktion? / Unexpected touch or sound triggers
+                        strong physical reaction?</em></td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q40" value="0"><span
+                                class="radio-box"></span><span>Ні</span></label><label class="radio-label"><input
+                                type="radio" name="q40" value="0.5"><span
+                                class="radio-box"></span><span>Іноді</span></label><label class="radio-label"><input
+                                type="radio" name="q40" value="1"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+        </table>
+
+        <!-- Results -->
+        <div id="resultsPanel">
+            <div id="resultsContent" style="display:none">
+                <div style="font-size:8pt;font-weight:800;color:var(--navy);margin-bottom:6px;text-align:center">📊 ТВІЙ
+                    ПРОФІЛЬ / Dein Profil / Your Profile</div>
+                <div class="bars" id="barsGrid"></div>
+                <div style="font-size:6.5pt;color:var(--dgrey);margin-top:6px;text-align:center">
+                    🔴 &gt;70% = варто обговорити з лікарем &nbsp;·&nbsp; 🟡 40–70% = є ознаки &nbsp;·&nbsp; 🟢 &lt;40%
+                    = низька ймовірність
+                </div>
+            </div>
+        </div>
+
+        <div class="warn">⚠ Це НЕ діагноз — лише скринінг / Dies ist KEINE Diagnose / This is NOT a diagnosis —
+            screening only</div>
+    </div>
+
+    <!-- PAGE 2: RIGHTS & INFO -->
+    <div class="page" id="page2">
+        <div class="p-header">
+            <h1>INFINITY BRAVES</h1>
+            <div class="sub">Твої права з діагнозом в Німеччині · Deine Rechte mit Diagnose · Your Rights in Germany
+            </div>
+        </div>
+
+        <div
+            style="font-size:7.5pt;color:var(--dgrey);margin:6px 0 10px;line-height:1.5;border-left:3px solid var(--teal);padding-left:8px">
+            <strong style="color:var(--navy)">Діагноз відкриває реальні правові захисти.</strong> Все нижче — офіційні
+            права за законодавством Німеччини. Вони діють для всіх резидентів незалежно від громадянства.<br>
+            <em>Eine Diagnose eröffnet echten Rechtsschutz. All dies sind offizielle Rechte nach deutschem Recht für
+                alle Einwohner.</em>
+        </div>
+
+        <div class="rights-grid">
+            <div class="rights-card">
+                <h4>📋 SGB IX — Соціальний кодекс</h4>
+                <ul>
+                    <li>GdB (Grad der Behinderung) — ступінь від 20 до 100</li>
+                    <li>ADHD/ASD можуть давати GdB 30–80 залежно від прояву</li>
+                    <li>Schwerbehindertenausweis — від GdB 50+</li>
+                    <li>Заява через Versorgungsamt вашого міста</li>
+                </ul>
+            </div>
+            <div class="rights-card">
+                <h4>⚖️ Nachteilsausgleich — Компенсація</h4>
+                <ul>
+                    <li>Університет: подовжений час іспиту (+25–50%)</li>
+                    <li>Університет: альтернативний формат здачі</li>
+                    <li>Школа: адаптований процес оцінювання</li>
+                    <li>Робота: право на адаптацію умов праці</li>
+                </ul>
+            </div>
+            <div class="rights-card">
+                <h4>💼 Права на роботі (§ 164 SGB IX)</h4>
+                <ul>
+                    <li>Роботодавець зобов'язаний адаптувати умови</li>
+                    <li>+5 днів оплачуваної відпустки на рік</li>
+                    <li>Підсилений захист від звільнення</li>
+                    <li>Право на технічні засоби підтримки</li>
+                </ul>
+            </div>
+            <div class="rights-card">
+                <h4>💰 Фінансова підтримка</h4>
+                <ul>
+                    <li>Eingliederungshilfe — допомога з інтеграцією</li>
+                    <li>Teilhabeleistungen — виплати на участь у суспільстві</li>
+                    <li>Jobcenter: підтримка при пошуку роботи з GdB</li>
+                    <li>AVGS-купони на коучинг і підтримку</li>
+                </ul>
+            </div>
+            <div class="rights-card">
+                <h4>🏥 Що покриває страховка (GKV)</h4>
+                <ul>
+                    <li>Діагностика: ADOS-2, DIVA-5, тести</li>
+                    <li>Терапія: КПТ, ерготерапія, логопед</li>
+                    <li>Медикаменти (за рецептом, ~5€ доплата)</li>
+                    <li>Соціальна підтримка (Eingliederungshilfe)</li>
+                </ul>
+            </div>
+            <div class="rights-card">
+                <h4>🌍 Для мігрантів / Für Migranten</h4>
+                <ul>
+                    <li>Права діють з Aufenthaltserlaubnis / Blue Card</li>
+                    <li>Статус біженця не є перешкодою для GdB</li>
+                    <li>Jobcenter зобов'язаний надати перекладача</li>
+                    <li>Infinity Braves допомагає з документами UA/DE</li>
+                </ul>
+            </div>
+        </div>
+
+        <div
+            style="margin:8px 0;background:var(--lgrey);border-radius:4px;padding:8px 10px;font-size:7pt;color:var(--dgrey);line-height:1.6">
+            <strong style="color:var(--navy);font-size:8pt">🗺 Шлях до діагнозу / Weg zur Diagnose</strong><br>
+            1. Hausarzt (сімейний лікар) → направлення до психіатра<br>
+            2. Schwerpunktpraxis або Psychiater (черга 6–18 міс., але є швидші варіанти)<br>
+            3. Infinity Braves допомагає знайти лікарів які <em>реально діагностують</em> ADHD/ASD у дорослих
+        </div>
+
+        <div class="contact">
+            <div>
+                <div style="font-size:7pt;opacity:.7;margin-bottom:3px">✨ ВСЕ БЕЗКОШТОВНО / ALLES KOSTENLOS / ALL FREE
+                </div>
+                <div style="font-size:11pt;font-weight:900">🚀 ПРИЄДНУЙСЯ / Beitreten / Join us</div>
+                <a href="https://t.me/+R8UPWvAwrD85ZjYy">t.me/+R8UPWvAwrD85ZjYy</a>
+                <div class="langs-sm">Telegram · UA | DE | EN · Онлайн · Безкоштовно</div>
+            </div>
+            <div id="qrcode2"></div>
+        </div>
+
+        <div
+            style="background:var(--teal);color:#fff;text-align:center;padding:5px;font-size:7pt;font-weight:600;margin-top:8px;border-radius:3px">
+            Ми об'єднуємось, бо система не готова до нас. Разом — ми сильніші. / Wir vereinen uns. Gemeinsam sind wir
+            stärker.
+        </div>
+    </div>
+
+    <button class="print-btn no-print" onclick="window.print()">🖨️ Друкувати / Print</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        new QRCode(document.getElementById('qrcode2'), {
+            text: 'https://t.me/+R8UPWvAwrD85ZjYy',
+            width: 72, height: 72, colorDark: '#000', colorLight: '#fff',
+            correctLevel: QRCode.CorrectLevel.M
+        });
+
+        const TOTAL = 40;
+        const PROFILES = [
+            { id: 'adhd', label: 'ADHD / СДУГ', qs: [1, 2, 3, 4, 5], color: 'var(--c-adhd)' },
+            { id: 'asd', label: 'ASD / Аутизм', qs: [6, 7, 8, 9, 10], color: 'var(--c-asd)' },
+            { id: 'dys', label: 'Дислексія', qs: [11, 12, 13, 14, 15], color: 'var(--c-dys)' },
+            { id: 'disc', label: 'Дискалькулія', qs: [16, 17, 18, 19, 20], color: 'var(--c-disc)' },
+            { id: 'dcd', label: 'Диспраксія', qs: [21, 22, 23, 24], color: 'var(--c-dcd)' },
+            { id: 'ptsd', label: 'C-PTSD / Травма', qs: [25, 26, 27, 28], color: 'var(--c-ptsd)' },
+            { id: 'anx', label: 'Тривожність', qs: [29, 30, 31, 32], color: 'var(--c-anx)' },
+            { id: 'ocd', label: 'ОКР', qs: [33, 34, 35, 36], color: 'var(--c-ocd)' },
+            { id: 'sen', label: 'Сенсорна', qs: [37, 38, 39, 40], color: 'var(--c-sen)' },
+        ];
+
+        function getScore(qs) {
+            return qs.reduce((s, n) => {
+                const c = document.querySelector(`input[name="q${n}"]:checked`);
+                return s + (c ? parseFloat(c.value) : 0);
+            }, 0);
+        }
+
+        function countAnswered() {
+            let n = 0;
+            for (let i = 1; i <= TOTAL; i++) if (document.querySelector(`input[name="q${i}"]:checked`)) n++;
+            return n;
+        }
+
+        function levelClass(pct) {
+            if (pct >= 0.7) return 'high';
+            if (pct >= 0.4) return 'mid';
+            return 'low';
+        }
+
+        function updateResults() {
+            const answered = countAnswered();
+            const panel = document.getElementById('resultsPanel');
+            const banner = document.getElementById('valBanner');
+
+            // Row highlight
+            for (let i = 1; i <= TOTAL; i++) {
+                const row = document.querySelector(`tr[data-q="${i}"]`);
+                if (row) row.style.background = document.querySelector(`input[name="q${i}"]:checked`) ? '#f0f8f0' : '';
+            }
+
+            if (answered < TOTAL) {
+                panel.classList.remove('visible');
+                document.getElementById('resultsContent').style.display = 'none';
+                if (answered > 0) banner.classList.add('show');
+                return;
+            }
+            banner.classList.remove('show');
+            panel.classList.add('visible');
+            document.getElementById('resultsContent').style.display = 'block';
+
+            const grid = document.getElementById('barsGrid');
+            grid.innerHTML = '';
+            PROFILES.forEach(p => {
+                const score = getScore(p.qs);
+                const max = p.qs.length;
+                const pct = score / max;
+                const cls = levelClass(pct);
+                const pctLabel = Math.round(pct * 100) + '%';
+                grid.innerHTML += `
+      <div class="bar-row">
+        <div class="bar-label"><span>${p.label}</span><span>${pctLabel}</span></div>
+        <div class="bar-track"><div class="bar-fill ${cls}" style="width:${pctLabel};background:${p.color}"></div></div>
+      </div>`;
+            });
+        }
+
+        document.querySelectorAll('input[type=radio]').forEach(r => r.addEventListener('change', updateResults));
+
+        let _wasVisible = false;
+        window.addEventListener('beforeprint', () => {
+            const p = document.getElementById('resultsPanel');
+            if (p) { _wasVisible = p.classList.contains('visible'); p.classList.remove('visible'); }
+            document.querySelectorAll('.privacy-notice').forEach(el => el.style.setProperty('display', 'none', 'important'));
+        });
+        window.addEventListener('afterprint', () => {
+            const p = document.getElementById('resultsPanel');
+            if (p && _wasVisible) p.classList.add('visible');
+            document.querySelectorAll('.privacy-notice').forEach(el => el.style.removeProperty('display'));
+        });
+    </script>
+</body>
+
+</html>
