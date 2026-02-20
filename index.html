@@ -749,26 +749,12 @@
 
             #resultsPanel,
             .results-panel,
-            .results-panel.visible,
-            .privacy-notice {
-                display: none !important;
-                visibility: hidden !important;
-                height: 0 !important;
-                max-height: 0 !important;
-                overflow: hidden !important;
-                background: transparent !important;
+            .results-panel.visible {
+                background: #f8f9fa !important;
                 background-image: none !important;
-                opacity: 0 !important;
-                padding: 0 !important;
-                margin: 0 !important
-            }
-
-            .print-placeholder {
-                display: block;
-                height: 90px;
-                background: white;
-                border: 2px dashed #ccc;
-                border-radius: 6px
+                color: #aaa !important;
+                border: 2px dashed #ccc !important;
+                line-height: 80px !important
             }
 
             /* Print checkboxes as [ ] */
@@ -1175,8 +1161,8 @@
                 &nbsp;/&nbsp; All answers stay only on your device. Nothing is transmitted, stored, or registered.
             </div>
 
-            <!-- BLOCK 8: Results panel (screen only, appears after all answered) -->
-            <div class="results-panel no-print" id="resultsPanel" style="grid-column:1/-1">
+            <!-- BLOCK 8: Results panel (shows as empty grey in print, dark when filled on screen) -->
+            <div class="results-panel" id="resultsPanel" style="grid-column:1/-1">
                 <div class="results-title">📊 ВАШІ РЕЗУЛЬТАТИ / Ihre Ergebnisse / Your Results</div>
                 <div class="results-grid">
                     <div class="result-box">
@@ -1192,9 +1178,6 @@
                 </div>
                 <div class="result-advice" id="resultAdvice"></div>
             </div>
-
-            <!-- BLOCK 8b: Print-only empty placeholder (replaces dark results panel) -->
-            <div class="print-placeholder" style="grid-column:1/-1"></div>
 
             <div class="reality-section">
                 <div class="col-header bad-hdr">❌ РЕАЛЬНІСТЬ В НIМЕЧЧИНI / Realität / Reality</div>
@@ -1430,19 +1413,21 @@
         // Listen to all radio changes
         document.querySelectorAll('input[type=radio]').forEach(r => r.addEventListener('change', updateResults));
 
-        // Hide dark results panel before printing, restore after
-        const _hideForPrint = ['resultsPanel', 'privacyNotice'];
+        // Before print: reset results panel to empty state (like browser start)
+        // After print: restore visible state if it was visible
+        let _panelWasVisible = false;
         window.addEventListener('beforeprint', () => {
             const p = document.getElementById('resultsPanel');
-            if (p) p.style.setProperty('display', 'none', 'important');
+            if (p) {
+                _panelWasVisible = p.classList.contains('visible');
+                p.classList.remove('visible');
+            }
             document.querySelectorAll('.privacy-notice').forEach(el => el.style.setProperty('display', 'none', 'important'));
-            document.querySelectorAll('.print-placeholder').forEach(el => el.style.setProperty('display', 'block', 'important'));
         });
         window.addEventListener('afterprint', () => {
             const p = document.getElementById('resultsPanel');
-            if (p) p.style.removeProperty('display');
+            if (p && _panelWasVisible) p.classList.add('visible');
             document.querySelectorAll('.privacy-notice').forEach(el => el.style.removeProperty('display'));
-            document.querySelectorAll('.print-placeholder').forEach(el => el.style.removeProperty('display'));
         });
     </script>
 </body>
