@@ -512,25 +512,25 @@
 
 
             .p-header {
-                margin: -2mm -2mm 2px;
-                padding: 4px 6px;
+                margin: -2mm -2mm 1px;
+                padding: 3px 6px;
                 border-bottom: 1px solid #eee;
             }
 
             .p-header img {
-                height: 24px !important;
+                height: 20px !important;
                 width: auto !important;
             }
 
             .p-header .langs {
                 font-size: 6.5pt;
-                margin-top: 1px;
+                margin-top: 0px;
             }
 
             .section-hdr {
                 font-size: 9.5pt;
                 padding: 3px 6px;
-                margin-top: 4px;
+                margin-top: 2px;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
                 color: #ffffff !important
@@ -538,12 +538,12 @@
 
             .q-table {
                 font-size: 9pt;
-                line-height: 1.15;
-                margin-bottom: 2px
+                line-height: 1.1;
+                margin-bottom: 0px
             }
 
             .q-table td {
-                padding: 2.5px 0 !important;
+                padding: 2px 0 !important;
             }
 
             .q-table tr {
@@ -583,14 +583,19 @@
 
             /* Print-Specific Result Styles */
             #resultsPanel {
-                padding: 6px;
+                padding: 4px;
                 border-color: var(--navy);
                 background: #fdfdfd;
-                margin-top: 4px;
+                margin-top: 2px;
             }
 
             #resultsPanel::before {
                 display: none !important;
+            }
+
+            .warn {
+                margin: 2px 0 !important;
+                padding: 2px 4px !important;
             }
 
             .q-text em {
@@ -1867,11 +1872,11 @@
                         </tbody>
                     </table>
 
-                    <div class="manual-legend">
-                        🔴 Starke Hinweise (zum Arzt) / Strong signs (see doctor) / Сильні ознаки (варто йти до
-                        лікаря)<br>
-                        🟡 Hinweise vorhanden / Signs present / Є ознаки (продовжуйте спостерігати)<br>
-                        🟢 Geringe Wahrscheinlichkeit / Low likelihood / Низька ймовірність
+                    <div class="manual-legend"
+                        style="display:flex; justify-content:center; gap:6px; flex-wrap:wrap; padding: 4px;">
+                        <span>🔴 Starke Hinweise / Сильні ознаки</span>
+                        <span>🟡 Hinweise vorhanden / Є ознаки</span>
+                        <span>🟢 Geringe Wahrscheinlichkeit / Низька ймовірність</span>
                     </div>
                 </div>
             </div>
