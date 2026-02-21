@@ -385,14 +385,18 @@
                 font-size: 7.2pt
             }
 
+            
             .page {
                 box-shadow: none;
                 width: 100%;
+                min-height: auto !important;
+                height: auto !important;
                 padding: 2mm 5mm;
                 page-break-after: always;
                 break-after: page;
-                margin: 0
+                margin: 0;
             }
+
 
             .p-header {
                 margin: -2mm -5mm 8px;
@@ -587,7 +591,7 @@
         </div>
 
         <!-- ADHD -->
-        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-adhd), var(--navy))">⚡ ADHD / СДУГ / Aufmerksamkeitsdefizit (1–5)</div>
+        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-adhd), transparent)">⚡ ADHD / СДУГ / Aufmerksamkeitsdefizit (1–5)</div>
         <table class="q-table">
             <tr data-q="1">
                 <td class="q-num">1</td>
@@ -640,7 +644,7 @@
         </table>
 
         <!-- ASD -->
-        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-asd), var(--navy))">🧩 ASD / Аутизм / Autism (6–10)</div>
+        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-asd), transparent)">🧩 ASD / Аутизм / Autism (6–10)</div>
         <table class="q-table">
             <tr data-q="6">
                 <td class="q-num">6</td>
@@ -697,7 +701,7 @@
             </tr>
         </table>
         <!-- DYSLEXIA -->
-        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-dys), var(--navy))">📖 Dyslexie / Dyslexia / Дислексія (11–15)</div>
+        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-dys), transparent)">📖 Dyslexie / Dyslexia / Дислексія (11–15)</div>
         <table class="q-table">
             <tr data-q="11">
                 <td class="q-num">11</td>
@@ -753,7 +757,7 @@
             <div class="langs">DE | EN | UA</div>
         </div>
         <!-- DYSCALCULIA -->
-        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-disc), var(--navy))">🔢 Dyskalkulie / Dyscalculia / Дискалькулія (16–20)
+        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-disc), transparent)">🔢 Dyskalkulie / Dyscalculia / Дискалькулія (16–20)
         </div>
         <table class="q-table">
             <tr data-q="16">
@@ -802,7 +806,7 @@
         </table>
 
         <!-- DYSPRAXIA -->
-        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-dcd), var(--navy))">🤸 Dyspraxie / Dyspraxia / Диспраксія (21–24)</div>
+        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-dcd), transparent)">🤸 Dyspraxie / Dyspraxia / Диспраксія (21–24)</div>
         <table class="q-table">
             <tr data-q="21">
                 <td class="q-num">21</td>
@@ -845,7 +849,7 @@
 
 
         <!-- CPTSD -->
-        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-ptsd), var(--navy))">🌊 C-PTSD / Травма / Trauma (25–28)</div>
+        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-ptsd), transparent)">🌊 C-PTSD / Травма / Trauma (25–28)</div>
         <table class="q-table">
             <tr data-q="25">
                 <td class="q-num">25</td>
@@ -900,7 +904,7 @@
             <div class="langs">DE | EN | UA</div>
         </div>
         <!-- ANXIETY -->
-        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-anx), var(--navy))">😰 Angststörung / Anxiety / Тривожність (29–32)</div>
+        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-anx), transparent)">😰 Angststörung / Anxiety / Тривожність (29–32)</div>
         <table class="q-table">
             <tr data-q="29">
                 <td class="q-num">29</td>
@@ -943,7 +947,7 @@
         </table>
 
         <!-- OCD -->
-        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-ocd), var(--navy))">🔁 Zwangsstörung / OCD / ОКР (33–36)</div>
+        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-ocd), transparent)">🔁 Zwangsstörung / OCD / ОКР (33–36)</div>
         <table class="q-table">
             <tr data-q="33">
                 <td class="q-num">33</td>
@@ -988,7 +992,7 @@
         </table>
 
         <!-- SENSORY -->
-        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-sen), var(--navy))">👂 Sensorik / Sensory / Сенсорна обробка (37–40)</div>
+        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-sen), transparent)">👂 Sensorik / Sensory / Сенсорна обробка (37–40)</div>
         <table class="q-table">
             <tr data-q="37">
                 <td class="q-num">37</td>
@@ -1172,10 +1176,8 @@
             </div>
         </div>
 
-        <div
-            style="background:var(--teal);color:#fff;text-align:center;padding:5px;font-size:7pt;font-weight:600;margin-top:8px;border-radius:3px">
-            Ми об'єднуємось, бо система не готова до нас. Разом — ми сильніші. / Wir vereinen uns. Gemeinsam sind wir
-            stärker.
+                <div style="font-size:8pt;font-weight:800;text-align:center;padding:8px;margin-top:10px;border-radius:4px;background:var(--gradient);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">
+            Wir vereinen uns. Gemeinsam sind wir stärker. / We unite because the system is not ready for us. Together we are stronger. / Ми об'єднуємось, бо система не готова до нас. Разом — ми сильніші.
         </div>
     </div>
 
