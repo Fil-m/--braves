@@ -78,7 +78,13 @@
         .p-header h1 {
             font-size: 18pt;
             font-weight: 900;
-            letter-spacing: 1px
+            letter-spacing: 1px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            margin: 0
         }
 
         .p-header .sub {
@@ -406,21 +412,29 @@
             }
 
             .q-table {
-                font-size: 7pt;
+                font-size: 6.8pt;
+                line-height: 1.15;
                 margin-bottom: 2px
             }
 
             .q-table td {
-                padding: 1.2px 0
+                padding: 1px 0
+            }
+
+            .q-table tr {
+                page-break-inside: avoid;
+                break-inside: avoid;
             }
 
             .rights-grid {
                 gap: 4px;
                 margin: 4px 0;
+                page-break-inside: avoid;
             }
 
             .rights-card {
                 padding: 4px 8px;
+                page-break-inside: avoid;
             }
 
             .rights-card h4 {
@@ -452,15 +466,19 @@
             }
 
             .q-text em {
-                font-size: 6.2pt
+                font-size: 6pt;
+                line-height: 1.1;
+                color: var(--dgrey);
             }
 
             .q-note {
-                font-size: 5.5pt
+                font-size: 5pt;
+                line-height: 1.1;
             }
 
             .radio-label {
-                font-size: 5.5pt
+                font-size: 5pt;
+                line-height: 1.1;
             }
 
             .page:last-of-type {
@@ -569,11 +587,11 @@
                         справ, але рідко доводиш до кінця?</em></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q1" value="0"><span
-                                class="radio-box"></span><span>Nein / No<br>Ні</span></label><label
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
                             class="radio-label"><input type="radio" name="q1" value="0.5"><span
-                                class="radio-box"></span><span>Manchmal / Sometimes<br>Іноді</span></label><label
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
                             class="radio-label"><input type="radio" name="q1" value="1"><span
-                                class="radio-box"></span><span>Ja / Yes<br>Так</span></label></div>
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
                 </td>
             </tr>
             <tr data-q="2">
@@ -1445,9 +1463,9 @@
 
         // Update all radio labels to trilingual
         const LABELS = {
-            '0': 'Nein / No<br>Ні',
-            '0.5': 'Manchmal / Sometimes<br>Іноді',
-            '1': 'Ja / Yes<br>Так'
+            '0': 'Nein / No / Ні',
+            '0.5': 'Manchmal / Sometimes / Іноді',
+            '1': 'Ja / Yes / Так'
         };
         document.querySelectorAll('.radio-label').forEach(label => {
             const input = label.querySelector('input[type=radio]');
