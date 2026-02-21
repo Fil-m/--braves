@@ -204,6 +204,11 @@
             position: relative
         }
 
+        .radio-label span:not(.radio-box) {
+            display: block;
+            margin-bottom: 2px
+        }
+
         .radio-label input {
             display: none
         }
@@ -223,13 +228,32 @@
         }
 
         /* Results */
+        
+        /* Results Styles - Cleaned */
         #resultsPanel {
             background: var(--lgrey);
-            border: 2px dashed #ccc;
+            border: 2px dashed #999;
             border-radius: 6px;
-            padding: 10px;
+            padding: 15px;
             margin: 8px 0;
-            min-height: 60px
+            min-height: 60px;
+        }
+        .results-header {
+            font-size: 10pt; font-weight: 800; color: #fff; background: var(--gradient); 
+            padding: 8px; border-radius: 4px; margin-bottom: 10px; text-align: center;
+        }
+        .print-time { font-size: 6.5pt; color: #888; text-align: center; margin-bottom: 5px; }
+        .manual-calc-grid { margin-top: 5px; margin-bottom: 12px; }
+        .manual-calc-grid .manual-title { font-size: 8pt; font-weight: 700; margin-bottom: 4px; color: var(--navy); }
+        .manual-calc-grid .manual-desc { font-size: 7.5pt; color: var(--dgrey); margin-bottom: 8px; line-height: 1.4; }
+        .manual-table { width: 100%; font-size: 7.5pt; border-collapse: collapse; margin-bottom: 8px; }
+        .manual-table thead tr { border-bottom: 1px solid #ccc; font-weight: bold; background: #eee; }
+        .manual-table td { padding: 4px; border-bottom: 1px solid #eee; }
+        .manual-table .tc { text-align: center; }
+        .manual-table .key-col { font-size: 6pt; font-weight: 600; white-space: nowrap; }
+        .manual-legend { font-size: 7.5pt; font-weight: 700; color: var(--navy); margin-top: 10px; text-align: center; padding: 8px; background: #e8ezf0; border-radius: 4px; }
+        @media print {
+            #resultsPanel { padding: 10px; border-color: var(--navy); background: #fdfdfd; }
         }
 
         #resultsPanel::before {
@@ -491,13 +515,33 @@
                 font-size: 7.5pt;
             }
 
-            #resultsPanel {
-                margin: 8px 0;
-                padding: 10px;
-                border-width: 2px;
-                border-color: var(--navy);
-                background: #fdfdfd;
-            }
+            
+        /* Results Styles - Cleaned */
+        #resultsPanel {
+            background: var(--lgrey);
+            border: 2px dashed #999;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 8px 0;
+            min-height: 60px;
+        }
+        .results-header {
+            font-size: 10pt; font-weight: 800; color: #fff; background: var(--gradient); 
+            padding: 8px; border-radius: 4px; margin-bottom: 10px; text-align: center;
+        }
+        .print-time { font-size: 6.5pt; color: #888; text-align: center; margin-bottom: 5px; }
+        .manual-calc-grid { margin-top: 5px; margin-bottom: 12px; }
+        .manual-calc-grid .manual-title { font-size: 8pt; font-weight: 700; margin-bottom: 4px; color: var(--navy); }
+        .manual-calc-grid .manual-desc { font-size: 7.5pt; color: var(--dgrey); margin-bottom: 8px; line-height: 1.4; }
+        .manual-table { width: 100%; font-size: 7.5pt; border-collapse: collapse; margin-bottom: 8px; }
+        .manual-table thead tr { border-bottom: 1px solid #ccc; font-weight: bold; background: #eee; }
+        .manual-table td { padding: 4px; border-bottom: 1px solid #eee; }
+        .manual-table .tc { text-align: center; }
+        .manual-table .key-col { font-size: 6pt; font-weight: 600; white-space: nowrap; }
+        .manual-legend { font-size: 7.5pt; font-weight: 700; color: var(--navy); margin-top: 10px; text-align: center; padding: 8px; background: #e8ezf0; border-radius: 4px; }
+        @media print {
+            #resultsPanel { padding: 10px; border-color: var(--navy); background: #fdfdfd; }
+        }
 
             #resultsPanel::before {
                 display: none !important;
@@ -756,10 +800,33 @@
             }
 
             /* Results Panel */
-            #resultsPanel {
-                padding: 16px;
-                margin: 16px 0;
-            }
+            
+        /* Results Styles - Cleaned */
+        #resultsPanel {
+            background: var(--lgrey);
+            border: 2px dashed #999;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 8px 0;
+            min-height: 60px;
+        }
+        .results-header {
+            font-size: 10pt; font-weight: 800; color: #fff; background: var(--gradient); 
+            padding: 8px; border-radius: 4px; margin-bottom: 10px; text-align: center;
+        }
+        .print-time { font-size: 6.5pt; color: #888; text-align: center; margin-bottom: 5px; }
+        .manual-calc-grid { margin-top: 5px; margin-bottom: 12px; }
+        .manual-calc-grid .manual-title { font-size: 8pt; font-weight: 700; margin-bottom: 4px; color: var(--navy); }
+        .manual-calc-grid .manual-desc { font-size: 7.5pt; color: var(--dgrey); margin-bottom: 8px; line-height: 1.4; }
+        .manual-table { width: 100%; font-size: 7.5pt; border-collapse: collapse; margin-bottom: 8px; }
+        .manual-table thead tr { border-bottom: 1px solid #ccc; font-weight: bold; background: #eee; }
+        .manual-table td { padding: 4px; border-bottom: 1px solid #eee; }
+        .manual-table .tc { text-align: center; }
+        .manual-table .key-col { font-size: 6pt; font-weight: 600; white-space: nowrap; }
+        .manual-legend { font-size: 7.5pt; font-weight: 700; color: var(--navy); margin-top: 10px; text-align: center; padding: 8px; background: #e8ezf0; border-radius: 4px; }
+        @media print {
+            #resultsPanel { padding: 10px; border-color: var(--navy); background: #fdfdfd; }
+        }
 
             .bars {
                 grid-template-columns: 1fr;
@@ -811,7 +878,8 @@
                 <td class="q-num">1</td>
                 <td class="q-text"><strong>Viele Projekte gestartet,
                         selten fertiggestellt? / Start many things, rarely finish?</strong><br><em>Починаєш багато
-                        справ, але рідко доводиш до кінця?</em></td>
+                        справ, але рідко доводиш до кінця?</em>
+                    <span class="q-note">Projekte, Kurse, Ideen — Begeisterung da, Abschluss selten / projects, courses, ideas — enthusiasm yes, completion rarely / проекти, курси, ідеї — ентузіазм є, фінал рідко</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q1" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -825,7 +893,8 @@
                 <td class="q-num">2</td>
                 <td class="q-text"><strong>Zu spät, obwohl man es
                         wirklich versucht? / Late even when really trying?</strong><br><em>Запізнюєшся навіть коли дуже
-                        намагаєшся не запізнитись?</em></td>
+                        намагаєшся не запізнитись?</em>
+                    <span class="q-note">Egal wie sehr du es versuchst, du kommst trotzdem zu spät / even with genuine effort you still end up late / навіть коли дуже намагаєшся — все одно запізнюєшся</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q2" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -839,7 +908,8 @@
                 <td class="q-num">3</td>
                 <td class="q-text"><strong>Unfähig anzufangen,
                         obwohl es wichtig ist? / Can't start boring tasks even when important?</strong><br><em>Не можеш
-                        почати нудне завдання навіть якщо воно важливе?</em></td>
+                        почати нудне завдання навіть якщо воно важливе?</em>
+                    <span class="q-note">Die Aufgabe ist wichtig, aber der Körper startet einfach nicht / you know it matters but still cannot begin / знаєш що важливо — але тіло просто не рухається</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q3" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -853,7 +923,8 @@
                 <td class="q-num">4</td>
                 <td class="q-text"><strong>Stundenlang vertieft, Essen/Schlafen vergessen? / Hyperfocus — lost in
                         interesting things for hours?</strong><br><em>Можеш годинами не відриватись від цікавого — і
-                        забути їсти/спати?</em></td>
+                        забути їсти/спати?</em>
+                    <span class="q-note">In etwas Interessantes vertieft — Stunden vergehen wie Minuten / immersed in something — hours vanish without notice / занурюєшся в цікаве і час зникає</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q4" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -868,7 +939,8 @@
                 <td class="q-num">5</td>
                 <td class="q-text"><strong>Handeln/reden
                         bevor man denkt? / Act or speak before thinking, then regret?</strong><br><em>Дієш або говориш
-                        раніше ніж встигаєш подумати — і потім шкодуєш?</em></td>
+                        раніше ніж встигаєш подумати — і потім шкодуєш?</em>
+                    <span class="q-note">Zuerst tun/reden, dann denken — und dann bereuen / act first, think later — and regret it / спочатку робиш або кажеш — потім шкодуєш</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q5" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -888,7 +960,8 @@
                 <td class="q-num">6</td>
                 <td class="q-text"><strong>Zwischen den
                         Zeilen lesen ist schwierig? / Hard to read between the lines?</strong><br><em>Важко "читати між
-                        рядків" — коли кажуть одне, мають на увазі інше?</em></td>
+                        рядків" — коли кажуть одне, мають на увазі інше?</em>
+                    <span class="q-note">Man sagt „alles gut“ und meint eigentlich „ich bin sauer“ / they say „fine“ but mean the opposite / кажуть „добре“ — а мають на увазі інше</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q6" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -904,7 +977,8 @@
                         painful, not
                         just unpleasant?</strong><br><em>Певні звуки, запахи або тканини — не "трохи неприємно", а
                         справжній
-                        дискомфорт?</em></td>
+                        дискомфорт?</em>
+                    <span class="q-note">Ein bestimmter Stoff — wie echter Körperschmerz, nicht nur lästig / a fabric or sound — not annoying, genuinely painful / певна тканина або звук — не просто неприємно, а фізично боляче</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q7" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -919,7 +993,8 @@
                 <td class="q-num">8</td>
                 <td class="q-text"><strong>Erschöpft nach
                         sozialen Kontakten? / Drained after socializing even if it went
-                        well?</strong><br><em>Вичерпуєшся після спілкування — навіть якщо все пройшло добре?</em></td>
+                        well?</strong><br><em>Вичерпуєшся після спілкування — навіть якщо все пройшло добре?</em>
+                    <span class="q-note">Nach dem Treffen erschöpft, obwohl es schön war / had fun but still feel drained after / все було добре — але після хочеться лягти і нікого не бачити</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q8" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -936,7 +1011,8 @@
                         to stop talking
                         about it?</strong><br><em>Є тема в якій ти знаєш надзвичайно багато і важко зупинитись говорити
                         про
-                        неї?</em></td>
+                        неї?</em>
+                    <span class="q-note">Du kennst ein Thema in und auswendig und redest stundenlang darüber / one topic you know inside out and could talk about endlessly / одна тема — знаєш все і можеш говорити годинами</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q9" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -952,7 +1028,8 @@
                 <td class="q-text"><strong>Unvorhergesehene
                         Planänderungen = echter Stress? / Unexpected changes cause real
                         distress?</strong><br><em>Непередбачені зміни планів — це стрес, а не просто незручність?</em>
-                </td>
+                
+                    <span class="q-note">Jemand ändert den Plan kurzfristig — das fühlt sich wirklich schlimm an / sudden plan change — genuinely distressing, not just inconvenient / плани змінились — це не просто незручно, це реально важко</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q10" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -971,7 +1048,8 @@
                 <td class="q-num">11</td>
                 <td class="q-text"><strong>Zeilen verschwimmen,
                         Stelle verlieren? / Lines blur or lose your place while reading?</strong><br><em>Під час читання
-                        рядки або слова "зливаються", губиш місце?</em></td>
+                        рядки або слова "зливаються", губиш місце?</em>
+                    <span class="q-note">Zeilen springen herum, du verlierst den Faden beim Lesen / lines seem to jump — hard to keep track of where you are / рядки ніби стрибують — важко відстежити де читав</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q11" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -985,7 +1063,8 @@
                 <td class="q-num">12</td>
                 <td class="q-text"><strong>Mehrmals lesen bis Sinn klar? / Need to re-read multiple times for
                         meaning?</strong><br><em>Треба перечитати кілька разів щоб зрозуміли — слова є, зміст не
-                        складається?</em></td>
+                        складається?</em>
+                    <span class="q-note">Wörter da, Bedeutung weg — mehrmals durchlesen bis es klar wird / words are there but meaning won’t form — need to re-read / слова є — але зміст не складається, перечитуєш кілька разів</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q12" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -999,7 +1078,8 @@
                 <td class="q-num">13</td>
                 <td class="q-text"><strong>Mündlich besser als
                         schriftlich verstehen? / Process spoken info much better than written?</strong><br><em>Набагато
-                        краще сприймаєш інформацію на слух ніж письмово?</em></td>
+                        краще сприймаєш інформацію на слух ніж письмово?</em>
+                    <span class="q-note">Wenn jemand es erklärt, verstehst du sofort — beim Lesen dauert es länger / hear it once and you get it — read it and it won’t stick / на слух розумієш одразу — письмово набагато важче</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q13" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -1013,7 +1093,8 @@
                 <td class="q-num">14</td>
                 <td class="q-text"><strong>Buchstaben
                         verwechseln/umkehren? / Confuse similar letters or reverse them?</strong><br><em>Плутаєш схожі
-                        букви або переставляєш їх місцями при написанні?</em></td>
+                        букви або переставляєш їх місцями при написанні?</em>
+                    <span class="q-note">b und d, p und q — leicht zu verwechseln oder umzudrehen / b and d, p and q — easy to flip or mix up / б і д, п і р — плутаєш або дзеркалиш букви</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q14" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -1027,7 +1108,8 @@
                 <td class="q-num">15</td>
                 <td class="q-text"><strong>Wortfindungsschwierigkeiten? / Word-finding difficulties when
                         speaking?</strong><br><em>Труднощі знайти потрібне слово коли говориш, хоч воно є в
-                        голові?</em></td>
+                        голові?</em>
+                    <span class="q-note">Das Wort ist im Kopf, kommt aber nicht heraus wenn du es brauchst / word is in your head but won’t come out when needed / слово є в голові — але не виходить коли треба</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q15" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -1056,7 +1138,8 @@
                 <td class="q-num">16</td>
                 <td class="q-text"><strong>Einfaches Kopfrechnen schwierig? /
                         Hard to calculate even simple sums mentally?</strong><br><em>Важко порахувати у голові навіть
-                        прості суми?</em></td>
+                        прості суми?</em>
+                    <span class="q-note">7 + 8 im Kopf? Fast unmöglich ohne Finger oder Papier / 7 + 8 in your head? Needs fingers or paper / 7 + 8 в голові? Потрібні пальці або папір</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q16" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -1070,7 +1153,8 @@
                 <td class="q-num">17</td>
                 <td class="q-text"><strong>Links/Rechts verwechseln? /
                         Confuse left and right or get disoriented?</strong><br><em>Часто плутаєш ліво і право або
-                        губишся у просторі?</em></td>
+                        губишся у просторі?</em>
+                    <span class="q-note">Links und rechts — immer wieder nachdenken müssen / left and right — always have to think twice / ліво і право — завжди треба думати</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q17" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -1084,7 +1168,8 @@
                 <td class="q-num">18</td>
                 <td class="q-text"><strong>Zeitschätzung sehr
                         schwierig? / Estimating how long tasks take feels impossible?</strong><br><em>Оцінити скільки
-                        часу займе справа — для тебе майже нереально?</em></td>
+                        часу займе справа — для тебе майже нереально?</em>
+                    <span class="q-note">Aufgabe dauert 10 Min.? Du schätzt 1 Min. oder 2 Stunden / task takes 10 min? You guess 1 min or 2 hours / завдання на 10 хв? Оцінюєш  1 хв або 2 години</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q18" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -1097,7 +1182,8 @@
             <tr data-q="19">
                 <td class="q-num">19</td>
                 <td class="q-text"><strong>Rechnungen/Budget/Wechselgeld = Stress? / Bills, budgets, change = constant
-                        stress?</strong><br><em>Рахунки, бюджет, решта в магазині — постійне джерело стресу?</em></td>
+                        stress?</strong><br><em>Рахунки, бюджет, решта в магазині — постійне джерело стресу?</em>
+                    <span class="q-note">Kassenbon prüfen, Wechselgeld zählen — ein echter Stressmoment / checking receipt, counting change — stressful moment / перевірити чек, порахувати решту — стресовий момент</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q19" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -1111,7 +1197,8 @@
                 <td class="q-num">20</td>
                 <td class="q-text"><strong>Zahlen/Daten nicht merken? / Phone numbers, dates hard to
                         memorize?</strong><br><em>Телефонні номери, дати, PIN-коди важко запам'ятати навіть після
-                        повторень?</em></td>
+                        повторень?</em>
+                    <span class="q-note">Telefonnummer, PIN — du lernst sie, aber sie verschwinden / phone number, PIN — memorize it but it disappears / номер телефону, пін — вивчаєш, але він зникає</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q20" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -1131,7 +1218,8 @@
                 <td class="q-num">21</td>
                 <td class="q-text"><strong>Häufig anstoßen/fallen
                         lassen? / Bump into furniture, drop things often?</strong><br><em>Часто вдаряєшся об меблі,
-                        роняєш речі або "не вписуєшся"?</em></td>
+                        роняєш речі або "не вписуєшся"?</em>
+                    <span class="q-note">Türrahmen, Tischkante, Stuhl — du sammelst Beulen / doorframes, table corners — you collect bruises / одвірки, кути столів, стільці — збираєш синці</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q21" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -1146,7 +1234,8 @@
                 <td class="q-text"><strong>Fahrrad/Schuhe/Fahren war viel schwieriger? / Bike, laces, driving much
                         harder than for
                         others?</strong><br><em>Велосипед, шнурки, водіння давались набагато важче ніж
-                        іншим?</em></td>
+                        іншим?</em>
+                    <span class="q-note">Andere lernten es in Stunden — für dich dauerte es Wochen / others learned in hours — it took you weeks / інші навчились за годину — у тебе пішли тижні</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q22" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -1160,7 +1249,8 @@
                 <td class="q-num">23</td>
                 <td class="q-text"><strong>Raum/Tasche trotz Bemühen
                         immer chaotisch? / Room, bag, desk always chaotic despite trying?</strong><br><em>Кімната,
-                        сумка, стіл — завжди хаос, хоч ти і намагаєшся?</em></td>
+                        сумка, стіл — завжди хаос, хоч ти і намагаєшся?</em>
+                    <span class="q-note">Du räumst auf, aber nach einer Stunde ist es wieder Chaos / you tidy up but chaos returns quickly / прибираєш — але через годину знову хаос</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q23" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -1174,7 +1264,8 @@
                 <td class="q-num">24</td>
                 <td class="q-text"><strong>Gleichzeitig reden und schreiben
                         schwierig? / Truly hard to talk and write at the same time?</strong><br><em>Говорити і писати
-                        одночасно — реально складно?</em></td>
+                        одночасно — реально складно?</em>
+                    <span class="q-note">Jemand spricht mit dir während du schreibst — du verlierst beides / someone talks while you write — you lose both / хтось говорить поки пишеш — зтрачаєш і те, і те</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q24" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -1195,7 +1286,8 @@
                 <td class="q-num">25</td>
                 <td class="q-text"><strong>Ständig auf das Schlimmste
                         warten? / Always waiting for things to go wrong?</strong><br><em>Постійно "чекаєш підвоху"
-                        навіть коли все добре?</em></td>
+                        навіть коли все добре?</em>
+                    <span class="q-note">Selbst wenn alles gut läuft — du wartest auf den Haken / even when things are fine — you wait for the catch / навіть коли все добре — чекаєш на підвох</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q25" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -1210,7 +1302,8 @@
                 <td class="q-num">26</td>
                 <td class="q-text"><strong>Abschalten oder Überreaktion in Stress? / Shut down or overreact in stressful
                         situations?</strong><br><em>В стресових ситуаціях "вимикаєшся" або реагуєш набагато сильніше ніж
-                        ситуація?</em></td>
+                        ситуація?</em>
+                    <span class="q-note">In Stress einfrieren oder explodieren — kein Mittelweg / in stress you freeze or explode — no middle ground / в стресі або завмираєш — або вибухаєш, середнього немає</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q26" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -1227,7 +1320,8 @@
                         without
                         obvious cause?</strong><br><em>Тіло реагує фізично на стрес — серце, задуха, заніміння — без
                         явної
-                        причини?</em></td>
+                        причини?</em>
+                    <span class="q-note">Herz rast, Atem stockt — kein sichtbarer Auslöser / heart races, breathing tightens — no visible trigger / серце пришвидшується, важко дихати — без видимої причини</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q27" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -1242,7 +1336,8 @@
                 <td class="q-num">28</td>
                 <td class="q-text"><strong>Bestimmte
                         Themen/Erinnerungen meiden? / Avoid certain topics or memories?</strong><br><em>Є теми або
-                        спогади яких уникаєш — занадто важко навіть думати про них?</em></td>
+                        спогади яких уникаєш — занадто важко навіть думати про них?</em>
+                    <span class="q-note">Bestimmte Orte, Menschen oder Themen — du weichst aus / certain places, people or topics — you avoid them / певні місця, люди чи теми — уникаєш їх</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q28" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -1272,7 +1367,8 @@
                 <td class="q-text"><strong>Sorgen die man nicht stoppen kann? / Worry about uncontrollable things and
                         can't
                         stop?</strong><br><em>Хвилюєшся про речі на які не можеш вплинути — і не можеш просто
-                        "перестати"?</em></td>
+                        "перестати"?</em>
+                    <span class="q-note">Du machst dir Sorgen, die du nicht stoppen kannst / worrying about things you can’t stop / хвилюєшся про речі на які не можеш вплинути — і не можеш зупинитись</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q29" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -1286,7 +1382,8 @@
                 <td class="q-num">30</td>
                 <td class="q-text"><strong>Vor wichtigen Tagen alle Szenarien grübeln? / Run through all possible
                         scenarios before events?</strong><br><em>Перед важливим днем прокручуєш у голові всі можливі
-                        сценарії — особливо вночі?</em></td>
+                        сценарії — особливо вночі?</em>
+                    <span class="q-note">Du bist müde, aber der Kopf hört nicht auf zu denken / tired but your head won’t stop spinning / втомлений — але голова не зупиняється</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q30" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -1302,7 +1399,8 @@
                         you must be
                         doing something?</strong><br><em>Важко розслабитись і "просто бути" — відчуваєш що постійно
                         треба щось
-                        робити?</em></td>
+                        робити?</em>
+                    <span class="q-note">Anspannung — Schultern, Kiefer, Bauch — ohne erkennbaren Grund / tension in body — shoulders, jaw, stomach — for no reason / напруга — плечі, щелепа, живіт — без причини</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q31" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -1317,7 +1415,8 @@
                 <td class="q-text"><strong>Situationen
                         meiden wegen Erwartungsangst? / Avoid situations/people anticipating bad
                         outcomes?</strong><br><em>Уникаєш певних ситуацій або людей бо передбачаєш що буде погано?</em>
-                </td>
+                
+                    <span class="q-note">Eine E-Mail schreiben, anrufen — fühlt sich riesig an / writing an email, making a call — feels huge / написати листа, зателефонувати — відчувається як щось велетне</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q32" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -1337,7 +1436,8 @@
                 <td class="q-num">33</td>
                 <td class="q-text"><strong>Unerwünschte
                         Gedanken die immer wiederkehren? / Unwanted thoughts that keep returning?</strong><br><em>Думки
-                        яких не хочеш — повертаються знову і знову, не можеш позбутись?</em></td>
+                        яких не хочеш — повертаються знову і знову, не можеш позбутись?</em>
+                    <span class="q-note">Du musst die Tür prüfen, die Hand waschen — oder das Gefühl bleibt / must check, wash, repeat — or the feeling won’t leave / треба перевірити, помити — інакше відчуття не відпускає</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q33" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -1352,7 +1452,8 @@
                 <td class="q-text"><strong>Mehrfach prüfen und trotzdem unsicher? / Check things multiple times but
                         still
                         uncertain?</strong><br><em>Перевіряєш кілька разів: двері, плита, пристрій — і все одно не
-                        впевнений?</em></td>
+                        впевнений?</em>
+                    <span class="q-note">Derselbe Gedanke dreht sich immer wieder — du kannst ihn nicht stoppen / same thought loops again and again / одна і та ж думка крутиться по колу — не можеш зупинити</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q34" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -1367,7 +1468,8 @@
                 <td class="q-text"><strong>Innerer Zwang Dinge auf bestimmte Weise zu tun? / Internal pressure to do
                         things a certain
                         way?</strong><br><em>Внутрішній тиск робити речі певним чином — інакше відчуття що "щось не
-                        так"?</em></td>
+                        так"?</em>
+                    <span class="q-note">Du hast es dreimal geprüft — du prüfst es ein viertes Mal / checked 3 times — you check a 4th / перевірив тричі — перевіряєш четвертий</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q35" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -1383,7 +1485,8 @@
                         preventing bad
                         things, even illogically?</strong><br><em>Відчуваєш відповідальність за те щоб нічого поганого
                         не трапилось — навіть
-                        нелогічно?</em></td>
+                        нелогічно?</em>
+                    <span class="q-note">Ein schiefer Rahmen, ein falscher Ton — echter körperlicher Stress / a crooked frame, odd sound — physical discomfort / крива лінія, неправильний звук — фізичний дискомфорт</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q36" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -1404,7 +1507,8 @@
                 <td class="q-text"><strong>Menschenmassen/Lärm/Licht körperlich erschöpfend? / Crowds, noise or bright
                         lights
                         physically exhausting?</strong><br><em>Місця з людьми, звуками або яскравим світлом виснажують
-                        фізично?</em></td>
+                        фізично?</em>
+                    <span class="q-note">Synthetik, Etiketten, grobe Stoffe — unerträglich am Körper / synthetic fabrics, tags — unbearable on skin / синтетика, ярлики, груба тканина — нестерпно на шкірі</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q37" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -1419,7 +1523,8 @@
                 <td class="q-text"><strong>Kleidung/Nähte
                         = echte Qual, kein Unbehagen? / Certain clothing or seams = genuine
                         torture?</strong><br><em>Певний одяг, швів або тканина — це тортура а не просто дискомфорт?</em>
-                </td>
+                
+                    <span class="q-note">Volle U-Bahn, lautes Café — du verlässt es ausgelaugt / busy subway, loud café — you leave exhausted / переповнене метро, гучне кафе — виходиш виснаженим</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q38" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -1434,7 +1539,8 @@
                 <td class="q-text"><strong>Hunger/Kälte/Schmerz erst spät merken? / Not notice hunger, cold or pain
                         until it's
                         severe?</strong><br><em>Не помічаєш що голодний, холодний або хворий — поки це не стає
-                        гостро?</em></td>
+                        гостро?</em>
+                    <span class="q-note">Hunger, Kälte, Schmerz — du merkst es erst wenn es extrem wird / hunger, cold, pain — notice only when extreme / голод, холод, біль — помічаєш лише коли вже крайнє</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q39" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -1450,7 +1556,8 @@
                         triggers
                         strong physical reaction?</strong><br><em>Несподіваний дотик або гучний звук викликають сильну
                         фізичну реакцію — страх,
-                        серцебиття?</em></td>
+                        серцебиття?</em>
+                    <span class="q-note">Jemand tippt dir auf die Schulter — dein Körper reagiert wie auf Gefahr / someone taps your shoulder — body reacts like it’s danger / хтось торкнувся плеча — тіло реагує як на загрозу</span></td>
                 <td class="a-col">
                     <div class="radio-group"><label class="radio-label"><input type="radio" name="q40" value="3"><span
                                 class="radio-box"></span><span>Nein / No / Ні</span></label><label
@@ -1473,46 +1580,49 @@
         </div>
 
         <!-- Results panel (moved from page 1) -->
-        <div id="resultsPanel" style="padding: 15px; border: 2px dashed #999;">
+                <div id="resultsPanel">
             <div id="resultsContent">
-                <div
-                    style="font-size:10pt;font-weight:800;color:#fff;background:var(--gradient);padding:8px;border-radius:4px;margin-bottom:10px;text-align:center">
-                    📊 Dein Profil / Your Profile / Твій профіль</div>
-                <div id="printTime" class="print-only"
-                    style="font-size:6.5pt;color:#888;text-align:center;margin-bottom:5px"></div>
-
+                <div class="results-header">📊 Dein Profil / Your Profile / Твій профіль</div>
+                <div id="printTime" class="print-only print-time"></div>
+                
                 <div class="bars" id="barsGrid" style="display:none"></div>
-
-                <div id="manualCalcGrid" style="margin-top: 5px; margin-bottom: 12px;">
-                    <div style="font-size: 8pt; font-weight:700; margin-bottom: 4px; color: var(--navy);">
-                        ✍️ Auswertung (Nur für Papierausdruck) / Scoring (Paper version only) / Підрахунок (для
-                        паперового тесту):
+                
+                <div id="manualCalcGrid" class="manual-calc-grid">
+                    <div class="manual-title">
+                        ✍️ Auswertung (Nur für Papierausdruck) / Scoring (Paper version only) / Підрахунок (для паперового тесту):
                     </div>
-                    <div style="font-size: 7.5pt; color: var(--dgrey); margin-bottom: 8px; line-height: 1.4;">
-                        Zähle die Punkte für jede Gruppe: <strong>Nein = 1, Manchmal = 2, Ja = 3.</strong> Teile die
-                        Summe durch die Max-Menge, um die % zu erhalten.<br>
-                        <em>Count points for each group: No = 1, Sometimes = 2, Yes = 3. Divide by max to get
-                            %.</em><br>
-                        Порахуйте бали для кожної групи: <strong>Ні = 1, Іноді = 2, Так = 3.</strong> Розділіть суму
-                        на максимум щоб отримати %.
+                    <div class="manual-desc">
+                        Zähle die Punkte für jede Gruppe: <strong>Nein = 1, Manchmal = 2, Ja = 3.</strong><br>
+                        <em>Count points for each group: No = 1, Sometimes = 2, Yes = 3.</em><br>
+                        Порахуйте бали для кожної групи: <strong>Ні = 1, Іноді = 2, Так = 3.</strong>
                     </div>
-                    <table style="width:100%; font-size: 7.5pt; border-collapse: collapse; margin-bottom: 8px;">
-                        <tr style="border-bottom: 1px solid #ccc; font-weight: bold; background: #eee;">
-                            <td style="padding: 4px;">Kategorie / Category</td>
-                            <td style="padding: 4px; text-align: center;">Fragen</td>
-                            <td style="padding: 4px; text-align: center;">Punkte / Points</td>
-                            <td style="padding: 4px; text-align: center;">Ergebnis / %</td>
-                        </tr>
-                        <!-- We will inject rows here via JS on DOMContentLoaded -->
+                    
+                    <table class="manual-table">
+                        <thead>
+                            <tr>
+                                <td>Kategorie / Category</td>
+                                <td style="text-align: center;">Punkte / Points</td>
+                                <td style="text-align: center;">Schlüssel / Key / Шкала</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td style="border-left: 3px solid var(--c-adhd);">Aufmerksamkeits-Defizit / ADHD / СДУГ (1–5)</td><td class="tc">____ / 15</td><td class="tc key-col">🔴&gt;11 &nbsp; 🟡9‒11 &nbsp; 🟢&lt;9</td></tr>
+                            <tr><td style="border-left: 3px solid var(--c-asd);">Autismus / ASD / Аутизм (6–10)</td><td class="tc">____ / 15</td><td class="tc key-col">🔴&gt;11 &nbsp; 🟡9‒11 &nbsp; 🟢&lt;9</td></tr>
+                            <tr><td style="border-left: 3px solid var(--c-dys);">Dyslexie / Dyslexia / Дислексія (11–15)</td><td class="tc">____ / 15</td><td class="tc key-col">🔴&gt;11 &nbsp; 🟡9‒11 &nbsp; 🟢&lt;9</td></tr>
+                            <tr><td style="border-left: 3px solid var(--c-disc);">Dyskalkulie / Dyscalculia / Дискалькулія (16–20)</td><td class="tc">____ / 15</td><td class="tc key-col">🔴&gt;11 &nbsp; 🟡9‒11 &nbsp; 🟢&lt;9</td></tr>
+                            <tr><td style="border-left: 3px solid var(--c-dcd);">Dyspraxie / Dyspraxia / Диспраксія (21–24)</td><td class="tc">____ / 12</td><td class="tc key-col">🔴&gt;9 &nbsp; 🟡7‒9 &nbsp; 🟢&lt;7</td></tr>
+                            <tr><td style="border-left: 3px solid var(--c-ptsd);">Trauma / C-PTSD / Травmа (25–28)</td><td class="tc">____ / 12</td><td class="tc key-col">🔴&gt;9 &nbsp; 🟡7‒9 &nbsp; 🟢&lt;7</td></tr>
+                            <tr><td style="border-left: 3px solid var(--c-anx);">Angststörung / Anxiety / Тривожність (29–32)</td><td class="tc">____ / 12</td><td class="tc key-col">🔴&gt;9 &nbsp; 🟡7‒9 &nbsp; 🟢&lt;7</td></tr>
+                            <tr><td style="border-left: 3px solid var(--c-ocd);">Zwangsstörung / OCD / ОКР (33–36)</td><td class="tc">____ / 12</td><td class="tc key-col">🔴&gt;9 &nbsp; 🟡7‒9 &nbsp; 🟢&lt;7</td></tr>
+                            <tr><td style="border-left: 3px solid var(--c-sen);">Sensorik / Sensory / Сенсорна (37–40)</td><td class="tc">____ / 12</td><td class="tc key-col">🔴&gt;9 &nbsp; 🟡7‒9 &nbsp; 🟢&lt;7</td></tr>
+                        </tbody>
                     </table>
-                </div>
-
-                <div
-                    style="font-size:7.5pt;font-weight:700;color:var(--navy);margin-top:10px;text-align:center;padding:8px;background:var(--lgrey);border-radius:4px;">
-                    🔴 &gt; 70% = Starke Hinweise (zum Arzt gehen) / Strong signs (discuss with doctor) / Сильні ознаки
-                    (варто йти до фахівця)<br>
-                    🟡 40–70% = Hinweise vorhanden / Signs present / Є ознаки (продовжуйте спостерігати)<br>
-                    🟢 &lt; 40% = Geringe Wahrscheinlichkeit / Low likelihood / Низька ймовірність
+                    
+                    <div class="manual-legend">
+                        🔴 Starke Hinweise (zum Arzt) / Strong signs (see doctor) / Сильні ознаки (варто йти до лікаря)<br>
+                        🟡 Hinweise vorhanden / Signs present / Є ознаки (продовжуйте спостерігати)<br>
+                        🟢 Geringe Wahrscheinlichkeit / Low likelihood / Низька ймовірність
+                    </div>
                 </div>
             </div>
         </div>
@@ -1659,20 +1769,7 @@
             { id: 'sen', label: 'Sensorik / Sensory / Сенсорна', qs: [37, 38, 39, 40], color: 'var(--c-sen)' },
         ];
 
-        window.addEventListener('DOMContentLoaded', () => {
-            const table = document.querySelector('#manualCalcGrid table');
-            if (table) {
-                PROFILES.forEach(p => {
-                    const row = document.createElement('tr');
-                    row.style.borderBottom = '1px solid #eee';
-                    row.innerHTML = `
-                        <td style="padding: 4px; border-left: 3px solid ${p.color};">${p.label}</td>
-                        <td style="padding: 4px; text-align: center;">Q${p.qs[0]}-${p.qs[p.qs.length - 1]}</td>
-                        <td style="padding: 4px; text-align: center;">_____ / ${p.qs.length * 3}</td>
-                        <td style="padding: 4px; text-align: center;">_____%</td>
-                    `;
-                    table.appendChild(row);
-                });
+        // Removed dynamic table generation.
             }
         });
 
@@ -1689,10 +1786,16 @@
             return n;
         }
 
-        function levelClass(pct) {
-            if (pct >= 0.7) return 'high';
-            if (pct >= 0.4) return 'mid';
-            return 'low';
+        function levelClassAndLabel(score, qsLength) {
+            if (qsLength >= 5) {
+                if (score >= 12) return { cls: 'high', label: '🔴 Hoch / Сильно' };
+                if (score >= 9) return { cls: 'mid', label: '🟡 Mittel / Середньо' };
+                return { cls: 'low', label: '🟢 Niedrig / Низько' };
+            } else {
+                if (score >= 10) return { cls: 'high', label: '🔴 Hoch / Сильно' };
+                if (score >= 7) return { cls: 'mid', label: '🟡 Mittel / Середньо' };
+                return { cls: 'low', label: '🟢 Niedrig / Низько' };
+            }
         }
 
         function updateResults() {
@@ -1732,14 +1835,13 @@
             grid.innerHTML = '';
             PROFILES.forEach(p => {
                 const score = getScore(p.qs);
-                const max = p.qs.length * 3;
-                const pct = score / max;
-                const cls = levelClass(pct);
-                const pctLabel = Math.round(pct * 100) + '%';
+                const res = levelClassAndLabel(score, p.qs.length);
+                const widthPct = Math.round((score / (p.qs.length * 3)) * 100) + '%';
+                
                 grid.innerHTML += `
                     <div class="bar-row">
-                        <div class="bar-label"><span>${p.label}</span><span>${pctLabel}</span></div>
-                        <div class="bar-track"><div class="bar-fill ${cls}" style="width:${pctLabel};background:${p.color}"></div></div>
+                        <div class="bar-label"><span>${p.label}</span><span style="font-weight:600; font-size:6.5pt">${res.label}</span></div>
+                        <div class="bar-track"><div class="bar-fill ${res.cls}" style="width:${widthPct};background:${p.color}"></div></div>
                     </div>`;
             });
         }
@@ -1753,21 +1855,7 @@
             if (el) el.textContent = '📅 Gedruckt / Printed / Надруковано: ' + ts;
         });
 
-        // Update all radio labels to trilingual
-        const LABELS = {
-            '1': 'Nein / No / Ні',
-            '2': 'Manchmal / Sometimes / Іноді',
-            '3': 'Ja / Yes / Так'
-        };
-        document.querySelectorAll('.radio-label').forEach(label => {
-            const input = label.querySelector('input[type=radio]');
-            const span = label.querySelector('span:not(.radio-box)');
-            if (input && span) {
-                span.innerHTML = LABELS[input.value] || span.innerHTML;
-                span.style.display = 'block';
-                span.style.marginBottom = '2px';
-            }
-        });
+        // Removed dynamic DOM replacement for radio labels.
 
         // DOM reorder: move UA text (em) to the end in each q-text cell if not already
         document.querySelectorAll('.q-text').forEach(td => {
@@ -1780,59 +1868,7 @@
         });
 
         // Inject trilingual notes into all question rows (DE / EN / UA)
-        const NOTES = {
-            q1: 'Projekte, Kurse, Ideen — Begeisterung da, Abschluss selten / projects, courses, ideas — enthusiasm yes, completion rarely / проекти, курси, ідеї — ентузіазм є, фінал рідко',
-            q2: 'Egal wie sehr du es versuchst, du kommst trotzdem zu spät / even with genuine effort you still end up late / навіть коли дуже намагаєшся — все одно запізнюєшся',
-            q3: 'Die Aufgabe ist wichtig, aber der Körper startet einfach nicht / you know it matters but still cannot begin / знаєш що важливо — але тіло просто не рухається',
-            q4: 'In etwas Interessantes vertieft — Stunden vergehen wie Minuten / immersed in something — hours vanish without notice / занурюєшся в цікаве і час зникає',
-            q5: 'Zuerst tun/reden, dann denken — und dann bereuen / act first, think later — and regret it / спочатку робиш або кажеш — потім шкодуєш',
-            q6: 'Man sagt „alles gut“ und meint eigentlich „ich bin sauer“ / they say „fine“ but mean the opposite / кажуть „добре“ — а мають на увазі інше',
-            q7: 'Ein bestimmter Stoff — wie echter Körperschmerz, nicht nur lästig / a fabric or sound — not annoying, genuinely painful / певна тканина або звук — не просто неприємно, а фізично боляче',
-            q8: 'Nach dem Treffen erschöpft, obwohl es schön war / had fun but still feel drained after / все було добре — але після хочеться лягти і нікого не бачити',
-            q9: 'Du kennst ein Thema in und auswendig und redest stundenlang darüber / one topic you know inside out and could talk about endlessly / одна тема — знаєш все і можеш говорити годинами',
-            q10: 'Jemand ändert den Plan kurzfristig — das fühlt sich wirklich schlimm an / sudden plan change — genuinely distressing, not just inconvenient / плани змінились — це не просто незручно, це реально важко',
-            q11: 'Zeilen springen herum, du verlierst den Faden beim Lesen / lines seem to jump — hard to keep track of where you are / рядки ніби стрибують — важко відстежити де читав',
-            q12: 'Wörter da, Bedeutung weg — mehrmals durchlesen bis es klar wird / words are there but meaning won’t form — need to re-read / слова є — але зміст не складається, перечитуєш кілька разів',
-            q13: 'Wenn jemand es erklärt, verstehst du sofort — beim Lesen dauert es länger / hear it once and you get it — read it and it won’t stick / на слух розумієш одразу — письмово набагато важче',
-            q14: 'b und d, p und q — leicht zu verwechseln oder umzudrehen / b and d, p and q — easy to flip or mix up / б і д, п і р — плутаєш або дзеркалиш букви',
-            q15: 'Das Wort ist im Kopf, kommt aber nicht heraus wenn du es brauchst / word is in your head but won’t come out when needed / слово є в голові — але не виходить коли треба',
-            q16: '7 + 8 im Kopf? Fast unmöglich ohne Finger oder Papier / 7 + 8 in your head? Needs fingers or paper / 7 + 8 в голові? Потрібні пальці або папір',
-            q17: 'Links und rechts — immer wieder nachdenken müssen / left and right — always have to think twice / ліво і право — завжди треба думати',
-            q18: 'Aufgabe dauert 10 Min.? Du schätzt 1 Min. oder 2 Stunden / task takes 10 min? You guess 1 min or 2 hours / завдання на 10 хв? Оцінюєш  1 хв або 2 години',
-            q19: 'Kassenbon prüfen, Wechselgeld zählen — ein echter Stressmoment / checking receipt, counting change — stressful moment / перевірити чек, порахувати решту — стресовий момент',
-            q20: 'Telefonnummer, PIN — du lernst sie, aber sie verschwinden / phone number, PIN — memorize it but it disappears / номер телефону, пін — вивчаєш, але він зникає',
-            q21: 'Türrahmen, Tischkante, Stuhl — du sammelst Beulen / doorframes, table corners — you collect bruises / одвірки, кути столів, стільці — збираєш синці',
-            q22: 'Andere lernten es in Stunden — für dich dauerte es Wochen / others learned in hours — it took you weeks / інші навчились за годину — у тебе пішли тижні',
-            q23: 'Du räumst auf, aber nach einer Stunde ist es wieder Chaos / you tidy up but chaos returns quickly / прибираєш — але через годину знову хаос',
-            q24: 'Jemand spricht mit dir während du schreibst — du verlierst beides / someone talks while you write — you lose both / хтось говорить поки пишеш — зтрачаєш і те, і те',
-            q25: 'Selbst wenn alles gut läuft — du wartest auf den Haken / even when things are fine — you wait for the catch / навіть коли все добре — чекаєш на підвох',
-            q26: 'In Stress einfrieren oder explodieren — kein Mittelweg / in stress you freeze or explode — no middle ground / в стресі або завмираєш — або вибухаєш, середнього немає',
-            q27: 'Herz rast, Atem stockt — kein sichtbarer Auslöser / heart races, breathing tightens — no visible trigger / серце пришвидшується, важко дихати — без видимої причини',
-            q28: 'Bestimmte Orte, Menschen oder Themen — du weichst aus / certain places, people or topics — you avoid them / певні місця, люди чи теми — уникаєш їх',
-            q29: 'Du machst dir Sorgen, die du nicht stoppen kannst / worrying about things you can’t stop / хвилюєшся про речі на які не можеш вплинути — і не можеш зупинитись',
-            q30: 'Du bist müde, aber der Kopf hört nicht auf zu denken / tired but your head won’t stop spinning / втомлений — але голова не зупиняється',
-            q31: 'Anspannung — Schultern, Kiefer, Bauch — ohne erkennbaren Grund / tension in body — shoulders, jaw, stomach — for no reason / напруга — плечі, щелепа, живіт — без причини',
-            q32: 'Eine E-Mail schreiben, anrufen — fühlt sich riesig an / writing an email, making a call — feels huge / написати листа, зателефонувати — відчувається як щось велетне',
-            q33: 'Du musst die Tür prüfen, die Hand waschen — oder das Gefühl bleibt / must check, wash, repeat — or the feeling won’t leave / треба перевірити, помити — інакше відчуття не відпускає',
-            q34: 'Derselbe Gedanke dreht sich immer wieder — du kannst ihn nicht stoppen / same thought loops again and again / одна і та ж думка крутиться по колу — не можеш зупинити',
-            q35: 'Du hast es dreimal geprüft — du prüfst es ein viertes Mal / checked 3 times — you check a 4th / перевірив тричі — перевіряєш четвертий',
-            q36: 'Ein schiefer Rahmen, ein falscher Ton — echter körperlicher Stress / a crooked frame, odd sound — physical discomfort / крива лінія, неправильний звук — фізичний дискомфорт',
-            q37: 'Synthetik, Etiketten, grobe Stoffe — unerträglich am Körper / synthetic fabrics, tags — unbearable on skin / синтетика, ярлики, груба тканина — нестерпно на шкірі',
-            q38: 'Volle U-Bahn, lautes Café — du verlässt es ausgelaugt / busy subway, loud café — you leave exhausted / переповнене метро, гучне кафе — виходиш виснаженим',
-            q39: 'Hunger, Kälte, Schmerz — du merkst es erst wenn es extrem wird / hunger, cold, pain — notice only when extreme / голод, холод, біль — помічаєш лише коли вже крайнє',
-            q40: 'Jemand tippt dir auf die Schulter — dein Körper reagiert wie auf Gefahr / someone taps your shoulder — body reacts like it’s danger / хтось торкнувся плеча — тіло реагує як на загрозу'
-        };
-        Object.entries(NOTES).forEach(([name, note]) => {
-            const input = document.querySelector(`input[name="${name}"]`);
-            if (!input) return;
-            const qtext = input.closest('tr')?.querySelector('.q-text');
-            if (qtext) {
-                const s = document.createElement('span');
-                s.className = 'q-note';
-                s.textContent = note;
-                qtext.appendChild(s);
-            }
-        });
+        // Removed dynamic NOTES injection.
     </script>
 </body>
 
