@@ -1,0 +1,2042 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Infinity Braves — Широкий скринінг нейровідмінності (UA)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cyan: #00aeef;
+            --magenta: #ec008c;
+            --orange: #f6921e;
+            --purple: #635e96;
+            --gradient: linear-gradient(135deg, #00aeef, #635e96, #ec008c);
+            --navy: #1a2b3c;
+            --teal: #00d2ff;
+            --bg: #fdfdfd;
+            --dgrey: #333333;
+            --white: #ffffff;
+            --lgrey: #f5f7fa;
+
+            /* Profile specific mapped to logo */
+            --c-adhd: var(--cyan);
+            --c-asd: var(--purple);
+            --c-dys: #8a73b3;
+            --c-disc: var(--orange);
+            --c-dcd: #f26522;
+            --c-ptsd: var(--magenta);
+            --c-anx: #008ebf;
+            --c-ocd: #4d4d4d;
+            --c-sen: #ed1c24
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Outfit', 'Segoe UI', Arial, sans-serif
+        }
+
+        body {
+            background: #eef2f5;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px
+        }
+
+        .page {
+            background: var(--white);
+            width: 210mm;
+            min-height: 297mm;
+            padding: 8mm 10mm;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, .08);
+            position: relative;
+            border-radius: 4px
+        }
+
+        /* Header */
+        .p-header {
+            background: #ffffff;
+            color: var(--navy);
+            text-align: center;
+            padding: 10px 14px;
+            border-radius: 4px 4px 0 0;
+            margin: -8mm -10mm 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            border-bottom: 2px solid var(--lgrey)
+        }
+
+        .p-header h1 {
+            font-size: 18pt;
+            font-weight: 900;
+            letter-spacing: 1px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            margin: 0
+        }
+
+        .p-header .sub {
+            font-size: 8pt;
+            opacity: .8;
+            margin-top: 3px
+        }
+
+        .p-header .langs {
+            font-size: 7.5pt;
+            opacity: .7;
+            margin-top: 2px
+        }
+
+        /* Section headers */
+        .section-hdr {
+            display: flex;
+            align-items: center;
+            background: var(--gradient);
+            color: #ffffff;
+            padding: 10px 14px;
+            font-size: 13pt;
+            font-weight: 800;
+            margin-top: 12px;
+            border-radius: 4px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            border-left: 5px solid rgba(0, 0, 0, 0.1)
+        }
+
+        /* Question table */
+        .q-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11pt;
+            margin-bottom: 8px
+        }
+
+        .q-table tr {
+            border-bottom: 1px solid #e8e8e8;
+            page-break-inside: avoid
+        }
+
+        .q-table tr:last-child {
+            border-bottom: none
+        }
+
+        .q-table td {
+            padding: 8px 8px;
+            vertical-align: top
+        }
+
+        .q-num {
+            width: 20px;
+            color: var(--dgrey);
+            font-weight: 700;
+            white-space: nowrap
+        }
+
+        .q-text {
+            line-height: 1.6; font-size: 11.5pt;
+        }
+
+        .q-text em {
+            font-size: 7pt;
+            color: var(--dgrey);
+            font-style: normal;
+            display: block;
+            margin-top: 0
+        }
+
+        .print-only {
+            display: none
+        }
+
+        .q-note {
+            font-size: 8pt;
+            color: #888;
+            font-style: italic;
+            display: block;
+            margin-top: 1px
+        }
+
+        .a-col {
+            width: 300px;
+            min-width: 300px;
+            padding-left: 10px !important
+        }
+
+        .radio-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 4px;
+            align-items: end
+        }
+
+        .radio-label {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            text-align: center;
+            gap: 4px;
+            cursor: pointer;
+            font-size: 9pt;
+            line-height: 1.4;
+            color: var(--dgrey);
+            font-weight: 400
+        }
+
+        .radio-box {
+            width: 12px;
+            height: 12px;
+            border: 1.5px solid #aaa;
+            border-radius: 2px;
+            display: inline-block;
+            flex-shrink: 0;
+            background: #fff;
+            position: relative
+        }
+
+        .radio-label span:not(.radio-box) {
+            display: block;
+            margin-bottom: 2px
+        }
+
+        .radio-label input {
+            display: none
+        }
+
+        .radio-label input:checked~.radio-box {
+            background: var(--navy);
+            border-color: var(--navy)
+        }
+
+        .radio-label input:checked~.radio-box::after {
+            content: '✓';
+            position: absolute;
+            top: -1px;
+            left: 1px;
+            font-size: 8px;
+            color: #fff
+        }
+
+        /* Results */
+
+        /* Results Styles - Cleaned */
+        #resultsPanel {
+            background: var(--lgrey);
+            border: 2px dashed #999;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 8px 0;
+            min-height: 60px;
+        }
+
+        .results-header {
+            font-size: 10pt;
+            font-weight: 800;
+            color: #fff;
+            background: var(--gradient);
+            padding: 8px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .print-time {
+            font-size: 6.5pt;
+            color: #888;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .manual-calc-grid {
+            margin-top: 5px;
+            margin-bottom: 12px;
+        }
+
+        .manual-calc-grid .manual-title {
+            font-size: 8pt;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--navy);
+        }
+
+        .manual-calc-grid .manual-desc {
+            font-size: 7.5pt;
+            color: var(--dgrey);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .manual-table {
+            width: 100%;
+            font-size: 7.5pt;
+            border-collapse: collapse;
+            margin-bottom: 8px;
+        }
+
+        .manual-table thead tr {
+            border-bottom: 1px solid #ccc;
+            font-weight: bold;
+            background: #eee;
+        }
+
+        .manual-table td {
+            padding: 4px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .manual-table .tc {
+            text-align: center;
+        }
+
+        .manual-table .key-col {
+            font-size: 6pt;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .manual-legend {
+            font-size: 7pt;
+            font-weight: 700;
+            color: var(--navy);
+            margin-top: 6px;
+            text-align: center;
+            padding: 6px;
+            background: #e8e8f0;
+            border-radius: 4px;
+        }
+
+        @media print {
+            #resultsPanel {
+                padding: 8px;
+                border-color: var(--navy);
+                background: #fdfdfd;
+            }
+        }
+
+        #resultsPanel::before {
+            content: '📊 Результати з\'являться після заповнення всіх питань / Results appear after completing all questions';
+            display: block;
+            text-align: center;
+            color: #aaa;
+            font-size: 7.5pt;
+            padding: 10px 0
+        }
+
+        #resultsPanel.visible::before {
+            display: none
+        }
+
+        .bars {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px 12px
+        }
+
+        .bar-row {
+            font-size: 7pt
+        }
+
+        .bar-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2px;
+            font-weight: 700
+        }
+
+        .bar-track {
+            background: #e0e0e0;
+            border-radius: 3px;
+            height: 8px;
+            overflow: hidden
+        }
+
+        .bar-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width .4s
+        }
+
+        .bar-fill.high {
+            background: var(--red)
+        }
+
+        .bar-fill.mid {
+            background: var(--accent)
+        }
+
+        .bar-fill.low {
+            background: #4caf50
+        }
+
+        /* Warning */
+        .warn {
+            background: #fff;
+            color: var(--red);
+            border: 1px solid var(--red);
+            text-align: center;
+            padding: 4px 8px;
+            font-size: 7.5pt;
+            font-weight: 800;
+            margin: 6px 0
+        }
+
+        /* Rights */
+        .rights-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin: 8px 0
+        }
+
+        .rights-card {
+            background: var(--lgrey);
+            border-radius: 4px;
+            padding: 8px 10px;
+            border-left: 3px solid var(--teal)
+        }
+
+        .rights-card h4 {
+            font-size: 8pt;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 4px
+        }
+
+        .rights-card ul {
+            list-style: none;
+            padding: 0
+        }
+
+        .rights-card li {
+            font-size: 7pt;
+            color: var(--dgrey);
+            padding: 1px 0;
+            line-height: 1.4
+        }
+
+        .rights-card li::before {
+            content: '→ ';
+            color: var(--teal);
+            font-weight: 700
+        }
+
+        /* Contact */
+        .contact {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--gradient);
+            color: #fff;
+            border-radius: 4px;
+            padding: 8px 12px;
+            margin-top: 8px
+        }
+
+        .contact a {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 9pt;
+            text-decoration: none
+        }
+
+        .contact .langs-sm {
+            font-size: 6.5pt;
+            opacity: .7;
+            margin-top: 2px
+        }
+
+        #qr-code-img {
+            display: inline-block;
+            background: #fff;
+            padding: 2px;
+            border-radius: 4px;
+            width: 64px;
+            height: 64px;
+            flex-shrink: 0;
+            object-fit: contain;
+        }
+
+        @page {
+            size: A4;
+            margin: 0.2in 0.25in;
+        }
+
+        @media print {
+            .a-col {
+                width: 35% !important;
+                min-width: 170px !important;
+                padding-left: 5px !important;
+            }
+
+            .radio-group {
+                gap: 2px !important;
+            }
+
+            body {
+                display: block !important;
+                background: none;
+                padding: 0;
+                font-size: 11.0pt;
+            }
+
+
+
+
+            .page {
+                box-shadow: none;
+                width: 100%;
+                min-height: auto !important;
+                height: auto !important;
+                padding: 0;
+                page-break-after: auto;
+                break-inside: auto;
+                margin: 0;
+                display: block !important;
+            }
+
+            #page1,
+            #page1b,
+            #page1c,
+            #page2 {
+                position: relative;
+                float: none !important;
+            }
+
+            #page1b,
+            #page1c,
+            #page2 {
+                page-break-before: always !important;
+                break-before: page !important;
+            }
+
+
+
+
+            .p-header {
+                margin: -2mm -2mm 1px;
+                padding: 3px 6px;
+                border-bottom: 1px solid #eee;
+            }
+
+            .p-header img {
+                height: 20px !important;
+                width: auto !important;
+            }
+
+            .p-header .langs {
+                font-size: 6.5pt;
+                margin-top: 0px;
+            }
+
+            .section-hdr {
+                font-size: 9.5pt;
+                padding: 3px 6px;
+                margin-top: 2px;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                color: #ffffff !important
+            }
+
+            .q-table {
+                font-size: 9pt;
+                line-height: 1.1;
+                margin-bottom: 0px
+            }
+
+            .q-table td {
+                padding: 1.5px 0 !important;
+            }
+
+            .q-table tr {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            .rights-grid {
+                gap: 4px;
+                margin: 2px 0;
+                page-break-inside: avoid;
+            }
+
+            .rights-card {
+                padding: 4px 6px;
+                page-break-inside: avoid;
+            }
+
+            .rights-card h4 {
+                font-size: 8pt;
+                margin-bottom: 1px;
+            }
+
+            .rights-card li {
+                font-size: 7.5pt;
+                line-height: 1.15;
+            }
+
+            .contact {
+                margin-top: 1px;
+                padding: 3px 6px;
+                background: var(--gradient) !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            .contact a {
+                font-size: 7.5pt;
+            }
+
+            /* Print-Specific Result Styles */
+            #resultsPanel {
+                padding: 4px;
+                border-color: var(--navy);
+                background: #fdfdfd;
+                margin-top: 2px;
+            }
+
+            #resultsPanel::before {
+                display: none !important;
+            }
+
+            .warn {
+                margin: 2px 0 !important;
+                padding: 2px 4px !important;
+            }
+
+            .q-text em {
+                font-size: 7.5pt;
+                line-height: 1.05;
+                color: var(--dgrey);
+            }
+
+            .q-note {
+                font-size: 6.5pt;
+                line-height: 1.05;
+            }
+
+            .radio-label {
+                font-size: 6.5pt;
+                line-height: 1.05;
+            }
+
+            .page:last-of-type {
+                page-break-after: avoid;
+                break-after: avoid
+            }
+
+            .no-print {
+                display: none !important
+            }
+
+            .print-only {
+                display: block !important
+            }
+
+            .validation-banner {
+                display: none !important
+            }
+
+            /* Force results display in print if filled */
+            #resultsPanel.visible {
+                display: block !important;
+                position: static !important;
+                left: auto !important;
+                width: 100% !important
+            }
+
+            #resultsContent {
+                display: block !important
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important
+            }
+        }
+
+
+        .print-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--teal);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 10pt;
+            font-weight: 700;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .3);
+            z-index: 100
+        }
+
+        .validation-banner {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            color: #856404;
+            text-align: center;
+            padding: 4px 8px;
+            font-size: 7pt;
+            font-weight: 600;
+            border-radius: 3px;
+            margin: 4px 0;
+            display: none
+        }
+
+        .validation-banner.show {
+            display: block
+        }
+
+        /* Mobile specific styling */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 8px;
+                font-size: 14px;
+                background: #eef2f5;
+            }
+
+            .page {
+                width: 100%;
+                min-height: auto;
+                padding: 16px;
+                margin: 0;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            }
+
+            .p-header {
+                margin: -16px -16px 16px;
+                padding: 12px;
+                border-radius: 4px 4px 0 0;
+            }
+
+            .p-header h1 {
+                font-size: 24px;
+            }
+
+            .p-header .sub {
+                font-size: 11px;
+            }
+
+            .p-header .langs {
+                font-size: 10px;
+            }
+
+            .section-hdr {
+                font-size: 15px;
+                padding: 10px 14px;
+                margin-top: 20px;
+            }
+
+            /* Convert table to block for mobile */
+            .q-table,
+            .q-table tbody,
+            .q-table tr,
+            .q-table td {
+                display: block;
+                width: 100%;
+            }
+
+            .q-table tr {
+                margin-bottom: 24px;
+                padding-bottom: 16px;
+                border-bottom: 1px solid #e0e0e0;
+                position: relative;
+            }
+
+            .q-table td {
+                padding: 4px 0 !important;
+            }
+
+            /* Inline question number and text */
+            .q-num {
+                display: inline-block;
+                font-size: 16px;
+                color: var(--teal);
+                margin-right: 8px;
+                font-weight: 800;
+            }
+
+            .q-text {
+                display: inline;
+                font-size: 15px;
+                font-weight: 500;
+                line-height: 1.4;
+                color: var(--navy);
+            }
+
+            .q-text em {
+                display: block;
+                font-size: 12px;
+                margin-top: 6px;
+                color: #666;
+                line-height: 1.3;
+            }
+
+            /* Answer column and row of options */
+            .a-col {
+                width: 100% !important;
+                min-width: 100% !important;
+                padding-left: 0 !important;
+                margin-top: 14px;
+            }
+
+            .radio-group {
+                display: flex;
+                justify-content: space-between;
+                gap: 6px;
+                width: 100%;
+            }
+
+            .radio-label {
+                flex: 1;
+                flex-direction: column-reverse;
+                background: #f8f9fa;
+                border: 1px solid #eaeaea;
+                border-radius: 8px;
+                padding: 12px 2px;
+                font-size: 10px;
+                font-weight: 600;
+                justify-content: flex-end;
+            }
+
+            .radio-box {
+                width: 20px;
+                height: 20px;
+                margin-bottom: 8px;
+                border-width: 2px;
+            }
+
+            .radio-label input:checked~.radio-box::after {
+                font-size: 14px;
+                top: -1px;
+                left: 2px;
+            }
+
+            /* Check effect for the container */
+            .radio-label:has(input:checked) {
+                background: #f0f8f0;
+                border-color: #a3d9a5;
+            }
+
+            .rights-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                margin: 16px 0;
+            }
+
+            .rights-card {
+                padding: 12px;
+            }
+
+            .rights-card h4 {
+                font-size: 13px;
+                margin-bottom: 6px;
+            }
+
+            .rights-card li {
+                font-size: 12px;
+                padding: 3px 0;
+            }
+
+            .contact {
+                flex-direction: column;
+                text-align: center;
+                gap: 12px;
+                padding: 16px;
+                margin-top: 20px;
+            }
+
+            .contact a {
+                font-size: 14px;
+            }
+
+            .contact .langs-sm {
+                font-size: 11px;
+            }
+
+            /* Results Panel */
+
+            /* Results Styles - Cleaned */
+            #resultsPanel {
+                background: var(--lgrey);
+                border: 2px dashed #999;
+                border-radius: 6px;
+                padding: 15px;
+                margin: 8px 0;
+                min-height: 60px;
+            }
+
+            .results-header {
+                font-size: 10pt;
+                font-weight: 800;
+                color: #fff;
+                background: var(--gradient);
+                padding: 8px;
+                border-radius: 4px;
+                margin-bottom: 10px;
+                text-align: center;
+            }
+
+            .print-time {
+                font-size: 6.5pt;
+                color: #888;
+                text-align: center;
+                margin-bottom: 5px;
+            }
+
+            .manual-calc-grid {
+                margin-top: 5px;
+                margin-bottom: 12px;
+            }
+
+            .manual-calc-grid .manual-title {
+                font-size: 8pt;
+                font-weight: 700;
+                margin-bottom: 4px;
+                color: var(--navy);
+            }
+
+            .manual-calc-grid .manual-desc {
+                font-size: 7.5pt;
+                color: var(--dgrey);
+                margin-bottom: 8px;
+                line-height: 1.4;
+            }
+
+            .manual-table {
+                width: 100%;
+                font-size: 7.5pt;
+                border-collapse: collapse;
+                margin-bottom: 8px;
+            }
+
+            .manual-table thead tr {
+                border-bottom: 1px solid #ccc;
+                font-weight: bold;
+                background: #eee;
+            }
+
+            .manual-table td {
+                padding: 4px;
+                border-bottom: 1px solid #eee;
+            }
+
+            .manual-table .tc {
+                text-align: center;
+            }
+
+            .manual-table .key-col {
+                font-size: 6pt;
+                font-weight: 600;
+                white-space: nowrap;
+            }
+
+            .manual-legend {
+                font-size: 7.5pt;
+                font-weight: 700;
+                color: var(--navy);
+                margin-top: 10px;
+                text-align: center;
+                padding: 8px;
+                background: #e8ezf0;
+                border-radius: 4px;
+            }
+
+            @media print {
+                #resultsPanel {
+                    padding: 10px;
+                    border-color: var(--navy);
+                    background: #fdfdfd;
+                }
+            }
+
+            .bars {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .bar-row {
+                font-size: 13px;
+            }
+
+            .bar-track {
+                height: 12px;
+            }
+
+            .validation-banner {
+                font-size: 12px;
+                padding: 8px 12px;
+                margin: 12px 0;
+                border-radius: 6px;
+            }
+
+            .print-btn {
+                bottom: 12px;
+                right: 12px;
+                font-size: 14px;
+                padding: 12px 24px;
+                border-radius: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- PAGE 1: QUESTIONS 1-15 -->
+    <div class="page" id="page1">
+        <div class="p-header">
+            <h1>INFINITY BRAVES</h1>
+            <div class="sub">Широкий скринінг нейровідмінності</div>
+
+        </div>
+
+
+        <!-- ADHD -->
+        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-adhd), transparent)">⚡ ADHD / СДУГ /
+            Aufmerksamkeitsdefizit (1–5)</div>
+        <table class="q-table">
+            <tr data-q="1">
+                <td class="q-num">1</td>
+                <td class="q-text"><strong>Починаєш багато
+                        справ, але рідко доводиш до кінця?</strong>
+                    <span class="q-note">проекти, курси, ідеї — ентузіазм є, фінал
+                        рідко</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q1" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q1" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q1" value="3"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="2">
+                <td class="q-num">2</td>
+                <td class="q-text"><strong>Запізнюєшся навіть коли дуже
+                        намагаєшся не запізнитись?</strong>
+                    <span class="q-note">навіть коли дуже намагаєшся — все одно запізнюєшся</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q2" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q2" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q2" value="3"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="3">
+                <td class="q-num">3</td>
+                <td class="q-text"><strong>Не можеш
+                        почати нудне завдання навіть якщо воно важливе?</strong>
+                    <span class="q-note">знаєш що важливо — але тіло просто не рухається</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q3" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q3" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q3" value="3"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="4">
+                <td class="q-num">4</td>
+                <td class="q-text"><strong>Можеш годинами не відриватись від цікавого — і
+                        забути їсти/спати?</strong>
+                    <span class="q-note">занурюєшся в цікаве і час зникає</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q4" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q4" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q4" value="3"><span
+                                class="radio-box"></span><span>Так</span></label>
+                    </div>
+                </td>
+            </tr>
+            <tr data-q="5">
+                <td class="q-num">5</td>
+                <td class="q-text"><strong>Дієш або говориш
+                        раніше ніж встигаєш подумати — і потім шкодуєш?</strong>
+                    <span class="q-note">спочатку робиш або кажеш — потім шкодуєш</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q5" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q5" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q5" value="3"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+        </table>
+
+        <!-- ASD -->
+        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-asd), transparent)">🧩 ASD / Аутизм /
+            Autism (6–10)</div>
+        <table class="q-table">
+            <tr data-q="6">
+                <td class="q-num">6</td>
+                <td class="q-text"><strong>Важко "читати між
+                        рядків" — коли кажуть одне, мають на увазі інше?</strong>
+                    <span class="q-note">кажуть „добре“ — а мають на увазі інше</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q6" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q6" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q6" value="3"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="7">
+                <td class="q-num">7</td>
+                <td class="q-text"><strong>Певні звуки, запахи або тканини — не "трохи неприємно", а
+                        справжній
+                        дискомфорт?</strong>
+                    <span class="q-note">певна тканина або звук — не просто неприємно, а
+                        фізично боляче</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q7" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q7" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q7" value="3"><span
+                                class="radio-box"></span><span>Так</span></label>
+                    </div>
+                </td>
+            </tr>
+            <tr data-q="8">
+                <td class="q-num">8</td>
+                <td class="q-text"><strong>Вичерпуєшся після спілкування — навіть якщо все пройшло добре?</strong>
+                    <span class="q-note">все було добре — але після хочеться лягти і нікого не бачити</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q8" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q8" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q8" value="3"><span
+                                class="radio-box"></span><span>Так</span></label>
+                    </div>
+                </td>
+            </tr>
+            <tr data-q="9">
+                <td class="q-num">9</td>
+                <td class="q-text"><strong>Є тема в якій ти знаєш надзвичайно багато і важко зупинитись говорити
+                        про
+                        неї?</strong>
+                    <span class="q-note">одна тема — знаєш все і можеш говорити
+                        годинами</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q9" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q9" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q9" value="3"><span
+                                class="radio-box"></span><span>Так</span></label>
+                    </div>
+                </td>
+            </tr>
+            <tr data-q="10">
+                <td class="q-num">10</td>
+                <td class="q-text"><strong>Непередбачені зміни планів — це стрес, а не просто незручність?</strong>
+
+                    <span class="q-note">плани змінились — це не
+                        просто незручно, це реально важко</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q10" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q10" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q10" value="3"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+        </table>
+        <!-- DYSLEXIA -->
+        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-dys), transparent)">📖 Dyslexie /
+            Dyslexia / Дислексія (11–15)</div>
+        <table class="q-table">
+            <tr data-q="11">
+                <td class="q-num">11</td>
+                <td class="q-text"><strong>Під час читання
+                        рядки або слова "зливаються", губиш місце?</strong>
+                    <span class="q-note">рядки ніби стрибують — важко відстежити де читав</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q11" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q11" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q11" value="3"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="12">
+                <td class="q-num">12</td>
+                <td class="q-text"><strong>Треба перечитати кілька разів щоб зрозуміли — слова є, зміст не
+                        складається?</strong>
+                    <span class="q-note">слова є — але зміст не складається, перечитуєш
+                        кілька разів</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q12" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q12" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q12" value="3"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="13">
+                <td class="q-num">13</td>
+                <td class="q-text"><strong>Набагато
+                        краще сприймаєш інформацію на слух ніж письмово?</strong>
+                    <span class="q-note">на слух розумієш одразу — письмово
+                        набагато важче</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q13" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q13" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q13" value="3"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="14">
+                <td class="q-num">14</td>
+                <td class="q-text"><strong>Плутаєш схожі
+                        букви або переставляєш їх місцями при написанні?</strong>
+                    <span class="q-note">б і д, п і р — плутаєш або дзеркалиш букви</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q14" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q14" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q14" value="3"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="15">
+                <td class="q-num">15</td>
+                <td class="q-text"><strong>Труднощі знайти потрібне слово коли говориш, хоч воно є в
+                        голові?</strong>
+                    <span class="q-note">слово є в голові — але не виходить коли треба</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q15" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q15" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q15" value="3"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- PAGE 2: QUESTIONS 16-28 -->
+    <div class="page" id="page1b">
+        <div class="p-header">
+            <h1 style="font-size: 14pt; margin: 0;">INFINITY BRAVES</h1>
+            <div class="sub">Screening (Fortsetzung) · Screening (continued) · Скринінг (продовження)</div>
+
+        </div>
+        <!-- DYSCALCULIA -->
+        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-disc), transparent)">🔢 Dyskalkulie /
+            Dyscalculia / Дискалькулія (16–20)
+        </div>
+        <table class="q-table">
+            <tr data-q="16">
+                <td class="q-num">16</td>
+                <td class="q-text"><strong>Важко порахувати у голові навіть
+                        прості суми?</strong>
+                    <span class="q-note">7 + 8 в голові? Потрібні пальці або папір</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q16" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q16" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q16" value="3"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="17">
+                <td class="q-num">17</td>
+                <td class="q-text"><strong>Часто плутаєш ліво і право або
+                        губишся у просторі?</strong>
+                    <span class="q-note">ліво і право — завжди треба думати</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q17" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q17" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q17" value="3"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="18">
+                <td class="q-num">18</td>
+                <td class="q-text"><strong>Оцінити скільки
+                        часу займе справа — для тебе майже нереально?</strong>
+                    <span class="q-note">завдання на 10 хв? Оцінюєш 1 хв або 2 години</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q18" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q18" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q18" value="3"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="19">
+                <td class="q-num">19</td>
+                <td class="q-text"><strong>Рахунки, бюджет, решта в магазині — постійне джерело стресу?</strong>
+                    <span class="q-note">перевірити чек, порахувати решту — стресовий
+                        момент</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q19" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q19" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q19" value="3"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="20">
+                <td class="q-num">20</td>
+                <td class="q-text"><strong>Телефонні номери, дати, PIN-коди важко запам'ятати навіть після
+                        повторень?</strong>
+                    <span class="q-note">номер телефону, пін — вивчаєш, але він зникає</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q20" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q20" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q20" value="3"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+        </table>
+
+        <!-- DYSPRAXIA -->
+        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-dcd), transparent)">🤸 Dyspraxie /
+            Dyspraxia / Диспраксія (21–24)</div>
+        <table class="q-table">
+            <tr data-q="21">
+                <td class="q-num">21</td>
+                <td class="q-text"><strong>Часто вдаряєшся об меблі,
+                        роняєш речі або "не вписуєшся"?</strong>
+                    <span class="q-note">одвірки, кути столів, стільці — збираєш синці</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q21" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q21" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q21" value="3"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="22">
+                <td class="q-num">22</td>
+                <td class="q-text"><strong>Велосипед, шнурки, водіння давались набагато важче ніж
+                        іншим?</strong>
+                    <span class="q-note">інші навчились за годину — у тебе пішли тижні</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q22" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q22" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q22" value="3"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="23">
+                <td class="q-num">23</td>
+                <td class="q-text"><strong>Кімната,
+                        сумка, стіл — завжди хаос, хоч ти і намагаєшся?</strong>
+                    <span class="q-note">прибираєш — але через годину знову хаос</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q23" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q23" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q23" value="3"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="24">
+                <td class="q-num">24</td>
+                <td class="q-text"><strong>Говорити і писати
+                        одночасно — реально складно?</strong>
+                    <span class="q-note">хтось говорить поки пишеш — зтрачаєш і те, і те</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q24" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q24" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q24" value="3"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+        </table>
+
+
+        <!-- CPTSD -->
+        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-ptsd), transparent)">🌊 C-PTSD /
+            Травма / Trauma (25–28)</div>
+        <table class="q-table">
+            <tr data-q="25">
+                <td class="q-num">25</td>
+                <td class="q-text"><strong>Постійно "чекаєш підвоху"
+                        навіть коли все добре?</strong>
+                    <span class="q-note">навіть коли все добре — чекаєш на підвох</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q25" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q25" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q25" value="3"><span
+                                class="radio-box"></span><span>Так</span></label>
+                    </div>
+                </td>
+            </tr>
+            <tr data-q="26">
+                <td class="q-num">26</td>
+                <td class="q-text"><strong>В стресових ситуаціях "вимикаєшся" або реагуєш набагато сильніше ніж
+                        ситуація?</strong>
+                    <span class="q-note">в стресі або завмираєш — або вибухаєш, середнього немає</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q26" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q26" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q26" value="3"><span
+                                class="radio-box"></span><span>Так</span></label>
+                    </div>
+                </td>
+            </tr>
+            <tr data-q="27">
+                <td class="q-num">27</td>
+                <td class="q-text"><strong>Тіло реагує фізично на стрес — серце, задуха, заніміння — без
+                        явної
+                        причини?</strong>
+                    <span class="q-note">серце пришвидшується, важко дихати — без видимої причини</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q27" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q27" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q27" value="3"><span
+                                class="radio-box"></span><span>Так</span></label>
+                    </div>
+                </td>
+            </tr>
+            <tr data-q="28">
+                <td class="q-num">28</td>
+                <td class="q-text"><strong>Є теми або
+                        спогади яких уникаєш — занадто важко навіть думати про них?</strong>
+                    <span class="q-note">певні місця, люди чи теми — уникаєш їх</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q28" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q28" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q28" value="3"><span
+                                class="radio-box"></span><span>Так</span></label>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- PAGE 3: QUESTIONS 29-40 -->
+    <div class="page" id="page1c">
+        <div class="p-header">
+            <h1 style="font-size: 14pt; margin: 0;">INFINITY BRAVES</h1>
+            <div class="sub">Screening (Fortsetzung) · Screening (continued) · Скринінг (продовження)</div>
+
+        </div>
+        <!-- ANXIETY -->
+        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-anx), transparent)">😰 Angststörung /
+            Anxiety / Тривожність (29–32)</div>
+        <table class="q-table">
+            <tr data-q="29">
+                <td class="q-num">29</td>
+                <td class="q-text"><strong>Хвилюєшся про речі на які не можеш вплинути — і не можеш просто
+                        "перестати"?</strong>
+                    <span class="q-note">хвилюєшся про речі на які не можеш вплинути — і не можеш зупинитись</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q29" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q29" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q29" value="3"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="30">
+                <td class="q-num">30</td>
+                <td class="q-text"><strong>Перед важливим днем прокручуєш у голові всі можливі
+                        сценарії — особливо вночі?</strong>
+                    <span class="q-note">втомлений — але голова не зупиняється</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q30" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q30" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q30" value="3"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="31">
+                <td class="q-num">31</td>
+                <td class="q-text"><strong>Важко розслабитись і "просто бути" — відчуваєш що постійно
+                        треба щось
+                        робити?</strong>
+                    <span class="q-note">напруга — плечі, щелепа, живіт — без
+                        причини</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q31" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q31" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q31" value="3"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="32">
+                <td class="q-num">32</td>
+                <td class="q-text"><strong>Уникаєш певних ситуацій або людей бо передбачаєш що буде погано?</strong>
+
+                    <span class="q-note">написати листа, зателефонувати — відчувається як щось
+                        велетне</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q32" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q32" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q32" value="3"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+        </table>
+
+        <!-- OCD -->
+        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-ocd), transparent)">🔁 Zwangsstörung /
+            OCD / ОКР (33–36)</div>
+        <table class="q-table">
+            <tr data-q="33">
+                <td class="q-num">33</td>
+                <td class="q-text"><strong>Думки
+                        яких не хочеш — повертаються знову і знову, не можеш позбутись?</strong>
+                    <span class="q-note">треба перевірити, помити — інакше відчуття не
+                        відпускає</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q33" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q33" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q33" value="3"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="34">
+                <td class="q-num">34</td>
+                <td class="q-text"><strong>Перевіряєш кілька разів: двері, плита, пристрій — і все одно не
+                        впевнений?</strong>
+                    <span class="q-note">одна і та ж думка крутиться по колу — не можеш зупинити</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q34" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q34" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q34" value="3"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="35">
+                <td class="q-num">35</td>
+                <td class="q-text"><strong>Внутрішній тиск робити речі певним чином — інакше відчуття що "щось не
+                        так"?</strong>
+                    <span class="q-note">перевірив тричі — перевіряєш четвертий</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q35" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q35" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q35" value="3"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="36">
+                <td class="q-num">36</td>
+                <td class="q-text"><strong>Відчуваєш відповідальність за те щоб нічого поганого
+                        не трапилось — навіть
+                        нелогічно?</strong>
+                    <span class="q-note">крива лінія, неправильний звук — фізичний
+                        дискомфорт</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q36" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q36" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q36" value="3"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+        </table>
+
+        <!-- SENSORY -->
+        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-sen), transparent)">👂 Sensorik /
+            Sensory / Сенсорна обробка (37–40)</div>
+        <table class="q-table">
+            <tr data-q="37">
+                <td class="q-num">37</td>
+                <td class="q-text"><strong>Місця з людьми, звуками або яскравим світлом виснажують
+                        фізично?</strong>
+                    <span class="q-note">синтетика, ярлики, груба тканина — нестерпно на
+                        шкірі</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q37" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q37" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q37" value="3"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="38">
+                <td class="q-num">38</td>
+                <td class="q-text"><strong>Певний одяг, швів або тканина — це тортура а не просто дискомфорт?</strong>
+
+                    <span class="q-note">переповнене метро, гучне кафе — виходиш виснаженим</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q38" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q38" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q38" value="3"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="39">
+                <td class="q-num">39</td>
+                <td class="q-text"><strong>Не помічаєш що голодний, холодний або хворий — поки це не стає
+                        гостро?</strong>
+                    <span class="q-note">голод, холод, біль — помічаєш лише коли вже крайнє</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q39" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q39" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q39" value="3"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+            <tr data-q="40">
+                <td class="q-num">40</td>
+                <td class="q-text"><strong>Несподіваний дотик або гучний звук викликають сильну
+                        фізичну реакцію — страх,
+                        серцебиття?</strong>
+                    <span class="q-note">хтось торкнувся плеча — тіло реагує
+                        як на загрозу</span>
+                </td>
+                <td class="a-col">
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q40" value="3"><span
+                                class="radio-box"></span><span>Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q40" value="2"><span
+                                class="radio-box"></span><span>Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q40" value="3"><span
+                                class="radio-box"></span><span>Так</span></label></div>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+    <!-- PAGE 4: RESULTS + RIGHTS -->
+    <div class="page" id="page2">
+        <div class="p-header">
+            <h1 style="font-size: 14pt; margin: 0;">INFINITY BRAVES</h1>
+            <div class="sub">Dein Profil · Your Profile · Твій профіль</div>
+
+        </div>
+
+        <!-- Results panel (moved from page 1) -->
+        <div id="resultsPanel">
+            <div id="resultsContent">
+                <div class="results-header">📊 Dein Profil / Your Profile / Твій профіль</div>
+                <div id="printTime" class="print-only print-time"></div>
+
+                <div class="bars" id="barsGrid" style="display:none"></div>
+
+                <div id="manualCalcGrid" class="manual-calc-grid">
+                    <div class="manual-title" style="font-size: 7.5pt; margin-bottom: 2px;">
+                        ✍️ Auswertung (Nur für Papierausdruck) / Scoring (Paper only) / Підрахунок:
+                    </div>
+                    <div class="manual-desc" style="font-size: 7pt; line-height: 1.1; margin-bottom: 4px;">
+                        Zähle: <strong>Nein=1, Manchmal=2, Ja=3.</strong> | Count: <strong>No=1, Some=2, Yes=3.</strong>
+                        | Порахуйте: <strong>Ні=1, Іноді=2, Так=3.</strong>
+                    </div>
+
+                    <table class="manual-table" style="margin-bottom: 2px;">
+                        <thead>
+                            <tr style="font-size: 7pt;">
+                                <td>Kategorie / Category</td>
+                                <td style="text-align: center;">Punkte</td>
+                                <td style="text-align: center;">Schlüssel / %</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="border-left: 3px solid var(--c-adhd);">Aufmerksamkeits-Defizit / ADHD / СДУГ
+                                    (1–5)</td>
+                                <td class="tc">____ / 15</td>
+                                <td class="tc key-col">🔴&gt;11 &nbsp; 🟡9‒11 &nbsp; 🟢&lt;9</td>
+                            </tr>
+                            <tr>
+                                <td style="border-left: 3px solid var(--c-asd);">Autismus / ASD / Аутизм (6–10)</td>
+                                <td class="tc">____ / 15</td>
+                                <td class="tc key-col">🔴&gt;11 &nbsp; 🟡9‒11 &nbsp; 🟢&lt;9</td>
+                            </tr>
+                            <tr>
+                                <td style="border-left: 3px solid var(--c-dys);">Dyslexie / Dyslexia / Дислексія (11–15)
+                                </td>
+                                <td class="tc">____ / 15</td>
+                                <td class="tc key-col">🔴&gt;11 &nbsp; 🟡9‒11 &nbsp; 🟢&lt;9</td>
+                            </tr>
+                            <tr>
+                                <td style="border-left: 3px solid var(--c-disc);">Dyskalkulie / Dyscalculia /
+                                    Дискалькулія (16–20)</td>
+                                <td class="tc">____ / 15</td>
+                                <td class="tc key-col">🔴&gt;11 &nbsp; 🟡9‒11 &nbsp; 🟢&lt;9</td>
+                            </tr>
+                            <tr>
+                                <td style="border-left: 3px solid var(--c-dcd);">Dyspraxie / Dyspraxia / Диспраксія
+                                    (21–24)</td>
+                                <td class="tc">____ / 12</td>
+                                <td class="tc key-col">🔴&gt;9 &nbsp; 🟡7‒9 &nbsp; 🟢&lt;7</td>
+                            </tr>
+                            <tr>
+                                <td style="border-left: 3px solid var(--c-ptsd);">Trauma / C-PTSD / Травmа (25–28)</td>
+                                <td class="tc">____ / 12</td>
+                                <td class="tc key-col">🔴&gt;9 &nbsp; 🟡7‒9 &nbsp; 🟢&lt;7</td>
+                            </tr>
+                            <tr>
+                                <td style="border-left: 3px solid var(--c-anx);">Angststörung / Anxiety / Тривожність
+                                    (29–32)</td>
+                                <td class="tc">____ / 12</td>
+                                <td class="tc key-col">🔴&gt;9 &nbsp; 🟡7‒9 &nbsp; 🟢&lt;7</td>
+                            </tr>
+                            <tr>
+                                <td style="border-left: 3px solid var(--c-ocd);">Zwangsstörung / OCD / ОКР (33–36)</td>
+                                <td class="tc">____ / 12</td>
+                                <td class="tc key-col">🔴&gt;9 &nbsp; 🟡7‒9 &nbsp; 🟢&lt;7</td>
+                            </tr>
+                            <tr>
+                                <td style="border-left: 3px solid var(--c-sen);">Sensorik / Sensory / Сенсорна (37–40)
+                                </td>
+                                <td class="tc">____ / 12</td>
+                                <td class="tc key-col">🔴&gt;9 &nbsp; 🟡7‒9 &nbsp; 🟢&lt;7</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="manual-legend"
+                        style="display:flex; justify-content:center; gap:6px; flex-wrap:wrap; padding: 4px;">
+                        <span>🔴 Starke Hinweise / Сильні ознаки</span>
+                        <span>🟡 Hinweise vorhanden / Є ознаки</span>
+                        <span>🟢 Geringe Wahrscheinlichkeit / Низька ймовірність</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="warn">⚠ Dies ist KEINE Diagnose — nur Screening / This is NOT a diagnosis — screening only / Це НЕ
+            діагноз — лише скринінг</div>
+
+        <div
+            style="font-size:7.5pt;color:var(--dgrey);margin:8px 0;line-height:1.5;border-left:3px solid var(--teal);padding-left:8px">
+            <strong style="color:var(--navy)">Mit offiziellem Befund erhältst du echte Rechte. / An official diagnosis
+                gives you real legal protections. / З офіційним діагнозом ти отримуєш реальні права.</strong><br>
+            <em>Gilt für alle deutschen Einwohner unabhängig von der Staatsbürgerschaft. / Valid for all German
+                residents regardless of citizenship. / Все нижче діє для всіх резидентів Німеччини незалежно від
+                громадянства.</em>
+        </div>
+
+        <div class="rights-grid">
+            <div class="rights-card">
+                <h4>📋 Anerkennung / Recognition / Офіційне визнання</h4>
+                <ul>
+                    <li>Neurodivergenz = anerkannte Beeinträchtigung / State-recognised disability / Держава визнає
+                        нейровідмінність як обмеження</li>
+                    <li>Du bekommst einen Grad von 20–100 / You receive a grade 20–100 / Ти отримуєш «ступінь» від 20 до
+                        100</li>
+                    <li>Ab 50 Punkte — Schwerbehindertenausweis / 50+ points = disability benefits card / З балом 50+ —
+                        спеціальна картка пільг</li>
+                    <li>Antrag stellen wir gemeinsam / We help you apply together / Заявку подаємо разом</li>
+                </ul>
+            </div>
+            <div class="rights-card">
+                <h4>⚖️ Gleichstellung / Equal conditions / Право на рівні умови</h4>
+                <ul>
+                    <li>Mehr Zeit bei Prüfungen / More time in exams / Більше часу на іспит в університеті і школі</li>
+                    <li>Andere Prüfungsform möglich / Alternative exam formats / Можна здавати іспит в іншому форматі
+                    </li>
+                    <li>Arbeitsplatzanpassung / Workplace adaptations / На роботі — право на адаптацію до твоїх потреб
+                    </li>
+                    <li>Das ist keine Bevorzugung — das ist Gleichheit / Not a privilege — it's equality / Це не пільга
+                        — це рівність</li>
+                </ul>
+            </div>
+            <div class="rights-card">
+                <h4>💼 Bei der Arbeit / At Work / На роботі</h4>
+                <ul>
+                    <li>Chef muss sich anpassen / Employer must accommodate you / Роботодавець зобов'язаний
+                        підлаштуватись під тебе</li>
+                    <li>+5 Urlaubstage pro Jahr / +5 paid vacation days/year / +5 додаткових днів відпустки щороку</li>
+                    <li>Stärkerer Kündigungsschutz / Harder to dismiss you / Тебе складніше звільнити без вагомих причин
+                    </li>
+                    <li>Technische Hilfsmittel / Technical aids covered / Право на спеціальне обладнання за рахунок
+                        держави</li>
+                </ul>
+            </div>
+            <div class="rights-card">
+                <h4>💰 Finanzielle Hilfe / Financial support / Фінансова підтримка</h4>
+                <ul>
+                    <li>Jobcenter-Unterstützung mit Behinderungsgrad / Job support with disability grade / Допомога з
+                        пошуком і утриманням роботи</li>
+                    <li>Coaching-Gutscheine / Coaching vouchers / Ваучери на коучинг і навчання (AVGS)</li>
+                    <li>Eingliederungshilfe / Integration assistance / Допомога з інтеграцією в суспільство</li>
+                    <li>Teilhabeleistungen / Participation support payments / Виплати на повноцінну участь в житті</li>
+                </ul>
+            </div>
+            <div class="rights-card">
+                <h4>🏥 GKV übernimmt / Insurance covers / Страховка покриває</h4>
+                <ul>
+                    <li>Neurodivergenz-Diagnostik kostenlos / Neurodivergence diagnosis free / Діагностику
+                        нейровідмінності безкоштовно</li>
+                    <li>Therapie, Ergotherapie, Logopädie / Therapy, OT, speech therapy / Терапія, ерготерапія, логопед
+                    </li>
+                    <li>Medikamente auf Rezept (~5€) / Prescription meds (~5€) / Ліки за рецептом (~5€ доплата)</li>
+                    <li>Soziale Begleitung / Social support services / Соціальна підтримка та супровід</li>
+                </ul>
+            </div>
+            <div class="rights-card">
+                <h4>🌍 Für Migranten / For migrants / Для мігрантів</h4>
+                <ul>
+                    <li>Alle Aufenthaltstitel / Any residence permit / Права діють з будь-яким дозволом на проживання
+                    </li>
+                    <li>Flüchtlingsstatus kein Hindernis / Refugee status is no barrier / Статус біженця — не перешкода
+                    </li>
+                    <li>Dolmetscher ist Pflicht / Translator is mandatory / Держустанови зобов'язані дати перекладача
+                    </li>
+                    <li>Wir helfen mit Dokumenten / We help with paperwork / Infinity Braves допомагає з документами
+                        (DE/EN/UA)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div
+            style="margin:4px 0;background:var(--lgrey);border-radius:4px;padding:4px 8px;font-size:7.2pt;color:var(--dgrey);line-height:1.2">
+            <strong style="color:var(--navy);font-size:7.5pt">🗺 Weg zur Diagnose / Path to diagnosis / Шлях до
+                діагнозу</strong><br>
+            1. 🇩🇪 Hausarzt → Überweisung / Family doctor → referral / Сімейний лікар → направлення<br>
+            2. 🇩🇪 Facharzt (Psychiater/Praxis) 6–18 Mo. / Specialist (Psychiatrist) 6–18 months / Психіатр (черга 6–18
+            міс.)<br>
+            3. ✅ Infinity Braves hilft Spezialisten zu finden / We help find specialists / Допомагаємо знайти фахівців
+        </div>
+
+        <div class="contact">
+            <div style="display:flex; align-items:center; gap:12px">
+                <img id="qr-code-img"
+                    src="https://api.qrserver.com/v1/create-qr-code/?size=128x128&data=https://t.me/+R8UPWvAwrD85ZjYy"
+                    alt="QR Code">
+                <div>
+                    <div style="font-size:7pt;opacity:.7;margin-bottom:3px">✨ ALLES KOSTENLOS / ALL FREE / ВСЕ
+                        БЕЗКОШТОВНО</div>
+                    <div style="font-size:11pt;font-weight:900">🚀 ПРИЄДНУЙСЯ</div>
+                    <a href="https://t.me/+R8UPWvAwrD85ZjYy">t.me/+R8UPWvAwrD85ZjYy</a>
+                    <div class="langs-sm">Telegram · Онлайн · Безкоштовно</div>
+                </div>
+            </div>
+
+            <div
+                style="flex: 1; margin: 0 15px; font-size: 7.5pt; font-weight: 800; text-align: center; border-left: 1px solid rgba(255,255,255,0.3); padding-left: 10px;">
+                Ми об'єднуємось, бо система не готова до нас. Разом — ми сильніші.
+            </div>
+
+            <div style="display:flex; align-items:center; gap:10px">
+                <img src="branding/logo.png" alt="Logo" style="height:60px">
+            </div>
+        </div>
+
+
+    </div>
+
+    <button class="print-btn no-print" onclick="window.print()">🖨️ Друкувати</button>
+
+    <script>
+        const TOTAL = 40;
+        const PROFILES = [
+            { id: 'adhd', label: 'СДУГ (ADHD)', qs: [1, 2, 3, 4, 5], color: 'var(--c-adhd)' },
+            { id: 'asd', label: 'Аутизм (ASD)', qs: [6, 7, 8, 9, 10], color: 'var(--c-asd)' },
+            { id: 'dys', label: 'Дислексія', qs: [11, 12, 13, 14, 15], color: 'var(--c-dys)' },
+            { id: 'disc', label: 'Дискалькулія', qs: [16, 17, 18, 19, 20], color: 'var(--c-disc)' },
+            { id: 'dcd', label: 'Диспраксія', qs: [21, 22, 23, 24], color: 'var(--c-dcd)' },
+            { id: 'ptsd', label: 'C-PTSD (Травма)', qs: [25, 26, 27, 28], color: 'var(--c-ptsd)' },
+            { id: 'anx', label: 'Тривожність', qs: [29, 30, 31, 32], color: 'var(--c-anx)' },
+            { id: 'ocd', label: 'ОКР', qs: [33, 34, 35, 36], color: 'var(--c-ocd)' },
+            { id: 'sen', label: 'Сенсорна інтеграція', qs: [37, 38, 39, 40], color: 'var(--c-sen)' },
+        ];
+
+        // Removed dynamic table generation.
+            }
+        });
+
+        function getScore(qs) {
+            return qs.reduce((s, n) => {
+                const c = document.querySelector(`input[name="q${n}"]:checked`);
+                return s + (c ? parseFloat(c.value) : 0);
+            }, 0);
+        }
+
+        function countAnswered() {
+            let n = 0;
+            for (let i = 1; i <= TOTAL; i++) if (document.querySelector(`input[name="q${i}"]:checked`)) n++;
+            return n;
+        }
+
+        function levelClassAndLabel(score, qsLength) {
+            if (qsLength >= 5) {
+                if (score >= 12) return { cls: 'high', label: '🔴 Сильно' };
+                if (score >= 9) return { cls: 'mid', label: '🟡 Середньо' };
+                return { cls: 'low', label: '🟢 Низько' };
+            } else {
+                if (score >= 10) return { cls: 'high', label: '🔴 Сильно' };
+                if (score >= 7) return { cls: 'mid', label: '🟡 Середньо' };
+                return { cls: 'low', label: '🟢 Низько' };
+            }
+        }
+
+        function updateResults() {
+            const answered = countAnswered();
+            const panel = document.getElementById('resultsPanel');
+            const banner = document.getElementById('valBanner');
+            const intro = document.getElementById('introNote');
+            const resultsContent = document.getElementById('resultsContent');
+
+            for (let i = 1; i <= TOTAL; i++) {
+                const row = document.querySelector(`tr[data-q="${i}"]`);
+                if (row) row.style.background = document.querySelector(`input[name="q${i}"]:checked`) ? '#f0f8f0' : '';
+            }
+
+            if (answered > 0 && intro) intro.style.display = 'block';
+
+            const manual = document.getElementById('manualCalcGrid');
+            const grid = document.getElementById('barsGrid');
+
+            if (answered < TOTAL) {
+                if (panel) panel.classList.remove('visible');
+                if (answered > 0 && banner) banner.classList.add('show');
+
+                if (manual) manual.style.display = 'block';
+                if (grid) grid.style.display = 'none';
+
+                return;
+            }
+
+            if (banner) banner.classList.remove('show');
+            if (panel) panel.classList.add('visible');
+
+            if (manual) manual.style.display = 'none';
+            if (!grid) return;
+
+            grid.style.display = 'grid';
+            grid.innerHTML = '';
+            PROFILES.forEach(p => {
+                const score = getScore(p.qs);
+                const res = levelClassAndLabel(score, p.qs.length);
+                const widthPct = Math.round((score / (p.qs.length * 3)) * 100) + '%';
+
+                grid.innerHTML += `
+                    <div class="bar-row">
+                        <div class="bar-label"><span>${p.label}</span><span style="font-weight:600; font-size:6.5pt">${res.label}</span></div>
+                        <div class="bar-track"><div class="bar-fill ${res.cls}" style="width:${widthPct};background:${p.color}"></div></div>
+                    </div>`;
+            });
+        }
+
+        document.querySelectorAll('input[type=radio]').forEach(r => r.addEventListener('change', updateResults));
+
+        window.addEventListener('beforeprint', () => {
+            const now = new Date();
+            const ts = now.toLocaleDateString('de-DE') + ' ' + now.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
+            const el = document.getElementById('printTime');
+            if (el) el.textContent = '📅 Gedruckt / Printed / Надруковано: ' + ts;
+        });
+
+        // Removed dynamic DOM replacement for radio labels.
+
+        // DOM reorder: move UA text (em) to the end in each q-text cell if not already
+        document.querySelectorAll('.q-text').forEach(td => {
+            const em = td.querySelector('em'); // Original code put DE/EN in em, UA in plain text.
+            // We need to swap them: DE/EN in bold/plain, UA in italics (em) at the end.
+            // This is easier to handle by replacing the HTML statically later, but for now we adjust DOM logic.
+            // Actually, the HTML already has UA first, then `<em>` for DE/EN.
+            // We shouldn't rely on JS for this reordering if we are going to rewrite the HTML anyway.
+            // I will remove this JS reorder block and rewrite the HTML tr's directly.
+        });
+
+        // Inject trilingual notes into all question rows (DE / EN / UA)
+        // Removed dynamic NOTES injection.
+    </script>
+</body>
+
+</html>
