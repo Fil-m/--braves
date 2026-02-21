@@ -124,6 +124,29 @@
 *   **Дія:** Поруч стоїть табличка: *"Mein Gehirn braucht Ordnung im Chaos. Fühlst du das auch? Test hier machen."* (Моєму мозку потрібен порядок у хаосі. Ти теж це відчуваєш? Пройди тест тут.)
 
 ---
+
+### 📩 Пітч для Продакшену (Instagram: @syd.media.agency)
+
+Оскільки для віральності потрібна якісна зйомка, ось готовий шаблон повідомлення (Direct Message) для локального продакшену **syd.media.agency**. Мета: запропонувати їм крутий соціальний контент (який добре збирає перегляди) в обмін на їхню професійну зйомку ваших перформансів.
+
+**Шаблон (Німецькою):**
+> "Hallo liebes syd.media.agency Team! 👋 
+> Ich verfolge eure Arbeit und finde euren visuellen Stil stark. 
+> 
+> Wir starten bald ein provokantes soziales Street-Art-Projekt in Karlsruhe zum Thema 'unsichtbare Neurodivergenz' (ADHS/Autismus bei Erwachsenen) unter dem Namen *Infinity Braves*. Das Ziel: Die unsichtbare Belastung durch Performance-Kunst auf der Straße sichtbar zu machen. Das Potenzial für virale Social-Media-Reaktionen (Street Interviews & Reactions) ist riesig.
+> 
+> Hättet ihr Interesse, einen unserer ersten Performances professionell filmisch (für TikTok/Reels) zu begleiten? Es wäre ein spannendes Social-Project für euer Portfolio, das echte gesellschaftliche Relevanz hat.
+> 
+> Hier sind unsere ersten 3 Performance-Konzepte:
+> 1. **'Overload Box'** (Visuelle Darstellung von Reizüberflutung in der Fußgängerzone).
+> 2. **'Die unsichtbare Wand'** (Ein physischer Kontakt-Test mit Passanten durch eine Folie).
+> 3. **'Hyperfokus-Blase'** (Absolutes Chaos vs. autistische Ordnung mitten auf dem Platz).
+> 
+> Da ich aktuell noch komplett flexibel bin, **könnt ihr das Datum und die genaue Uhrzeit für den Start-Dreh völlig frei wählen**, wann es am besten in euren Terminplan passt. 
+> 
+> Habt ihr Lust auf eine kleine Collab? Meldet euch gerne! 🚀"
+
+---
 ## ✅ Чекліст підготовки "до виходу на Карлсруе"
 
 - [ ] Роздрукувати 20-30 скринінг-тестів у кольорі.
