@@ -492,12 +492,15 @@
             }
 
             #resultsPanel {
-                margin: 5px 0;
-                padding: 6px;
+                margin: 8px 0;
+                padding: 10px;
+                border-width: 2px;
+                border-color: var(--navy);
+                background: #fdfdfd;
             }
 
-            #resultsPanel.visible::before {
-                display: none;
+            #resultsPanel::before {
+                display: none !important;
             }
 
             .q-text em {
@@ -1470,18 +1473,46 @@
         </div>
 
         <!-- Results panel (moved from page 1) -->
-        <div id="resultsPanel">
+        <div id="resultsPanel" style="padding: 15px; border: 2px dashed #999;">
             <div id="resultsContent" style="display:none">
                 <div
-                    style="font-size:9pt;font-weight:800;color:#fff;background:var(--gradient);padding:6px;border-radius:4px;margin-bottom:6px;text-align:center">
+                    style="font-size:10pt;font-weight:800;color:#fff;background:var(--gradient);padding:8px;border-radius:4px;margin-bottom:10px;text-align:center">
                     📊 Dein Profil / Your Profile / Твій профіль</div>
                 <div id="printTime" class="print-only"
                     style="font-size:6.5pt;color:#888;text-align:center;margin-bottom:5px"></div>
+
                 <div class="bars" id="barsGrid"></div>
-                <div style="font-size:6.5pt;color:var(--dgrey);margin-top:6px;text-align:center">
-                    🔴 &gt;70% = zum Arzt gehen / worth discussing with a doctor / варто обговорити з лікарем
-                    &nbsp;·&nbsp; 🟡 40–70% = Hinweise vorhanden / signs present / є ознаки
-                    &nbsp;·&nbsp; 🟢 &lt;40% = geringe Wahrscheinlichkeit / low likelihood / низька ймовірність
+
+                <div id="manualCalcGrid" class="print-only" style="margin-top: 5px; margin-bottom: 12px;">
+                    <div style="font-size: 8pt; font-weight:700; margin-bottom: 4px; color: var(--navy);">
+                        ✍️ Auswertung (Nur für Papierausdruck) / Scoring (Paper version only) / Підрахунок (для
+                        паперового тесту):
+                    </div>
+                    <div style="font-size: 7.5pt; color: var(--dgrey); margin-bottom: 8px; line-height: 1.4;">
+                        Zähle die Punkte für jede Gruppe: <strong>Nein = 0, Manchmal = 0.5, Ja = 1.</strong> Teile die
+                        Summe durch die Max-Menge, um die % zu erhalten.<br>
+                        <em>Count points for each group: No = 0, Sometimes = 0.5, Yes = 1. Divide by max to get
+                            %.</em><br>
+                        Порахуйте бали для кожної групи: <strong>Ні = 0, Іноді = 0.5, Так = 1.</strong> Розділіть суму
+                        на максимум щоб отримати %.
+                    </div>
+                    <table style="width:100%; font-size: 7.5pt; border-collapse: collapse; margin-bottom: 8px;">
+                        <tr style="border-bottom: 1px solid #ccc; font-weight: bold; background: #eee;">
+                            <td style="padding: 4px;">Kategorie / Category</td>
+                            <td style="padding: 4px; text-align: center;">Fragen</td>
+                            <td style="padding: 4px; text-align: center;">Punkte / Points</td>
+                            <td style="padding: 4px; text-align: center;">Ergebnis / %</td>
+                        </tr>
+                        <!-- We will inject rows here via JS on DOMContentLoaded -->
+                    </table>
+                </div>
+
+                <div
+                    style="font-size:7.5pt;font-weight:700;color:var(--navy);margin-top:10px;text-align:center;padding:8px;background:var(--lgrey);border-radius:4px;">
+                    🔴 &gt; 70% = Starke Hinweise (zum Arzt gehen) / Strong signs (discuss with doctor) / Сильні ознаки
+                    (варто йти до фахівця)<br>
+                    🟡 40–70% = Hinweise vorhanden / Signs present / Є ознаки (продовжуйте спостерігати)<br>
+                    🟢 &lt; 40% = Geringe Wahrscheinlichkeit / Low likelihood / Низька ймовірність
                 </div>
             </div>
         </div>
@@ -1617,16 +1648,33 @@
 
         const TOTAL = 40;
         const PROFILES = [
-            { id: 'adhd', label: 'ADHD / СДУГ / Aufmerksamkeits-Defizit', qs: [1, 2, 3, 4, 5], color: 'var(--c-adhd)' },
-            { id: 'asd', label: 'ASD / Аутизм / Autismus', qs: [6, 7, 8, 9, 10], color: 'var(--c-asd)' },
-            { id: 'dys', label: 'Дислексія / Dyslexia / Dyslexie', qs: [11, 12, 13, 14, 15], color: 'var(--c-dys)' },
-            { id: 'disc', label: 'Дискалькулія / Dyscalculia / Dyskalkulie', qs: [16, 17, 18, 19, 20], color: 'var(--c-disc)' },
-            { id: 'dcd', label: 'Диспраксія / Dyspraxia / Dyspraxie', qs: [21, 22, 23, 24], color: 'var(--c-dcd)' },
-            { id: 'ptsd', label: 'C-PTSD / Травма / Trauma', qs: [25, 26, 27, 28], color: 'var(--c-ptsd)' },
-            { id: 'anx', label: 'Тривожність / Anxiety / Angststörung', qs: [29, 30, 31, 32], color: 'var(--c-anx)' },
-            { id: 'ocd', label: 'ОКР / OCD / Zwangsstörung', qs: [33, 34, 35, 36], color: 'var(--c-ocd)' },
-            { id: 'sen', label: 'Сенсорна / Sensory / Sensorik', qs: [37, 38, 39, 40], color: 'var(--c-sen)' },
+            { id: 'adhd', label: 'Aufmerksamkeits-Defizit / ADHD / СДУГ', qs: [1, 2, 3, 4, 5], color: 'var(--c-adhd)' },
+            { id: 'asd', label: 'Autismus / ASD / Аутизм', qs: [6, 7, 8, 9, 10], color: 'var(--c-asd)' },
+            { id: 'dys', label: 'Dyslexie / Dyslexia / Дислексія', qs: [11, 12, 13, 14, 15], color: 'var(--c-dys)' },
+            { id: 'disc', label: 'Dyskalkulie / Dyscalculia / Дискалькулія', qs: [16, 17, 18, 19, 20], color: 'var(--c-disc)' },
+            { id: 'dcd', label: 'Dyspraxie / Dyspraxia / Диспраксія', qs: [21, 22, 23, 24], color: 'var(--c-dcd)' },
+            { id: 'ptsd', label: 'Trauma / C-PTSD / Травма', qs: [25, 26, 27, 28], color: 'var(--c-ptsd)' },
+            { id: 'anx', label: 'Angststörung / Anxiety / Тривожність', qs: [29, 30, 31, 32], color: 'var(--c-anx)' },
+            { id: 'ocd', label: 'Zwangsstörung / OCD / ОКР', qs: [33, 34, 35, 36], color: 'var(--c-ocd)' },
+            { id: 'sen', label: 'Sensorik / Sensory / Сенсорна', qs: [37, 38, 39, 40], color: 'var(--c-sen)' },
         ];
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const table = document.querySelector('#manualCalcGrid table');
+            if (table) {
+                PROFILES.forEach(p => {
+                    const row = document.createElement('tr');
+                    row.style.borderBottom = '1px solid #eee';
+                    row.innerHTML = `
+                        <td style="padding: 4px; border-left: 3px solid ${p.color};">${p.label}</td>
+                        <td style="padding: 4px; text-align: center;">Q${p.qs[0]}-${p.qs[p.qs.length - 1]}</td>
+                        <td style="padding: 4px; text-align: center;">_____ / ${p.qs.length}</td>
+                        <td style="padding: 4px; text-align: center;">_____%</td>
+                    `;
+                    table.appendChild(row);
+                });
+            }
+        });
 
         function getScore(qs) {
             return qs.reduce((s, n) => {
@@ -1665,12 +1713,18 @@
                 if (panel) panel.classList.remove('visible');
                 if (resultsContent) resultsContent.style.display = 'none';
                 if (answered > 0 && banner) banner.classList.add('show');
+                const manual = document.getElementById('manualCalcGrid');
+                if (manual) manual.style.display = ''; // fallback to css class .print-only
                 return;
             }
 
             if (banner) banner.classList.remove('show');
             if (panel) panel.classList.add('visible');
             if (resultsContent) resultsContent.style.display = 'block';
+
+            // Hide the manual empty grid if we dynamically display the bars
+            const manual = document.getElementById('manualCalcGrid');
+            if (manual) manual.style.display = 'none';
 
             const grid = document.getElementById('barsGrid');
             if (!grid) return;
