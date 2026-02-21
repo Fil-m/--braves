@@ -366,7 +366,7 @@
 
         @page {
             size: A4;
-            margin: 10mm;
+            margin: 8mm;
         }
 
         @media print {
@@ -384,12 +384,12 @@
                 display: block !important;
                 background: none;
                 padding: 0;
-                font-size: 9.0pt
+                font-size: 10.0pt
             }
 
 
-            
-            
+
+
             .page {
                 box-shadow: none;
                 width: 100%;
@@ -402,12 +402,17 @@
                 display: block !important;
             }
 
-            #page1, #page1b, #page1c, #page2 {
+            #page1,
+            #page1b,
+            #page1c,
+            #page2 {
                 position: relative;
                 float: none !important;
             }
 
-            #page1b, #page1c, #page2 {
+            #page1b,
+            #page1c,
+            #page2 {
                 page-break-before: always !important;
                 break-before: page !important;
             }
@@ -448,7 +453,7 @@
             }
 
             .q-table td {
-                padding: 6px 0 !important;
+                padding: 6.5px 0 !important;
             }
 
             .q-table tr {
@@ -589,23 +594,9 @@
         <div class="p-header">
             <h1>INFINITY BRAVES</h1>
             <div class="sub">Breites Screening · Broad Screening · Широкий скринінг нейровідмінності</div>
-            
+
         </div>
 
-        <div class="validation-banner" id="valBanner">
-            ⚠ Bitte alle Fragen beantworten / Please answer all questions / Будь ласка, дайте відповідь на всі питання
-        </div>
-
-        <!-- 70% Note (moved from results page) -->
-        <div id="introNote"
-            style="display:none;font-size:7.5pt;text-align:center;color:var(--dgrey);padding:5px 0 6px;line-height:1.6;border-bottom:1px solid #e8e8e8;margin-bottom:6px">
-            ~70% людей з нейровідмінністю <strong>не знають</strong> про свій стан. Цей тест — перший крок до розуміння
-            себе.<br>
-            <em>~70% der Menschen mit Neurodivergenz kennen ihren Zustand nicht. Dieser Test ist der erste Schritt zur
-                Selbstkenntnis.</em><br>
-            <em>~70% of neurodivergent people don't know about their condition. This test is the first step to
-                understanding yourself.</em>
-        </div>
 
         <!-- ADHD -->
         <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-adhd), transparent)">⚡ ADHD / СДУГ /
@@ -849,7 +840,7 @@
         <div class="p-header">
             <h1 style="font-size: 14pt; margin: 0;">INFINITY BRAVES</h1>
             <div class="sub">Screening (Fortsetzung) · Screening (continued) · Скринінг (продовження)</div>
-            
+
         </div>
         <!-- DYSCALCULIA -->
         <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-disc), transparent)">🔢 Dyskalkulie /
@@ -1065,7 +1056,7 @@
         <div class="p-header">
             <h1 style="font-size: 14pt; margin: 0;">INFINITY BRAVES</h1>
             <div class="sub">Screening (Fortsetzung) · Screening (continued) · Скринінг (продовження)</div>
-            
+
         </div>
         <!-- ANXIETY -->
         <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-anx), transparent)">😰 Angststörung /
@@ -1273,7 +1264,7 @@
         <div class="p-header">
             <h1 style="font-size: 14pt; margin: 0;">INFINITY BRAVES</h1>
             <div class="sub">Dein Profil · Your Profile · Твій профіль</div>
-            
+
         </div>
 
         <!-- Results panel (moved from page 1) -->
@@ -1400,7 +1391,7 @@
                 <div class="langs-sm">Telegram · Online · Kostenlos / Безкоштовно</div>
             </div>
             <div style="display:flex; align-items:center; gap:15px">
-                <img src="branding/logo.png" alt="Logo" style="height:50px">
+                <img src="branding/logo.png" alt="Logo" style="height:70px">
                 <div id="qrcode2"></div>
             </div>
         </div>
@@ -1459,8 +1450,8 @@
             const panel = document.getElementById('resultsPanel');
             const banner = document.getElementById('valBanner');
             const intro = document.getElementById('introNote');
+            const resultsContent = document.getElementById('resultsContent');
 
-            // Row highlight
             for (let i = 1; i <= TOTAL; i++) {
                 const row = document.querySelector(`tr[data-q="${i}"]`);
                 if (row) row.style.background = document.querySelector(`input[name="q${i}"]:checked`) ? '#f0f8f0' : '';
@@ -1469,16 +1460,18 @@
             if (answered > 0 && intro) intro.style.display = 'block';
 
             if (answered < TOTAL) {
-                panel.classList.remove('visible');
-                document.getElementById('resultsContent').style.display = 'none';
-                if (answered > 0) banner.classList.add('show');
+                if (panel) panel.classList.remove('visible');
+                if (resultsContent) resultsContent.style.display = 'none';
+                if (answered > 0 && banner) banner.classList.add('show');
                 return;
             }
-            banner.classList.remove('show');
-            panel.classList.add('visible');
-            document.getElementById('resultsContent').style.display = 'block';
+
+            if (banner) banner.classList.remove('show');
+            if (panel) panel.classList.add('visible');
+            if (resultsContent) resultsContent.style.display = 'block';
 
             const grid = document.getElementById('barsGrid');
+            if (!grid) return;
             grid.innerHTML = '';
             PROFILES.forEach(p => {
                 const score = getScore(p.qs);
