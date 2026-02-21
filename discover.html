@@ -381,12 +381,14 @@
             }
 
             body {
+                display: block !important;
                 background: none;
                 padding: 0;
                 font-size: 8.5pt
             }
 
 
+            
             
             .page {
                 box-shadow: none;
@@ -397,12 +399,19 @@
                 page-break-after: auto;
                 break-inside: auto;
                 margin: 0;
+                display: block !important;
             }
 
-            #page2 {
+            #page1, #page1b, #page1c, #page2 {
+                position: relative;
+                float: none !important;
+            }
+
+            #page1b, #page1c, #page2 {
                 page-break-before: always !important;
                 break-before: page !important;
             }
+
 
 
 
