@@ -344,7 +344,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: var(--navy);
+            background: var(--gradient);
             color: #fff;
             border-radius: 4px;
             padding: 8px 12px;
@@ -366,7 +366,7 @@
 
         @page {
             size: A4;
-            margin: 6mm 5mm
+            margin: 5mm;
         }
 
         @media print {
@@ -375,6 +375,7 @@
                 min-width: 170px !important;
                 padding-left: 5px !important;
             }
+
             .radio-group {
                 gap: 2px !important;
             }
@@ -385,15 +386,15 @@
                 font-size: 7.2pt
             }
 
-            
+
             .page {
                 box-shadow: none;
                 width: 100%;
                 min-height: auto !important;
                 height: auto !important;
-                padding: 2mm 5mm;
-                page-break-after: always;
-                break-after: page;
+                padding: 0;
+                page-break-after: auto;
+                break-inside: auto;
                 margin: 0;
             }
 
@@ -420,7 +421,7 @@
                 margin-top: 5px;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
-                
+
                 color: #ffffff !important
             }
 
@@ -591,7 +592,8 @@
         </div>
 
         <!-- ADHD -->
-        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-adhd), transparent)">⚡ ADHD / СДУГ / Aufmerksamkeitsdefizit (1–5)</div>
+        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-adhd), transparent)">⚡ ADHD / СДУГ /
+            Aufmerksamkeitsdefizit (1–5)</div>
         <table class="q-table">
             <tr data-q="1">
                 <td class="q-num">1</td>
@@ -599,7 +601,8 @@
                         selten fertiggestellt? / Start many things, rarely finish?</strong><br><em>Починаєш багато
                         справ, але рідко доводиш до кінця?</em></td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q1" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q1" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
                             class="radio-label"><input type="radio" name="q1" value="0.5"><span
                                 class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
                             class="radio-label"><input type="radio" name="q1" value="1"><span
@@ -612,7 +615,12 @@
                         wirklich versucht? / Late even when really trying?</strong><br><em>Запізнюєшся навіть коли дуже
                         намагаєшся не запізнитись?</em></td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q2" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label class="radio-label"><input type="radio" name="q2" value="0.5"><span class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label class="radio-label"><input type="radio" name="q2" value="1"><span class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q2" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q2" value="0.5"><span
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q2" value="1"><span
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
                 </td>
             </tr>
             <tr data-q="3">
@@ -621,14 +629,26 @@
                         obwohl es wichtig ist? / Can't start boring tasks even when important?</strong><br><em>Не можеш
                         почати нудне завдання навіть якщо воно важливе?</em></td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q3" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label class="radio-label"><input type="radio" name="q3" value="0.5"><span class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label class="radio-label"><input type="radio" name="q3" value="1"><span class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q3" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q3" value="0.5"><span
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q3" value="1"><span
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
                 </td>
             </tr>
             <tr data-q="4">
                 <td class="q-num">4</td>
-                <td class="q-text"><strong>Stundenlang vertieft, Essen/Schlafen vergessen? / Hyperfocus — lost in interesting things for hours?</strong><br><em>Можеш годинами не відриватись від цікавого — і забути їсти/спати?</em></td>
+                <td class="q-text"><strong>Stundenlang vertieft, Essen/Schlafen vergessen? / Hyperfocus — lost in
+                        interesting things for hours?</strong><br><em>Можеш годинами не відриватись від цікавого — і
+                        забути їсти/спати?</em></td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q4" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label class="radio-label"><input type="radio" name="q4" value="0.5"><span class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label class="radio-label"><input type="radio" name="q4" value="1"><span class="radio-box"></span><span>Ja / Yes / Так</span></label>
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q4" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q4" value="0.5"><span
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q4" value="1"><span
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label>
                     </div>
                 </td>
             </tr>
@@ -638,13 +658,19 @@
                         bevor man denkt? / Act or speak before thinking, then regret?</strong><br><em>Дієш або говориш
                         раніше ніж встигаєш подумати — і потім шкодуєш?</em></td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q5" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label class="radio-label"><input type="radio" name="q5" value="0.5"><span class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label class="radio-label"><input type="radio" name="q5" value="1"><span class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q5" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q5" value="0.5"><span
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q5" value="1"><span
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
                 </td>
             </tr>
         </table>
 
         <!-- ASD -->
-        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-asd), transparent)">🧩 ASD / Аутизм / Autism (6–10)</div>
+        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-asd), transparent)">🧩 ASD / Аутизм /
+            Autism (6–10)</div>
         <table class="q-table">
             <tr data-q="6">
                 <td class="q-num">6</td>
@@ -652,7 +678,12 @@
                         Zeilen lesen ist schwierig? / Hard to read between the lines?</strong><br><em>Важко "читати між
                         рядків" — коли кажуть одне, мають на увазі інше?</em></td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q6" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label class="radio-label"><input type="radio" name="q6" value="0.5"><span class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label class="radio-label"><input type="radio" name="q6" value="1"><span class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q6" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q6" value="0.5"><span
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q6" value="1"><span
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
                 </td>
             </tr>
             <tr data-q="7">
@@ -663,7 +694,12 @@
                         справжній
                         дискомфорт?</em></td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q7" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label class="radio-label"><input type="radio" name="q7" value="0.5"><span class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label class="radio-label"><input type="radio" name="q7" value="1"><span class="radio-box"></span><span>Ja / Yes / Так</span></label>
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q7" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q7" value="0.5"><span
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q7" value="1"><span
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label>
                     </div>
                 </td>
             </tr>
@@ -673,7 +709,12 @@
                         sozialen Kontakten? / Drained after socializing even if it went
                         well?</strong><br><em>Вичерпуєшся після спілкування — навіть якщо все пройшло добре?</em></td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q8" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label class="radio-label"><input type="radio" name="q8" value="0.5"><span class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label class="radio-label"><input type="radio" name="q8" value="1"><span class="radio-box"></span><span>Ja / Yes / Так</span></label>
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q8" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q8" value="0.5"><span
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q8" value="1"><span
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label>
                     </div>
                 </td>
             </tr>
@@ -685,7 +726,12 @@
                         про
                         неї?</em></td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q9" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label class="radio-label"><input type="radio" name="q9" value="0.5"><span class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label class="radio-label"><input type="radio" name="q9" value="1"><span class="radio-box"></span><span>Ja / Yes / Так</span></label>
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q9" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q9" value="0.5"><span
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q9" value="1"><span
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label>
                     </div>
                 </td>
             </tr>
@@ -696,12 +742,18 @@
                         distress?</strong><br><em>Непередбачені зміни планів — це стрес, а не просто незручність?</em>
                 </td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q10" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label class="radio-label"><input type="radio" name="q10" value="0.5"><span class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label class="radio-label"><input type="radio" name="q10" value="1"><span class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q10" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q10" value="0.5"><span
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q10" value="1"><span
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
                 </td>
             </tr>
         </table>
         <!-- DYSLEXIA -->
-        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-dys), transparent)">📖 Dyslexie / Dyslexia / Дислексія (11–15)</div>
+        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-dys), transparent)">📖 Dyslexie /
+            Dyslexia / Дислексія (11–15)</div>
         <table class="q-table">
             <tr data-q="11">
                 <td class="q-num">11</td>
@@ -709,14 +761,26 @@
                         Stelle verlieren? / Lines blur or lose your place while reading?</strong><br><em>Під час читання
                         рядки або слова "зливаються", губиш місце?</em></td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q11" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label class="radio-label"><input type="radio" name="q11" value="0.5"><span class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label class="radio-label"><input type="radio" name="q11" value="1"><span class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q11" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q11" value="0.5"><span
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q11" value="1"><span
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
                 </td>
             </tr>
             <tr data-q="12">
                 <td class="q-num">12</td>
-                <td class="q-text"><strong>Mehrmals lesen bis Sinn klar? / Need to re-read multiple times for meaning?</strong><br><em>Треба перечитати кілька разів щоб зрозуміли — слова є, зміст не складається?</em></td>
+                <td class="q-text"><strong>Mehrmals lesen bis Sinn klar? / Need to re-read multiple times for
+                        meaning?</strong><br><em>Треба перечитати кілька разів щоб зрозуміли — слова є, зміст не
+                        складається?</em></td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q12" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label class="radio-label"><input type="radio" name="q12" value="0.5"><span class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label class="radio-label"><input type="radio" name="q12" value="1"><span class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q12" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q12" value="0.5"><span
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q12" value="1"><span
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
                 </td>
             </tr>
             <tr data-q="13">
@@ -725,7 +789,12 @@
                         schriftlich verstehen? / Process spoken info much better than written?</strong><br><em>Набагато
                         краще сприймаєш інформацію на слух ніж письмово?</em></td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q13" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label class="radio-label"><input type="radio" name="q13" value="0.5"><span class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label class="radio-label"><input type="radio" name="q13" value="1"><span class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q13" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q13" value="0.5"><span
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q13" value="1"><span
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
                 </td>
             </tr>
             <tr data-q="14">
@@ -734,7 +803,12 @@
                         verwechseln/umkehren? / Confuse similar letters or reverse them?</strong><br><em>Плутаєш схожі
                         букви або переставляєш їх місцями при написанні?</em></td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q14" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label class="radio-label"><input type="radio" name="q14" value="0.5"><span class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label class="radio-label"><input type="radio" name="q14" value="1"><span class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q14" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q14" value="0.5"><span
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q14" value="1"><span
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
                 </td>
             </tr>
             <tr data-q="15">
@@ -743,7 +817,12 @@
                         speaking?</strong><br><em>Труднощі знайти потрібне слово коли говориш, хоч воно є в
                         голові?</em></td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q15" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label class="radio-label"><input type="radio" name="q15" value="0.5"><span class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label class="radio-label"><input type="radio" name="q15" value="1"><span class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q15" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q15" value="0.5"><span
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q15" value="1"><span
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
                 </td>
             </tr>
         </table>
@@ -757,7 +836,8 @@
             <div class="langs">DE | EN | UA</div>
         </div>
         <!-- DYSCALCULIA -->
-        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-disc), transparent)">🔢 Dyskalkulie / Dyscalculia / Дискалькулія (16–20)
+        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-disc), transparent)">🔢 Dyskalkulie /
+            Dyscalculia / Дискалькулія (16–20)
         </div>
         <table class="q-table">
             <tr data-q="16">
@@ -766,7 +846,12 @@
                         Hard to calculate even simple sums mentally?</strong><br><em>Важко порахувати у голові навіть
                         прості суми?</em></td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q16" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label class="radio-label"><input type="radio" name="q16" value="0.5"><span class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label class="radio-label"><input type="radio" name="q16" value="1"><span class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q16" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q16" value="0.5"><span
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q16" value="1"><span
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
                 </td>
             </tr>
             <tr data-q="17">
@@ -775,7 +860,12 @@
                         Confuse left and right or get disoriented?</strong><br><em>Часто плутаєш ліво і право або
                         губишся у просторі?</em></td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q17" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label class="radio-label"><input type="radio" name="q17" value="0.5"><span class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label class="radio-label"><input type="radio" name="q17" value="1"><span class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q17" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q17" value="0.5"><span
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q17" value="1"><span
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
                 </td>
             </tr>
             <tr data-q="18">
@@ -784,14 +874,25 @@
                         schwierig? / Estimating how long tasks take feels impossible?</strong><br><em>Оцінити скільки
                         часу займе справа — для тебе майже нереально?</em></td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q18" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label class="radio-label"><input type="radio" name="q18" value="0.5"><span class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label class="radio-label"><input type="radio" name="q18" value="1"><span class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q18" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q18" value="0.5"><span
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q18" value="1"><span
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
                 </td>
             </tr>
             <tr data-q="19">
                 <td class="q-num">19</td>
-                <td class="q-text"><strong>Rechnungen/Budget/Wechselgeld = Stress? / Bills, budgets, change = constant stress?</strong><br><em>Рахунки, бюджет, решта в магазині — постійне джерело стресу?</em></td>
+                <td class="q-text"><strong>Rechnungen/Budget/Wechselgeld = Stress? / Bills, budgets, change = constant
+                        stress?</strong><br><em>Рахунки, бюджет, решта в магазині — постійне джерело стресу?</em></td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q19" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label class="radio-label"><input type="radio" name="q19" value="0.5"><span class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label class="radio-label"><input type="radio" name="q19" value="1"><span class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q19" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q19" value="0.5"><span
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q19" value="1"><span
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
                 </td>
             </tr>
             <tr data-q="20">
@@ -800,13 +901,19 @@
                         memorize?</strong><br><em>Телефонні номери, дати, PIN-коди важко запам'ятати навіть після
                         повторень?</em></td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q20" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label class="radio-label"><input type="radio" name="q20" value="0.5"><span class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label class="radio-label"><input type="radio" name="q20" value="1"><span class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q20" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q20" value="0.5"><span
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q20" value="1"><span
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
                 </td>
             </tr>
         </table>
 
         <!-- DYSPRAXIA -->
-        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-dcd), transparent)">🤸 Dyspraxie / Dyspraxia / Диспраксія (21–24)</div>
+        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-dcd), transparent)">🤸 Dyspraxie /
+            Dyspraxia / Диспраксія (21–24)</div>
         <table class="q-table">
             <tr data-q="21">
                 <td class="q-num">21</td>
@@ -814,7 +921,12 @@
                         lassen? / Bump into furniture, drop things often?</strong><br><em>Часто вдаряєшся об меблі,
                         роняєш речі або "не вписуєшся"?</em></td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q21" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label class="radio-label"><input type="radio" name="q21" value="0.5"><span class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label class="radio-label"><input type="radio" name="q21" value="1"><span class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q21" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q21" value="0.5"><span
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q21" value="1"><span
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
                 </td>
             </tr>
             <tr data-q="22">
@@ -824,7 +936,12 @@
                         others?</strong><br><em>Велосипед, шнурки, водіння давались набагато важче ніж
                         іншим?</em></td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q22" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label class="radio-label"><input type="radio" name="q22" value="0.5"><span class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label class="radio-label"><input type="radio" name="q22" value="1"><span class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q22" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q22" value="0.5"><span
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q22" value="1"><span
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
                 </td>
             </tr>
             <tr data-q="23">
@@ -833,7 +950,12 @@
                         immer chaotisch? / Room, bag, desk always chaotic despite trying?</strong><br><em>Кімната,
                         сумка, стіл — завжди хаос, хоч ти і намагаєшся?</em></td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q23" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label class="radio-label"><input type="radio" name="q23" value="0.5"><span class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label class="radio-label"><input type="radio" name="q23" value="1"><span class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q23" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q23" value="0.5"><span
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q23" value="1"><span
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
                 </td>
             </tr>
             <tr data-q="24">
@@ -842,14 +964,20 @@
                         schwierig? / Truly hard to talk and write at the same time?</strong><br><em>Говорити і писати
                         одночасно — реально складно?</em></td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q24" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label class="radio-label"><input type="radio" name="q24" value="0.5"><span class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label class="radio-label"><input type="radio" name="q24" value="1"><span class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q24" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q24" value="0.5"><span
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q24" value="1"><span
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
                 </td>
             </tr>
         </table>
 
 
         <!-- CPTSD -->
-        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-ptsd), transparent)">🌊 C-PTSD / Травма / Trauma (25–28)</div>
+        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-ptsd), transparent)">🌊 C-PTSD /
+            Травма / Trauma (25–28)</div>
         <table class="q-table">
             <tr data-q="25">
                 <td class="q-num">25</td>
@@ -857,7 +985,12 @@
                         warten? / Always waiting for things to go wrong?</strong><br><em>Постійно "чекаєш підвоху"
                         навіть коли все добре?</em></td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q25" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label class="radio-label"><input type="radio" name="q25" value="0.5"><span class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label class="radio-label"><input type="radio" name="q25" value="1"><span class="radio-box"></span><span>Ja / Yes / Так</span></label>
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q25" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q25" value="0.5"><span
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q25" value="1"><span
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label>
                     </div>
                 </td>
             </tr>
@@ -867,7 +1000,12 @@
                         situations?</strong><br><em>В стресових ситуаціях "вимикаєшся" або реагуєш набагато сильніше ніж
                         ситуація?</em></td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q26" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label class="radio-label"><input type="radio" name="q26" value="0.5"><span class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label class="radio-label"><input type="radio" name="q26" value="1"><span class="radio-box"></span><span>Ja / Yes / Так</span></label>
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q26" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q26" value="0.5"><span
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q26" value="1"><span
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label>
                     </div>
                 </td>
             </tr>
@@ -879,7 +1017,12 @@
                         явної
                         причини?</em></td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q27" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label class="radio-label"><input type="radio" name="q27" value="0.5"><span class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label class="radio-label"><input type="radio" name="q27" value="1"><span class="radio-box"></span><span>Ja / Yes / Так</span></label>
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q27" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q27" value="0.5"><span
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q27" value="1"><span
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label>
                     </div>
                 </td>
             </tr>
@@ -889,7 +1032,12 @@
                         Themen/Erinnerungen meiden? / Avoid certain topics or memories?</strong><br><em>Є теми або
                         спогади яких уникаєш — занадто важко навіть думати про них?</em></td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q28" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label class="radio-label"><input type="radio" name="q28" value="0.5"><span class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label class="radio-label"><input type="radio" name="q28" value="1"><span class="radio-box"></span><span>Ja / Yes / Так</span></label>
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q28" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q28" value="0.5"><span
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q28" value="1"><span
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label>
                     </div>
                 </td>
             </tr>
@@ -904,7 +1052,8 @@
             <div class="langs">DE | EN | UA</div>
         </div>
         <!-- ANXIETY -->
-        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-anx), transparent)">😰 Angststörung / Anxiety / Тривожність (29–32)</div>
+        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-anx), transparent)">😰 Angststörung /
+            Anxiety / Тривожність (29–32)</div>
         <table class="q-table">
             <tr data-q="29">
                 <td class="q-num">29</td>
@@ -913,14 +1062,26 @@
                         stop?</strong><br><em>Хвилюєшся про речі на які не можеш вплинути — і не можеш просто
                         "перестати"?</em></td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q29" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label class="radio-label"><input type="radio" name="q29" value="0.5"><span class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label class="radio-label"><input type="radio" name="q29" value="1"><span class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q29" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q29" value="0.5"><span
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q29" value="1"><span
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
                 </td>
             </tr>
             <tr data-q="30">
                 <td class="q-num">30</td>
-                <td class="q-text"><strong>Vor wichtigen Tagen alle Szenarien grübeln? / Run through all possible scenarios before events?</strong><br><em>Перед важливим днем прокручуєш у голові всі можливі сценарії — особливо вночі?</em></td>
+                <td class="q-text"><strong>Vor wichtigen Tagen alle Szenarien grübeln? / Run through all possible
+                        scenarios before events?</strong><br><em>Перед важливим днем прокручуєш у голові всі можливі
+                        сценарії — особливо вночі?</em></td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q30" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label class="radio-label"><input type="radio" name="q30" value="0.5"><span class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label class="radio-label"><input type="radio" name="q30" value="1"><span class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q30" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q30" value="0.5"><span
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q30" value="1"><span
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
                 </td>
             </tr>
             <tr data-q="31">
@@ -931,7 +1092,12 @@
                         треба щось
                         робити?</em></td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q31" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label class="radio-label"><input type="radio" name="q31" value="0.5"><span class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label class="radio-label"><input type="radio" name="q31" value="1"><span class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q31" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q31" value="0.5"><span
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q31" value="1"><span
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
                 </td>
             </tr>
             <tr data-q="32">
@@ -941,13 +1107,19 @@
                         outcomes?</strong><br><em>Уникаєш певних ситуацій або людей бо передбачаєш що буде погано?</em>
                 </td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q32" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label class="radio-label"><input type="radio" name="q32" value="0.5"><span class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label class="radio-label"><input type="radio" name="q32" value="1"><span class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q32" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q32" value="0.5"><span
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q32" value="1"><span
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
                 </td>
             </tr>
         </table>
 
         <!-- OCD -->
-        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-ocd), transparent)">🔁 Zwangsstörung / OCD / ОКР (33–36)</div>
+        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-ocd), transparent)">🔁 Zwangsstörung /
+            OCD / ОКР (33–36)</div>
         <table class="q-table">
             <tr data-q="33">
                 <td class="q-num">33</td>
@@ -955,7 +1127,12 @@
                         Gedanken die immer wiederkehren? / Unwanted thoughts that keep returning?</strong><br><em>Думки
                         яких не хочеш — повертаються знову і знову, не можеш позбутись?</em></td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q33" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label class="radio-label"><input type="radio" name="q33" value="0.5"><span class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label class="radio-label"><input type="radio" name="q33" value="1"><span class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q33" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q33" value="0.5"><span
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q33" value="1"><span
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
                 </td>
             </tr>
             <tr data-q="34">
@@ -965,7 +1142,12 @@
                         uncertain?</strong><br><em>Перевіряєш кілька разів: двері, плита, пристрій — і все одно не
                         впевнений?</em></td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q34" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label class="radio-label"><input type="radio" name="q34" value="0.5"><span class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label class="radio-label"><input type="radio" name="q34" value="1"><span class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q34" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q34" value="0.5"><span
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q34" value="1"><span
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
                 </td>
             </tr>
             <tr data-q="35">
@@ -975,7 +1157,12 @@
                         way?</strong><br><em>Внутрішній тиск робити речі певним чином — інакше відчуття що "щось не
                         так"?</em></td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q35" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label class="radio-label"><input type="radio" name="q35" value="0.5"><span class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label class="radio-label"><input type="radio" name="q35" value="1"><span class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q35" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q35" value="0.5"><span
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q35" value="1"><span
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
                 </td>
             </tr>
             <tr data-q="36">
@@ -986,13 +1173,19 @@
                         не трапилось — навіть
                         нелогічно?</em></td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q36" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label class="radio-label"><input type="radio" name="q36" value="0.5"><span class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label class="radio-label"><input type="radio" name="q36" value="1"><span class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q36" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q36" value="0.5"><span
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q36" value="1"><span
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
                 </td>
             </tr>
         </table>
 
         <!-- SENSORY -->
-        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-sen), transparent)">👂 Sensorik / Sensory / Сенсорна обробка (37–40)</div>
+        <div class="section-hdr" style="background:linear-gradient(90deg, var(--c-sen), transparent)">👂 Sensorik /
+            Sensory / Сенсорна обробка (37–40)</div>
         <table class="q-table">
             <tr data-q="37">
                 <td class="q-num">37</td>
@@ -1001,7 +1194,12 @@
                         physically exhausting?</strong><br><em>Місця з людьми, звуками або яскравим світлом виснажують
                         фізично?</em></td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q37" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label class="radio-label"><input type="radio" name="q37" value="0.5"><span class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label class="radio-label"><input type="radio" name="q37" value="1"><span class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q37" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q37" value="0.5"><span
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q37" value="1"><span
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
                 </td>
             </tr>
             <tr data-q="38">
@@ -1011,7 +1209,12 @@
                         torture?</strong><br><em>Певний одяг, швів або тканина — це тортура а не просто дискомфорт?</em>
                 </td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q38" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label class="radio-label"><input type="radio" name="q38" value="0.5"><span class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label class="radio-label"><input type="radio" name="q38" value="1"><span class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q38" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q38" value="0.5"><span
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q38" value="1"><span
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
                 </td>
             </tr>
             <tr data-q="39">
@@ -1021,7 +1224,12 @@
                         severe?</strong><br><em>Не помічаєш що голодний, холодний або хворий — поки це не стає
                         гостро?</em></td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q39" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label class="radio-label"><input type="radio" name="q39" value="0.5"><span class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label class="radio-label"><input type="radio" name="q39" value="1"><span class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q39" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q39" value="0.5"><span
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q39" value="1"><span
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
                 </td>
             </tr>
             <tr data-q="40">
@@ -1032,7 +1240,12 @@
                         фізичну реакцію — страх,
                         серцебиття?</em></td>
                 <td class="a-col">
-                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q40" value="0"><span class="radio-box"></span><span>Nein / No / Ні</span></label><label class="radio-label"><input type="radio" name="q40" value="0.5"><span class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label class="radio-label"><input type="radio" name="q40" value="1"><span class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
+                    <div class="radio-group"><label class="radio-label"><input type="radio" name="q40" value="0"><span
+                                class="radio-box"></span><span>Nein / No / Ні</span></label><label
+                            class="radio-label"><input type="radio" name="q40" value="0.5"><span
+                                class="radio-box"></span><span>Manchmal / Sometimes / Іноді</span></label><label
+                            class="radio-label"><input type="radio" name="q40" value="1"><span
+                                class="radio-box"></span><span>Ja / Yes / Так</span></label></div>
                 </td>
             </tr>
         </table>
@@ -1176,8 +1389,10 @@
             </div>
         </div>
 
-                <div style="font-size:8pt;font-weight:800;text-align:center;padding:8px;margin-top:10px;border-radius:4px;background:var(--gradient);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">
-            Wir vereinen uns. Gemeinsam sind wir stärker. / We unite because the system is not ready for us. Together we are stronger. / Ми об'єднуємось, бо система не готова до нас. Разом — ми сильніші.
+        <div
+            style="font-size:8pt;font-weight:800;text-align:center;padding:8px;margin-top:10px;border-radius:4px;background:var(--gradient);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">
+            Wir vereinen uns. Gemeinsam sind wir stärker. / We unite because the system is not ready for us. Together we
+            are stronger. / Ми об'єднуємось, бо система не готова до нас. Разом — ми сильніші.
         </div>
     </div>
 
