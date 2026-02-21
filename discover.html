@@ -543,7 +543,7 @@
             }
 
             .q-table td {
-                padding: 2px 0 !important;
+                padding: 1.5px 0 !important;
             }
 
             .q-table tr {
@@ -573,12 +573,15 @@
             }
 
             .contact {
-                margin-top: 2px;
-                padding: 4px 8px;
+                margin-top: 1px;
+                padding: 3px 6px;
+                background: var(--gradient) !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
             }
 
             .contact a {
-                font-size: 8pt;
+                font-size: 7.5pt;
             }
 
             /* Print-Specific Result Styles */
@@ -596,6 +599,16 @@
             .warn {
                 margin: 2px 0 !important;
                 padding: 2px 4px !important;
+            }
+
+            #qrcode2 {
+                display: block !important;
+            }
+
+            #qrcode2 canvas,
+            #qrcode2 img {
+                width: 60px !important;
+                height: 60px !important;
             }
 
             .q-text em {
@@ -1799,22 +1812,20 @@
                 <div class="bars" id="barsGrid" style="display:none"></div>
 
                 <div id="manualCalcGrid" class="manual-calc-grid">
-                    <div class="manual-title">
-                        ✍️ Auswertung (Nur für Papierausdruck) / Scoring (Paper version only) / Підрахунок (для
-                        паперового тесту):
+                    <div class="manual-title" style="font-size: 7.5pt; margin-bottom: 2px;">
+                        ✍️ Auswertung (Nur für Papierausdruck) / Scoring (Paper only) / Підрахунок:
                     </div>
-                    <div class="manual-desc">
-                        Zähle die Punkte für jede Gruppe: <strong>Nein = 1, Manchmal = 2, Ja = 3.</strong><br>
-                        <em>Count points for each group: No = 1, Sometimes = 2, Yes = 3.</em><br>
-                        Порахуйте бали для кожної групи: <strong>Ні = 1, Іноді = 2, Так = 3.</strong>
+                    <div class="manual-desc" style="font-size: 7pt; line-height: 1.1; margin-bottom: 4px;">
+                        Zähle: <strong>Nein=1, Manchmal=2, Ja=3.</strong> | Count: <strong>No=1, Some=2, Yes=3.</strong>
+                        | Порахуйте: <strong>Ні=1, Іноді=2, Так=3.</strong>
                     </div>
 
-                    <table class="manual-table">
+                    <table class="manual-table" style="margin-bottom: 2px;">
                         <thead>
-                            <tr>
+                            <tr style="font-size: 7pt;">
                                 <td>Kategorie / Category</td>
-                                <td style="text-align: center;">Punkte / Points</td>
-                                <td style="text-align: center;">Schlüssel / Key / Шкала</td>
+                                <td style="text-align: center;">Punkte</td>
+                                <td style="text-align: center;">Schlüssel / %</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -1968,16 +1979,13 @@
         </div>
 
         <div
-            style="margin:8px 0;background:var(--lgrey);border-radius:4px;padding:8px 10px;font-size:7pt;color:var(--dgrey);line-height:1.6">
-            <strong style="color:var(--navy);font-size:8pt">🗺 Weg zur Diagnose / Path to diagnosis / Шлях до
+            style="margin:4px 0;background:var(--lgrey);border-radius:4px;padding:4px 8px;font-size:7.2pt;color:var(--dgrey);line-height:1.2">
+            <strong style="color:var(--navy);font-size:7.5pt">🗺 Weg zur Diagnose / Path to diagnosis / Шлях до
                 діагнозу</strong><br>
-            1. 🇩🇪 Hausarzt → Überweisung zum Psychiater / Family doctor → referral to psychiatrist / Сімейний лікар →
-            направлення до психіатра<br>
-            2. 🇩🇪 Psychologische Praxis oder Psychiater (Wartezeit 6–18 Mo., aber schnellere Wege möglich / Queue 6–18
-            months but faster options exist / черга 6–18 міс., але є швидші шляхи)<br>
-            3. ✅ Wir helfen Spezialisten zu finden, die <em>Neurodivergenz bei Erwachsenen wirklich diagnostizieren</em>
-            / We help find specialists who <em>actually diagnose neurodivergence</em> in adults / Infinity Braves
-            допомагає знайти фахівців які <em>реально діагностують нейровідмінність</em> у дорослих
+            1. 🇩🇪 Hausarzt → Überweisung / Family doctor → referral / Сімейний лікар → направлення<br>
+            2. 🇩🇪 Facharzt (Psychiater/Praxis) 6–18 Mo. / Specialist (Psychiatrist) 6–18 months / Психіатр (черга 6–18
+            міс.)<br>
+            3. ✅ Infinity Braves hilft Spezialisten zu finden / We help find specialists / Допомагаємо знайти фахівців
         </div>
 
         <div class="contact">
@@ -1988,17 +1996,20 @@
                 <a href="https://t.me/+R8UPWvAwrD85ZjYy">t.me/+R8UPWvAwrD85ZjYy</a>
                 <div class="langs-sm">Telegram · Online · Kostenlos / Безкоштовно</div>
             </div>
-            <div style="display:flex; align-items:center; gap:15px">
-                <img src="branding/logo.png" alt="Logo" style="height:70px">
+
+            <div
+                style="flex: 1; margin: 0 15px; font-size: 7.5pt; font-weight: 800; text-align: center; border-left: 1px solid rgba(255,255,255,0.3); padding-left: 10px;">
+                Wir vereinen uns. Gemeinsam sind wir stärker. / We unite because the system is not ready for us.
+                Together we are stronger. / Ми об'єднуємось, бо система не готова до нас. Разом — ми сильніші.
+            </div>
+
+            <div style="display:flex; align-items:center; gap:10px">
+                <img src="branding/logo.png" alt="Logo" style="height:60px">
                 <div id="qrcode2"></div>
             </div>
         </div>
 
-        <div
-            style="font-size:8pt;font-weight:800;text-align:center;padding:8px;margin-top:10px;border-radius:4px;background:var(--gradient);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">
-            Wir vereinen uns. Gemeinsam sind wir stärker. / We unite because the system is not ready for us. Together we
-            are stronger. / Ми об'єднуємось, бо система не готова до нас. Разом — ми сильніші.
-        </div>
+
     </div>
 
     <button class="print-btn no-print" onclick="window.print()">🖨️ Друкувати / Print</button>
