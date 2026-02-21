@@ -455,20 +455,15 @@
             margin-top: 2px
         }
 
-        #qrcode2 {
+        #qr-code-img {
             display: inline-block;
             background: #fff;
             padding: 2px;
             border-radius: 4px;
-            width: 68px;
-            height: 68px;
+            width: 64px;
+            height: 64px;
             flex-shrink: 0;
-        }
-
-        #qrcode2 img,
-        #qrcode2 canvas {
-            width: 64px !important;
-            height: 64px !important;
+            object-fit: contain;
         }
 
         @page {
@@ -1996,7 +1991,9 @@
 
         <div class="contact">
             <div style="display:flex; align-items:center; gap:12px">
-                <div id="qrcode2"></div>
+                <img id="qr-code-img"
+                    src="https://api.qrserver.com/v1/create-qr-code/?size=128x128&data=https://t.me/+R8UPWvAwrD85ZjYy"
+                    alt="QR Code">
                 <div>
                     <div style="font-size:7pt;opacity:.7;margin-bottom:3px">✨ ALLES KOSTENLOS / ALL FREE / ВСЕ
                         БЕЗКОШТОВНО</div>
@@ -2022,14 +2019,7 @@
 
     <button class="print-btn no-print" onclick="window.print()">🖨️ Друкувати / Print</button>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script>
-        new QRCode(document.getElementById('qrcode2'), {
-            text: 'https://t.me/+R8UPWvAwrD85ZjYy',
-            width: 64, height: 64, colorDark: '#000000', colorLight: '#ffffff',
-            correctLevel: QRCode.CorrectLevel.H
-        });
-
         const TOTAL = 40;
         const PROFILES = [
             { id: 'adhd', label: 'Aufmerksamkeits-Defizit / ADHD / СДУГ', qs: [1, 2, 3, 4, 5], color: 'var(--c-adhd)' },
