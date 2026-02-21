@@ -64,6 +64,7 @@ def create_ua(html):
     # Radio Options
     html = html.replace('Nein / No / Ні', 'Ні')
     html = html.replace('Manchmal / Sometimes / Іноді', 'Іноді')
+    html = html.replace('Ein wenig / A little / Трохи', 'Трохи')
     html = html.replace('Ja / Yes / Так', 'Так')
 
     # Parse questions
@@ -172,6 +173,7 @@ def create_de_en(html):
     # Radio Options
     html = html.replace('Nein / No / Ні', 'Nein / No')
     html = html.replace('Manchmal / Sometimes / Іноді', 'Manchmal / Sometimes')
+    html = html.replace('Ein wenig / A little / Трохи', 'Ein wenig / A little')
     html = html.replace('Ja / Yes / Так', 'Ja / Yes')
 
     # Parse questions
